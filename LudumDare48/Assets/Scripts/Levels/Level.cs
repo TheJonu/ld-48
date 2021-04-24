@@ -33,62 +33,65 @@ namespace Levels
 
             _blocks = new List<LevelBlock>();
             _objects = new List<LevelObject>();
-            Vector2 endPos = Entrance.ExitPos + Data.Length * Data.FloorPrefab.Dim.x * Data.Direction * Vector2.right;
-
-            GenerateFloor(Entrance.ExitPos, Data.Length, Data.FloorYOffset, Data.FloorPrefab);
-            GenerateCeiling(Entrance.EntrancePos, Data.Length, Data.CeilingYOffset, Data.CeilingPrefab);
-            GenerateExit(endPos, Data.StaircasePrefab);
-            GenerateBackground(Entrance.ExitPos, Exit.CenterPosition, Data.BackgroundPrefab);
-            GenerateStandingObjects(Data.LevelObjects.Where(o => o.prefab.PositionVariant == PositionVariant.Standing));
+            
+            GenerateExit();
+            
+            GenerateFloor();
+            GenerateCeiling();
+            GenerateBackground();
+            
+            GenerateStandingObjects();
         }
 
-        private void GenerateFloor(Vector2 startPos, int length, float offsetY, LevelBlock prefab)
+        private void GenerateFloor()
         {
+            Vector2 startPos = Entrance.ExitPos + new Vector2(-Data.Direction * Entrance.Dim.x, Data.FloorYOffset);
+            Vector2 blockDist = Data.FloorPrefab.Dim.x * Data.Direction * Vector2.right;
+            int length = Data.Length + Mathf.RoundToInt(Entrance.Dim.x);
             for (int i = 0; i < length; i++)
             {
-                var block = Instantiate(
-                    prefab,
-                    startPos + i * prefab.Dim.x * Data.Direction * Vector2.right + offsetY * Vector2.up,
-                    Quaternion.identity,
-                    floorParent);
+                var block = Instantiate(Data.FloorPrefab, startPos + i * blockDist, Quaternion.identity, floorParent);
                 _blocks.Add(block);
             }
         }
 
-        private void GenerateCeiling(Vector2 startPos, int length, float offsetY, LevelBlock prefab)
+        private void GenerateCeiling()
         {
+            Vector2 startPos = new Vector2(Entrance.ExitPos.x, Entrance.EntrancePos.y + Data.CeilingYOffset);
+            Vector2 blockDist = Data.CeilingPrefab.Dim.x * Data.Direction * Vector2.right;
+            int length = Data.Length + Mathf.RoundToInt(Exit.Dim.x);
             for (int i = 0; i < length; i++)
             {
-                var block = Instantiate(
-                    prefab,
-                    startPos + i * prefab.Dim.x * Data.Direction * Vector2.right + offsetY * Vector2.up,
-                    Quaternion.identity,
-                    ceilingParent);
+                var block = Instantiate(Data.CeilingPrefab, startPos + i * blockDist, Quaternion.identity, ceilingParent);
                 _blocks.Add(block);
             }
         }
 
-        private void GenerateExit(Vector2 pos, Staircase prefab)
+        private void GenerateExit()
         {
-            Exit = Instantiate(prefab, pos, Quaternion.identity, LevelManager.Instance.LevelsParent);
+            Vector2 exitPos = Entrance.ExitPos + Data.Length * Data.FloorPrefab.Dim.x * Data.Direction * Vector2.right;
+            Exit = Instantiate(Data.StaircasePrefab, exitPos, Quaternion.identity, LevelManager.Instance.LevelsParent);
             Exit.transform.Translate(-Exit.EntranceLocalPos);
             Exit.transform.Translate(Data.FloorPrefab.Dim.x * Data.Direction * Vector2.left);
         }
 
-        private void GenerateBackground(Vector2 startPos, Vector2 endPos, LevelBlock prefab)
+        private void GenerateBackground()
         {
-            float y = startPos.y;
-            int length = Mathf.RoundToInt(Mathf.Abs(endPos.x - startPos.x) / prefab.Dim.x) + 1;
+            float y = Entrance.ExitPos.y;
+            float startPosX = Entrance.ExitPos.x - Data.Direction * Entrance.Dim.x;
+            float endPosX = Exit.EntrancePos.x + Data.Direction * Exit.Dim.x;
+            int length = Mathf.RoundToInt(Mathf.Abs(endPosX - startPosX) / Data.BackgroundPrefab.Dim.x) + 1;
             for (int i = 0; i < length; i++)
             {
-                float x = startPos.x + i * Data.Direction * prefab.Dim.x;
-                var block = Instantiate(prefab, new Vector2(x, y), Quaternion.identity, backgroundParent);
+                float x = startPosX + i * Data.Direction * Data.BackgroundPrefab.Dim.x;
+                var block = Instantiate(Data.BackgroundPrefab, new Vector2(x, y), Quaternion.identity, backgroundParent);
                 _blocks.Add(block);
             }
         }
 
-        private void GenerateStandingObjects(IEnumerable<SpawnAmount<LevelObject>> spawns)
+        private void GenerateStandingObjects()
         {
+            var spawns = Data.LevelObjects.Where(o => o.prefab.PositionVariant == PositionVariant.Standing);
             float floorSurfacePosY = Entrance.ExitPos.y + 0.5f;
             int leftBoundary = Mathf.RoundToInt(Entrance.ExitPos.x) + Data.Direction * ObjectsBufferDist;
             int rightBoundary = Mathf.RoundToInt(Exit.EntrancePos.x) - Data.Direction * ObjectsBufferDist;
