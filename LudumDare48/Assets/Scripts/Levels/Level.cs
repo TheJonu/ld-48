@@ -10,17 +10,17 @@ namespace Levels
         [SerializeField] private Transform floorParent;
 
         public LevelDataSet LevelDataSet { get; set; }
-        public Staircase ExitStaircase => _exit;
+        public Staircase ExitStaircaseStaircase => _exitStaircase;
         
         private float GridSize => LevelManager.Instance.GridSize;
         private int Length => LevelDataSet.Length;
         private float Direction => LevelDataSet.Direction;
         
-        private List<LevelBlock> _floor;
-        private Staircase _exit;
+        private List<LevelBlock> _floorBlocks;
+        private Staircase _exitStaircase;
         
 
-        public void Generate()
+        public void GenerateLevel()
         {
             Vector2 startPos = transform.position;
             Vector2 endPos = startPos + Length * GridSize * Direction * Vector2.right;
@@ -30,22 +30,22 @@ namespace Levels
 
         private void GenerateFloor(Vector2 startPos, int length, LevelBlock floorBlockPrefab)
         {
-            _floor = new List<LevelBlock>();
+            _floorBlocks = new List<LevelBlock>();
             for (int i = 0; i < length; i++)
             {
                 var block = Instantiate(
                     floorBlockPrefab, 
                     startPos + GridSize * Direction * i * Vector2.right,
                     Quaternion.identity, floorParent);
-                _floor.Add(block);
+                _floorBlocks.Add(block);
             }
         }
 
         private void GenerateExit(Vector2 pos)
         {
-            _exit = Instantiate(LevelDataSet.NextStaircasePrefab, pos, Quaternion.identity, LevelManager.Instance.LevelsParent);
-            _exit.transform.Translate(-_exit.EntranceLocalPos);
-            _exit.transform.Translate(GridSize * Direction * Vector2.left);
+            _exitStaircase = Instantiate(LevelDataSet.NextStaircasePrefab, pos, Quaternion.identity, LevelManager.Instance.LevelsParent);
+            _exitStaircase.transform.Translate(-_exitStaircase.EntranceLocalPos);
+            _exitStaircase.transform.Translate(GridSize * Direction * Vector2.left);
         }
     }
 }

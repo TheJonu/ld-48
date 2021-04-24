@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd9ccf47b7494e0293ce2264c44f0d4e, type: 3}
   m_Name: Level 1 Data
   m_EditorClassIdentifier: 
-  _floorBlockPrefab: {fileID: 4390722234434600982, guid: 4a926f548b1fb8e4a8e6e8bd8b028855, type: 3}
-  _nextStaircasePrefab: {fileID: 4954045690346246497, guid: 0e556da6327cb9f478ddfcbf61d7450c, type: 3}
-  _length: 40
-  _direction: 1
+  floorBlockPrefab: {fileID: 4390722234434600982, guid: 4a926f548b1fb8e4a8e6e8bd8b028855, type: 3}
+  nextStaircasePrefab: {fileID: 4954045690346246497, guid: 0e556da6327cb9f478ddfcbf61d7450c, type: 3}
+  length: 30
+  direction: 1

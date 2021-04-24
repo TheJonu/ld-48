@@ -34,8 +34,8 @@ public class LevelManager : MonoBehaviour
         {
             var level = Instantiate(levelPrefab, newPos, Quaternion.identity, levelsParent);
             level.LevelDataSet = levelDataSet;
-            level.Generate();
-            newPos = level.ExitStaircase.ExitPos;
+            level.GenerateLevel();
+            newPos = level.ExitStaircaseStaircase.ExitPos;
         }
     }
 }
