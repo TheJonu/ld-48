@@ -15,7 +15,7 @@ namespace Levels
         public LevelDataSet Data { get; set; }
         public Staircase Entrance { get; set; }
         public Staircase Exit { get; set; }
-        
+
 
         private List<LevelBlock> _blocks;
 
