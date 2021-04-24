@@ -28,7 +28,7 @@ namespace Levels
             GenerateFloor(Entrance.ExitPos, Data.Length, Data.FloorYOffset, Data.FloorPrefab);
             GenerateCeiling(Entrance.EntrancePos, Data.Length, Data.CeilingYOffset, Data.CeilingPrefab);
             GenerateExit(endPos, Data.StaircasePrefab);
-            GenerateBackground(Entrance.CenterPosition, Exit.CenterPosition, Data.BackgroundPrefab);
+            GenerateBackground(Entrance.ExitPos, Exit.CenterPosition, Data.BackgroundPrefab);
         }
 
         private void GenerateFloor(Vector2 startPos, int length, float offsetY, LevelBlock prefab)
