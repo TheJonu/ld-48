@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
 {
 
     protected Rigidbody2D rb2d;
-    protected BoxCollider2D bx2d;
+    protected Collider2D coll2d;
 
     public float xSpeed = .5f;
     
@@ -20,11 +20,14 @@ public class PlayerController : MonoBehaviour
 
     Sprite oldSprite;
     public Sprite ladderSprite;
+
+    public Vector2 collBoxSize = Vector2.one * 1f;
+    
     // Start is called before the first frame update
     void Start()
     {
         rb2d = gameObject.GetComponent<Rigidbody2D>();
-        bx2d = gameObject.GetComponent<BoxCollider2D>();
+        coll2d = gameObject.GetComponent<Collider2D>();
     }
 
     void FixedUpdate()
@@ -83,7 +86,7 @@ public class PlayerController : MonoBehaviour
     void LadderCheck()
     {
         RaycastHit2D[] rhit = new RaycastHit2D[256];
-        int size = Physics2D.BoxCast(transform.position, bx2d.size, 180, Vector2.down, climbLayerMask, rhit, (bx2d.size.y / 2));
+        int size = Physics2D.BoxCast(transform.position, collBoxSize, 180, Vector2.down, climbLayerMask, rhit, (collBoxSize.y / 2));
         
         Debug.Log(size);
 
@@ -107,7 +110,7 @@ public class PlayerController : MonoBehaviour
             offSetPos.x = rhit[0].rigidbody.position.x;
             gameObject.transform.position = offSetPos;
 
-            bx2d.enabled = false;
+            coll2d.enabled = false;
         }
     }
     public void ResetBack(Vector3 newPosition) 
@@ -115,13 +118,13 @@ public class PlayerController : MonoBehaviour
         this.enabled = true;
         GetComponent<SpriteRenderer>().sprite = oldSprite;
         rb2d.gravityScale = 1;
-        bx2d.enabled = true;
+        coll2d.enabled = true;
     }
 
     public void pushUp()
     {
         RaycastHit2D[] rhit = new RaycastHit2D[256];
-        int size = Physics2D.BoxCast(transform.position, bx2d.size, 0, Vector2.zero, climbLayerMask, rhit);
+        int size = Physics2D.BoxCast(transform.position, collBoxSize, 0, Vector2.zero, climbLayerMask, rhit);
     }
 
     bool IsGrounded()
@@ -129,9 +132,9 @@ public class PlayerController : MonoBehaviour
 
         float extender = 0.4f;
 
-        float pyT = Mathf.Sqrt(bx2d.bounds.extents.y * bx2d.bounds.extents.y + bx2d.bounds.extents.x * bx2d.bounds.extents.x);
+        float pyT = Mathf.Sqrt(coll2d.bounds.extents.y * coll2d.bounds.extents.y + coll2d.bounds.extents.x * coll2d.bounds.extents.x);
 
-        RaycastHit2D hit = Physics2D.BoxCast(bx2d.bounds.center, bx2d.bounds.size, 0f, Vector2.down, extender, terrainLayerMask);
+        RaycastHit2D hit = Physics2D.BoxCast(coll2d.bounds.center, coll2d.bounds.size, 0f, Vector2.down, extender, terrainLayerMask);
 
         return hit.collider != null;
     }
