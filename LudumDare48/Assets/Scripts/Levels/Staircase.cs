@@ -1,7 +1,4 @@
-<<<<<<< Updated upstream
-﻿
-=======
-﻿using UnityEngine;
+using UnityEngine;
 
 namespace Levels
 {
@@ -16,4 +13,3 @@ namespace Levels
         public Vector2 ExitPos => exit.position;
     }
 }
->>>>>>> Stashed changes

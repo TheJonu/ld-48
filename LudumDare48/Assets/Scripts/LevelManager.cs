@@ -1,11 +1,4 @@
-<<<<<<< Updated upstream
-﻿namespace DefaultNamespace
-{
-    public class LevelManager
-    {
-        
-=======
-﻿using System;
+using System;
 using System.Collections.Generic;
 using Levels;
 using UnityEditor;
@@ -44,6 +37,5 @@ public class LevelManager : MonoBehaviour
             level.Generate();
             newPos = level.ExitStaircase.ExitPos;
         }
->>>>>>> Stashed changes
     }
 }

@@ -1,19 +1,10 @@
-<<<<<<< Updated upstream
-﻿namespace Levels
-{
-    public class Level
-    {
-        
-=======
-﻿using System;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 
 namespace Levels
 {
-    
-    
     public class Level : MonoBehaviour
     {
         [SerializeField] private Transform floorParent;
@@ -56,6 +47,5 @@ namespace Levels
             _exit.transform.Translate(-_exit.EntranceLocalPos);
             _exit.transform.Translate(GridSize * Direction * Vector2.left);
         }
->>>>>>> Stashed changes
     }
 }
