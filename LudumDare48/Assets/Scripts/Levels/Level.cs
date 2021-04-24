@@ -24,18 +24,18 @@ namespace Levels
         {
             Vector2 startPos = transform.position;
             Vector2 endPos = startPos + Length * GridSize * Direction * Vector2.right;
-            GenerateFloor(startPos, Length,  -1f, LevelDataSet.FloorBlockPrefab);
+            GenerateFloor(startPos, Length, LevelDataSet.FloorBlockPrefab);
             GenerateExit(endPos);
         }
 
-        private void GenerateFloor(Vector2 startPos, int length, float offsetY, LevelBlock floorBlockPrefab)
+        private void GenerateFloor(Vector2 startPos, int length, LevelBlock floorBlockPrefab)
         {
             _floor = new List<LevelBlock>();
             for (int i = 0; i < length; i++)
             {
                 var block = Instantiate(
                     floorBlockPrefab, 
-                    startPos + GridSize * Direction * i * Vector2.right + offsetY * Vector2.up,
+                    startPos + GridSize * Direction * i * Vector2.right,
                     Quaternion.identity, floorParent);
                 _floor.Add(block);
             }
