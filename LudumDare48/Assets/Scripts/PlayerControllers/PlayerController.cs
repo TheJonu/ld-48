@@ -6,16 +6,17 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
 
-    Rigidbody2D rb2d;
-    BoxCollider2D bx2d;
+    protected Rigidbody2D rb2d;
+    protected BoxCollider2D bx2d;
 
     public float xSpeed = .5f;
     
-    Vector2 refVel = Vector2.zero;
+    protected Vector2 refVel = Vector2.zero;
 
-    float speedDampening = .05f;
+    protected float speedDampening = .05f;
 
-    public ContactFilter2D climbLayerMask;
+    [SerializeField] ContactFilter2D climbLayerMask;
+    [SerializeField] LayerMask terrainLayerMask;
 
     Sprite oldSprite;
     public Sprite ladderSprite;
@@ -28,6 +29,13 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
+
+        Flip();
+
+        if (!IsGrounded())
+        {
+            return;
+        }
 
         if(Input.GetKey(KeyCode.D) && Input.GetKey(KeyCode.A))
         {
@@ -54,11 +62,9 @@ public class PlayerController : MonoBehaviour
             Vector2 ret = Vector2.zero;
             rb2d.velocity = Vector2.SmoothDamp(rb2d.velocity, targetSpeed, ref refVel, speedDampening);
         }
-
-        Flip();
     }
 
-    void Flip()
+    protected void Flip()
     {
         if(rb2d.velocity.x > 0.1)
         {
@@ -116,5 +122,17 @@ public class PlayerController : MonoBehaviour
     {
         RaycastHit2D[] rhit = new RaycastHit2D[256];
         int size = Physics2D.BoxCast(transform.position, bx2d.size, 0, Vector2.zero, climbLayerMask, rhit);
+    }
+
+    bool IsGrounded()
+    {
+
+        float extender = 0.4f;
+
+        float pyT = Mathf.Sqrt(bx2d.bounds.extents.y * bx2d.bounds.extents.y + bx2d.bounds.extents.x * bx2d.bounds.extents.x);
+
+        RaycastHit2D hit = Physics2D.BoxCast(bx2d.bounds.center, bx2d.bounds.size, 0f, Vector2.down, extender, terrainLayerMask);
+
+        return hit.collider != null;
     }
 }
