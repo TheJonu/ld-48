@@ -14,7 +14,8 @@ namespace Levels
         [SerializeField] private Transform ceilingParent;
         [SerializeField] private Transform backgroundParent;
         [SerializeField] private Transform objectsParent;
-
+        [SerializeField] private BoxCollider2D floorBoxCollider;
+        
         public LevelDataSet Data { get; set; }
         public Staircase Entrance { get; set; }
         public Staircase Exit { get; set; }
@@ -43,6 +44,7 @@ namespace Levels
             GenerateBackground();
             
             GenerateStandingObjects();
+            GenerateHangingObjects();
         }
 
         private void GenerateFloor()
@@ -55,6 +57,10 @@ namespace Levels
                 var block = Instantiate(Data.FloorPrefab, startPos + i * blockDist, Quaternion.identity, floorParent);
                 _blocks.Add(block);
             }
+
+            Vector2 centerDist = (length - 1) * blockDist.x / 2 * Vector2.right;
+            floorBoxCollider.transform.position = startPos + centerDist;
+            floorBoxCollider.size = new Vector2(length * Data.FloorPrefab.Dim.x, Data.FloorPrefab.Dim.y);
         }
 
         private void GenerateCeiling()
@@ -127,10 +133,9 @@ namespace Levels
         private void GenerateHangingObjects()
                 {
                     var spawns = Data.LevelObjects.Where(o => o.prefab.PositionVariant == PositionVariant.Hanging);
-                    float floorSurfacePosY = Entrance.ExitPos.y + 0.5f;
                     int leftBoundary = Mathf.RoundToInt(Entrance.ExitPos.x) + Data.Direction * ObjectsBufferDist;
                     int rightBoundary = Mathf.RoundToInt(Exit.EntrancePos.x) - Data.Direction * ObjectsBufferDist;
-                    int bottomBoundary = Mathf.RoundToInt(Entrance.ExitPos.y) + 1;
+                    int bottomBoundary = Mathf.RoundToInt(Entrance.ExitPos.y) + 2;
                     int topBoundary = Mathf.RoundToInt(Entrance.EntrancePos.y + Data.CeilingYOffset) - 1;
                     foreach (var spawn in spawns)
                     {

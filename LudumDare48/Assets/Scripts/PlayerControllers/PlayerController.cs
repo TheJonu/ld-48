@@ -37,7 +37,7 @@ public class PlayerController : MonoBehaviour
 
         if (!IsGrounded())
         {
-            return;
+            //return;
         }
 
         if(Input.GetKey(KeyCode.D) && Input.GetKey(KeyCode.A))
@@ -129,7 +129,6 @@ public class PlayerController : MonoBehaviour
 
     bool IsGrounded()
     {
-
         float extender = 0.4f;
 
         float pyT = Mathf.Sqrt(coll2d.bounds.extents.y * coll2d.bounds.extents.y + coll2d.bounds.extents.x * coll2d.bounds.extents.x);

@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dimensions: {x: 1, y: 1}
-  positionVariant: 0
+  positionVariant: 1
 --- !u!212 &3940134206194313540
 SpriteRenderer:
   m_ObjectHideFlags: 0
