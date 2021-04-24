@@ -3,14 +3,19 @@ using UnityEngine;
 
 namespace Levels
 {
-    public class Staircase : MonoBehaviour
+    public class Staircase : LevelBlock
     {
         [SerializeField] private Transform entrance;
         [SerializeField] private Transform exit;
 
+        
+        public Vector2 CenterPosition => transform.position;
         public Vector2 EntranceLocalPos => entrance.localPosition;
+        public Vector2 ExitLocalPos => exit.localPosition;
+        public Vector2 EntrancePos => entrance.position;
         public Vector2 ExitPos => exit.position;
-
+        
+        
         public Action StaircaseEntered;
 
 

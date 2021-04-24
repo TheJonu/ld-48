@@ -28,14 +28,16 @@ public class LevelManager : MonoBehaviour
     private void Start()
     {
         _levels = new List<Level>();
-        Vector2 newPos = firstStaircase.ExitPos;
+        Staircase currentStaircase = firstStaircase;
 
         foreach (var levelDataSet in levelDataSets)
         {
-            var level = Instantiate(levelPrefab, newPos, Quaternion.identity, levelsParent);
-            level.LevelDataSet = levelDataSet;
+            var level = Instantiate(levelPrefab, currentStaircase.ExitPos, Quaternion.identity, levelsParent);
+            level.Data = levelDataSet;
+            level.Entrance = currentStaircase;
             level.GenerateLevel();
-            newPos = level.ExitStaircaseStaircase.ExitPos;
+            _levels.Add(level);
+            currentStaircase = level.Exit;
         }
     }
 }
