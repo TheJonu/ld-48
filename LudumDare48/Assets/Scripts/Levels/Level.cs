@@ -20,7 +20,7 @@ namespace Levels
         public Staircase Entrance { get; set; }
         public Staircase Exit { get; set; }
 
-        private const int ObjectsBufferDist = 3; // how far from staircases can objects be spawned
+        private const int ObjectsBufferDist = 2; // how far from staircases can objects be spawned
         private const int SpawnTries = 100;
 
         private LayerMask _objectsMask;

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3940134206194313540}
   - component: {fileID: 7074368384387537363}
   - component: {fileID: 6329961423673776185}
+  - component: {fileID: 6721122690190091797}
   m_Layer: 9
   m_Name: torch 1
   m_TagString: Untagged
@@ -143,7 +144,7 @@ MonoBehaviour:
   m_Color: {r: 0.8867924, g: 0.5844375, b: 0.46431112, a: 1}
   m_Intensity: 1
   m_LightVolumeOpacity: 0
-  m_ApplyToSortingLayers: 00000000
+  m_ApplyToSortingLayers: 0000000071f30d99
   m_LightCookieSprite: {fileID: 0}
   m_UseNormalMap: 0
   m_LightOrder: 0
@@ -153,7 +154,7 @@ MonoBehaviour:
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
-  m_PointLightOuterRadius: 5
+  m_PointLightOuterRadius: 6
   m_PointLightDistance: 3
   m_PointLightQuality: 1
   m_ShapeLightParametricSides: 5
@@ -166,3 +167,20 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!114 &6721122690190091797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5548012430894816715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e09c3c2be2b4225840cd8c4932a0a5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lightSource: {fileID: 6329961423673776185}
+  changeSpeed: 1.5
+  colorHueBounds: {x: 10, y: 30}
+  colorSaturationBounds: {x: 20, y: 40}
+  colorValueBounds: {x: 20, y: 100}
