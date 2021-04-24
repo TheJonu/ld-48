@@ -16,6 +16,9 @@ public class PlayerController : MonoBehaviour
     float speedDampening = .05f;
 
     public ContactFilter2D climbLayerMask;
+
+    Sprite oldSprite;
+    public Sprite ladderSprite;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,7 +37,6 @@ public class PlayerController : MonoBehaviour
         } 
         else if(Input.GetKey(KeyCode.D))
         {
-            Debug.Log("Right pushed ->");
             Vector2 targetSpeed = new Vector2(xSpeed, rb2d.velocity.y);
             Vector2 ret = Vector2.zero;
             rb2d.velocity = Vector2.SmoothDamp(rb2d.velocity, targetSpeed, ref refVel, speedDampening);
@@ -42,12 +44,11 @@ public class PlayerController : MonoBehaviour
 
         else if(Input.GetKey(KeyCode.A))
         {
-            Debug.Log("Left pushed <-");
             Vector2 targetSpeed = new Vector2(-xSpeed, rb2d.velocity.y);
             Vector2 ret = Vector2.zero;
             rb2d.velocity = Vector2.SmoothDamp(rb2d.velocity, targetSpeed, ref refVel, speedDampening);
         }
-        else if (Input.GetKeyDown(KeyCode.W))
+        else if (Input.GetKey(KeyCode.W))
             LadderCheck();
         else
         {
@@ -82,7 +83,29 @@ public class PlayerController : MonoBehaviour
 
         if(size == 1)
         {
-            // attach to ladder
+           this.enabled = false;
+
+            rb2d.velocity = Vector2.zero;
+
+           LadderController ld = gameObject.AddComponent<LadderController>();
+
+           // better calculation are needed for this. Will do for now
+           ld.up = Vector2.up;
+           ld.down = Vector2.down;
+           ld.ladderSprite = ladderSprite;
+           ld.returnTo = this;
+
+           oldSprite = GetComponent<SpriteRenderer>().sprite;
+
+            Vector3 offSetPos = gameObject.transform.position;
+            offSetPos.x = rhit[0].rigidbody.position.x;
+            gameObject.transform.position = offSetPos;
         }
+    }
+    public void ResetBack(Vector3 newPosition) 
+    {
+        this.enabled = true;
+        GetComponent<SpriteRenderer>().sprite = oldSprite;
+        rb2d.gravityScale = 1;
     }
 }
