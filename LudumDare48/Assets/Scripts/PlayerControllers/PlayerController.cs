@@ -29,11 +29,9 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
 
-        Flip();
-
         if(Input.GetKey(KeyCode.D) && Input.GetKey(KeyCode.A))
         {
-            return;
+            // do nothing plz
         } 
         else if(Input.GetKey(KeyCode.D))
         {
@@ -48,7 +46,7 @@ public class PlayerController : MonoBehaviour
             Vector2 ret = Vector2.zero;
             rb2d.velocity = Vector2.SmoothDamp(rb2d.velocity, targetSpeed, ref refVel, speedDampening);
         }
-        else if (Input.GetKey(KeyCode.W))
+        else if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S))
             LadderCheck();
         else
         {
@@ -56,6 +54,8 @@ public class PlayerController : MonoBehaviour
             Vector2 ret = Vector2.zero;
             rb2d.velocity = Vector2.SmoothDamp(rb2d.velocity, targetSpeed, ref refVel, speedDampening);
         }
+
+        Flip();
     }
 
     void Flip()
@@ -77,8 +77,8 @@ public class PlayerController : MonoBehaviour
     void LadderCheck()
     {
         RaycastHit2D[] rhit = new RaycastHit2D[256];
-        int size = Physics2D.BoxCast(transform.position, bx2d.size, 0, Vector2.zero, climbLayerMask, rhit);
-
+        int size = Physics2D.BoxCast(transform.position, bx2d.size, 180, Vector2.down, climbLayerMask, rhit, (bx2d.size.y / 2));
+        
         Debug.Log(size);
 
         if(size == 1)
@@ -100,6 +100,8 @@ public class PlayerController : MonoBehaviour
             Vector3 offSetPos = gameObject.transform.position;
             offSetPos.x = rhit[0].rigidbody.position.x;
             gameObject.transform.position = offSetPos;
+
+            bx2d.enabled = false;
         }
     }
     public void ResetBack(Vector3 newPosition) 
@@ -107,5 +109,12 @@ public class PlayerController : MonoBehaviour
         this.enabled = true;
         GetComponent<SpriteRenderer>().sprite = oldSprite;
         rb2d.gravityScale = 1;
+        bx2d.enabled = true;
+    }
+
+    public void pushUp()
+    {
+        RaycastHit2D[] rhit = new RaycastHit2D[256];
+        int size = Physics2D.BoxCast(transform.position, bx2d.size, 0, Vector2.zero, climbLayerMask, rhit);
     }
 }
