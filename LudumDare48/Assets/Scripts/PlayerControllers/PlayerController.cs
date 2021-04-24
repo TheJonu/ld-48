@@ -6,16 +6,16 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
 
-    Rigidbody2D rb2d;
-    BoxCollider2D bx2d;
+    protected Rigidbody2D rb2d;
+    protected BoxCollider2D bx2d;
 
     public float xSpeed = .5f;
     
-    Vector2 refVel = Vector2.zero;
+    protected Vector2 refVel = Vector2.zero;
 
-    float speedDampening = .05f;
+    protected float speedDampening = .05f;
 
-    public ContactFilter2D climbLayerMask;
+    [SerializeField] ContactFilter2D climbLayerMask;
 
     Sprite oldSprite;
     public Sprite ladderSprite;
@@ -58,7 +58,7 @@ public class PlayerController : MonoBehaviour
         Flip();
     }
 
-    void Flip()
+    protected void Flip()
     {
         if(rb2d.velocity.x > 0.1)
         {
