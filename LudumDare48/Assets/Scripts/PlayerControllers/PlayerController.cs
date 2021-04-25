@@ -160,13 +160,22 @@ public class PlayerController : MonoBehaviour
 
     bool IsGrounded()
     {
-        float extender = 0.4f;
 
-        float pyT = Mathf.Sqrt(coll2d.bounds.extents.y * coll2d.bounds.extents.y + coll2d.bounds.extents.x * coll2d.bounds.extents.x);
+        Vector2 lowerDown = coll2d.bounds.center;
 
-        RaycastHit2D hit = Physics2D.BoxCast(coll2d.bounds.center, coll2d.bounds.extents - new Vector3(0.01f, 0, 0), 0f, Vector2.down, extender, terrainLayerMask);
+        lowerDown.y -= coll2d.bounds.size.y;
 
-        ExtDebug.DrawBoxCastBox(coll2d.bounds.center, coll2d.bounds.extents - new Vector3(0.01f, 0, 0), Quaternion.identity, Vector2.down, extender, Color.red);
+        Vector2 box = coll2d.bounds.extents;
+
+        box.y /= .5f;
+
+        box -= new Vector2 (0.01f, 0);
+
+        RaycastHit2D hit = Physics2D.BoxCast(lowerDown, box, 0f, Vector2.zero, 0, terrainLayerMask);
+
+        Debug.Log(hit.collider != null);
+
+        ExtDebug.DrawBoxCastBox(lowerDown, box, Quaternion.identity, Vector2.zero, 0, Color.red);
         return hit.collider != null;
     }
 }
