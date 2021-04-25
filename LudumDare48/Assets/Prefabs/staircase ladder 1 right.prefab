@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: -3635727950707891264}
   - component: {fileID: 7993928891477082042}
   m_Layer: 0
-  m_Name: laddercase 1 right
+  m_Name: staircase ladder 1 right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -574,6 +574,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ladder 1 (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 6600329616270334378, guid: 808568b9d881eef40a583eb9e264ea82, type: 3}
+      propertyPath: m_TagString
+      value: DownOnlyLadder
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 808568b9d881eef40a583eb9e264ea82, type: 3}
 --- !u!4 &1534896435584684221 stripped
@@ -635,6 +639,10 @@ PrefabInstance:
     - target: {fileID: 6600329616270334378, guid: 808568b9d881eef40a583eb9e264ea82, type: 3}
       propertyPath: m_Name
       value: ladder 1 (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6600329616270334378, guid: 808568b9d881eef40a583eb9e264ea82, type: 3}
+      propertyPath: m_TagString
+      value: DownOnlyLadder
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 808568b9d881eef40a583eb9e264ea82, type: 3}
@@ -884,6 +892,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ladder 1 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6600329616270334378, guid: 808568b9d881eef40a583eb9e264ea82, type: 3}
+      propertyPath: m_TagString
+      value: DownOnlyLadder
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 808568b9d881eef40a583eb9e264ea82, type: 3}
 --- !u!4 &3211158256747579500 stripped
@@ -946,6 +958,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ladder 1 (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 6600329616270334378, guid: 808568b9d881eef40a583eb9e264ea82, type: 3}
+      propertyPath: m_TagString
+      value: DownOnlyLadder
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 808568b9d881eef40a583eb9e264ea82, type: 3}
 --- !u!4 &3035449278109685676 stripped
@@ -1007,6 +1023,10 @@ PrefabInstance:
     - target: {fileID: 6600329616270334378, guid: 808568b9d881eef40a583eb9e264ea82, type: 3}
       propertyPath: m_Name
       value: ladder 1 (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6600329616270334378, guid: 808568b9d881eef40a583eb9e264ea82, type: 3}
+      propertyPath: m_TagString
+      value: DownOnlyLadder
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 808568b9d881eef40a583eb9e264ea82, type: 3}
@@ -1380,6 +1400,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ladder 1 (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 6600329616270334378, guid: 808568b9d881eef40a583eb9e264ea82, type: 3}
+      propertyPath: m_TagString
+      value: DownOnlyLadder
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 808568b9d881eef40a583eb9e264ea82, type: 3}
 --- !u!4 &5620594610393260287 stripped
@@ -1504,6 +1528,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ladder 1 (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 6600329616270334378, guid: 808568b9d881eef40a583eb9e264ea82, type: 3}
+      propertyPath: m_TagString
+      value: DownOnlyLadder
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 808568b9d881eef40a583eb9e264ea82, type: 3}
 --- !u!4 &6091605440413112237 stripped
@@ -1565,6 +1593,10 @@ PrefabInstance:
     - target: {fileID: 6600329616270334378, guid: 808568b9d881eef40a583eb9e264ea82, type: 3}
       propertyPath: m_Name
       value: ladder 1 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6600329616270334378, guid: 808568b9d881eef40a583eb9e264ea82, type: 3}
+      propertyPath: m_TagString
+      value: DownOnlyLadder
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 808568b9d881eef40a583eb9e264ea82, type: 3}
@@ -2062,6 +2094,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ladder 1 (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 6600329616270334378, guid: 808568b9d881eef40a583eb9e264ea82, type: 3}
+      propertyPath: m_TagString
+      value: DownOnlyLadder
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 808568b9d881eef40a583eb9e264ea82, type: 3}
 --- !u!4 &7118705384899679257 stripped
@@ -2247,6 +2283,10 @@ PrefabInstance:
     - target: {fileID: 6600329616270334378, guid: 808568b9d881eef40a583eb9e264ea82, type: 3}
       propertyPath: m_Name
       value: ladder 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6600329616270334378, guid: 808568b9d881eef40a583eb9e264ea82, type: 3}
+      propertyPath: m_TagString
+      value: DownOnlyLadder
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 808568b9d881eef40a583eb9e264ea82, type: 3}
