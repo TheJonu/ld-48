@@ -10,6 +10,7 @@
 		Tags{ "RenderType"="Transparent" "Queue"="Geometry"}
 
 		Blend SrcAlpha OneMinusSrcAlpha
+		Cull off
 
 		Pass{
 			CGPROGRAM
@@ -26,7 +27,6 @@
 			float _CycleSpeed;
 
 			sampler2D _MainTex;
-			float4 _MainTex_ST;
 
 			//the object data that's put into the vertex shader
 			struct appdata{

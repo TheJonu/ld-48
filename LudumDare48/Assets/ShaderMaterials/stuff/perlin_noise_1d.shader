@@ -5,6 +5,8 @@
 	SubShader {
 		Tags{ "RenderType"="Opaque" "Queue"="Geometry"}
 
+		Cull off
+
 		CGPROGRAM
 
 		#pragma surface surf Standard fullforwardshadows
