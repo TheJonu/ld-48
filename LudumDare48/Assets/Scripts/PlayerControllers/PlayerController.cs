@@ -37,7 +37,7 @@ public class PlayerController : MonoBehaviour
 
         if (!IsGrounded())
         {
-            //return;
+            return;
         }
 
         if(Input.GetKey(KeyCode.D) && Input.GetKey(KeyCode.A))
