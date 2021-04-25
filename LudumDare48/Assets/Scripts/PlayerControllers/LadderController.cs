@@ -42,7 +42,7 @@ public class LadderController : MonoBehaviour
     {
         moving = true;
         Vector2 returnPos = transform.position;
-        if(Input.GetKey(KeyCode.W) && isAtTop())
+        if(Input.GetKey(KeyCode.W) && isAtTop() && !isDownOnly())
         {
             transform.position += Vector3.up * Time.deltaTime * ladderSpeedMod;
         }
@@ -98,6 +98,23 @@ public class LadderController : MonoBehaviour
         }
 
         return true;
+    }
+
+    bool isDownOnly()
+    {
+        RaycastHit2D[] rhit = new RaycastHit2D[256];
+
+        int size = Physics2D.BoxCast(transform.position, bx2d.bounds.extents, 0, Vector2.zero, filter2D, rhit);
+
+        for(int i=0; i<size; i++)
+        {
+            if(rhit[i].transform.gameObject.tag == "DownOnlyLadder")
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     bool ladderCheck()

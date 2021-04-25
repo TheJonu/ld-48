@@ -2,13 +2,20 @@ using UnityEngine;
 
 namespace AI
 {
-    public class Chaser2D : Enemy
+    public class ChaserEnemy : Enemy
     {
         [SerializeField] private Transform toChase;
         [SerializeField] private float activationDistance;
+        [SerializeField] private bool chasePlayer;
 
         public Transform ToChase { set => toChase = value; }
-        
+
+        protected override void Start()
+        {
+            base.Start();
+            if (chasePlayer)
+                toChase = GameObject.FindWithTag("Player").transform;
+        }
 
         private void FixedUpdate()
         {

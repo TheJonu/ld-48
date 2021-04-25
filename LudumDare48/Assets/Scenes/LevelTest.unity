@@ -376,7 +376,7 @@ MonoBehaviour:
   follow: {fileID: 640939287}
   followRb: {fileID: 153614236}
   moveSpeed: 3
-  aimDist: 0.4
+  aimDist: {x: 0.4, y: 0.2}
 --- !u!114 &990901635 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7993928891477082042, guid: 39e4bf15b0de85240b8f34abfc03aa5b, type: 3}

@@ -45,10 +45,19 @@ namespace Levels
             return list;
         }
 
+        private float FloorSurfaceY => Entrance.ExitPos.y + 0.5f;
+        private float CeilingSurfaceY => Entrance.EntrancePos.y - Data.CeilingYOffset - 0.5f;
+        private float GetBottomBoundary(LevelObject prefab) => FloorSurfaceY + prefab.Dim.y / 2;
+        private float GetTopBoundary(LevelObject prefab) => CeilingSurfaceY - prefab.Dim.y / 2;
+        private float GetLeftBoundaryX(LevelObject prefab) => Mathf.RoundToInt(Entrance.ExitPos.x) + Data.Direction * (ObjectsBufferDist + prefab.Dim.x / 2);
+        private float GetRightBoundaryX(LevelObject prefab) => Mathf.RoundToInt(Exit.EntrancePos.x) - Data.Direction * (ObjectsBufferDist + prefab.Dim.x / 2);
+        private float SnapToGrid(float value) => value - value % Grid;
+
         private const int ObjectsBufferDist = 2;            // how far from staircases can objects be spawned
         private const int SpawnTries = 100;                 // how many times should a random position be genarated before giving up
         private const float CollCheckSizeScale = 0.95f;     // multiplier for the size of an object's effective collider
         private const float FloorColliderScaleY = 1.01f;    // scale multiplier for floor collider (should be a bit greater than 1)
+        private const float Grid = 0.5f;                    // distance between elements on the grid
 
         private LayerMask _objectsMask;
         private LayerMask _terrainMask;
@@ -75,7 +84,7 @@ namespace Levels
             GenerateCeiling();
             GenerateBackground();
 
-            GenerateObjects();
+            SpawnObjects();
         }
         
         private void GenerateExit()
@@ -99,7 +108,7 @@ namespace Levels
 
             Vector2 centerDist = (length - 1) * blockDist.x / 2 * Vector2.right;
             floorBoxFloorCollisionHandler.Collider.transform.position = startPos + centerDist;
-            floorBoxFloorCollisionHandler.Collider.size = new Vector2(length * Data.FloorPrefab.Dim.x, Data.FloorPrefab.Dim.y + 0.01f);
+            floorBoxFloorCollisionHandler.Collider.size = new Vector2(length * Data.FloorPrefab.Dim.x, Data.FloorPrefab.Dim.y * FloorColliderScaleY);
             floorBoxFloorCollisionHandler.EnteredCollision += () => LevelManager.Instance.CurrentLevel = this;
         }
 
@@ -131,89 +140,63 @@ namespace Levels
             }
         }
 
-        private void GenerateObjects()
+        private void SpawnObjects()
         {
             foreach (var spawn in Data.LevelObjects)
             {
                 for (int i = 0; i < spawn.amount; i++)
                 {
-                    Func<LevelObject, bool> generator = spawn.prefab.PositionVariant switch
+                    Func<LevelObject, LevelObject> generator = spawn.prefab.PositionVariant switch
                     {
-                        PositionVariant.Floor => GenerateFloorStandingObject,
-                        PositionVariant.Ceiling => GenerateCeilingHangingObject,
-                        PositionVariant.Wall => GenerateWallHangingObject,
-                        _ => o => true
+                        PositionVariant.Floor => SpawnFloorStandingObject,
+                        PositionVariant.Ceiling => SpawnCeilingHangingObject,
+                        PositionVariant.Wall => SpawnWallHangingObject,
+                        _ => o => null
                     };
-                    if(!generator.Invoke(spawn.prefab))
-                        Debug.Log($"Object {spawn.prefab.name} couldn't be spawned.");
+                    var lo = generator.Invoke(spawn.prefab);
+                    if(lo != null) _objects.Add(lo);
+                    else Debug.Log($"Object {spawn.prefab.name} couldn't be spawned on {name}.");
                 }
             }
         }
 
-        private bool GenerateFloorStandingObject(LevelObject prefab)
+        private LevelObject SpawnFloorStandingObject(LevelObject prefab)
         {
-            float leftBoundaryX = Mathf.RoundToInt(Entrance.ExitPos.x) + Data.Direction * (ObjectsBufferDist + prefab.Dim.x / 2);
-            float rightBoundaryX = Mathf.RoundToInt(Exit.EntrancePos.x) - Data.Direction * (ObjectsBufferDist + prefab.Dim.x / 2);
-            float posY = Entrance.ExitPos.y + 0.5f + prefab.Dim.y / 2;
-
             for (int j = 0; j < SpawnTries; j++)
             {
-                float posX = Random.Range(leftBoundaryX, rightBoundaryX);
-                posX -= posX % 0.5f;       // round to 0.5
-                Vector2 pos = new Vector2(posX, posY);
-                if (Physics2D.OverlapBox(pos, prefab.Dim * CollCheckSizeScale, 0, _anyCollMask) == null)
-                {
-                    var instance = Instantiate(prefab, pos, Quaternion.identity, objectsParent);
-                    _objects.Add(instance);
-                    return true;
-                }
+                float posX = SnapToGrid(Random.Range(GetLeftBoundaryX(prefab), GetRightBoundaryX(prefab)));
+                Vector2 pos = new Vector2(posX, FloorSurfaceY);
+                Vector2 checkPos = new Vector2(posX, GetBottomBoundary(prefab));
+                if (Physics2D.OverlapBox(checkPos, prefab.Dim * CollCheckSizeScale, 0, _anyCollMask) == null)
+                    return Instantiate(prefab, pos, Quaternion.identity, objectsParent);
             }
-            return false;
+            return null;
         }
         
-        private bool GenerateCeilingHangingObject(LevelObject prefab)
+        private LevelObject SpawnCeilingHangingObject(LevelObject prefab)
         {
-            float leftBoundaryX = Mathf.RoundToInt(Entrance.ExitPos.x) + Data.Direction * (ObjectsBufferDist + prefab.Dim.x / 2);
-            float rightBoundaryX = Mathf.RoundToInt(Exit.EntrancePos.x) - Data.Direction * (ObjectsBufferDist + prefab.Dim.x / 2);
-            float posY = Entrance.EntrancePos.y + Data.CeilingYOffset - 0.5f - prefab.Dim.y / 2;
-
             for (int j = 0; j < SpawnTries; j++)
             {
-                float posX = Random.Range(leftBoundaryX, rightBoundaryX);
-                posX -= posX % 0.5f;       // round to 0.5
-                Vector2 pos = new Vector2(posX, posY);
-                if (Physics2D.OverlapBox(pos, prefab.Dim * CollCheckSizeScale, 0, _anyCollMask) == null)
-                {
-                    var instance = Instantiate(prefab, pos, Quaternion.identity, objectsParent);
-                    _objects.Add(instance);
-                    return true;
-                }
+                float posX = SnapToGrid(Random.Range(GetLeftBoundaryX(prefab), GetRightBoundaryX(prefab)));
+                Vector2 pos = new Vector2(posX, CeilingSurfaceY);
+                Vector2 checkPos = new Vector2(posX, GetTopBoundary(prefab));
+                if (Physics2D.OverlapBox(checkPos, prefab.Dim * CollCheckSizeScale, 0, _anyCollMask) == null)
+                    return Instantiate(prefab, pos, Quaternion.identity, objectsParent);
             }
-            return false;
+            return null;
         }
 
-        private bool GenerateWallHangingObject(LevelObject prefab)
+        private LevelObject SpawnWallHangingObject(LevelObject prefab)
         {
-            float leftBoundary = Mathf.RoundToInt(Entrance.ExitPos.x) + Data.Direction * (ObjectsBufferDist + prefab.Dim.x / 2);
-            float rightBoundary = Mathf.RoundToInt(Exit.EntrancePos.x) - Data.Direction * (ObjectsBufferDist + prefab.Dim.x / 2);
-            float bottomBoundary = Mathf.RoundToInt(Entrance.ExitPos.y) + 2f + prefab.Dim.y / 2;
-            float topBoundary = Mathf.RoundToInt(Entrance.EntrancePos.y + Data.CeilingYOffset) - 1.5f - prefab.Dim.y / 2;
-
             for (int j = 0; j < SpawnTries; j++)
             {
-                float posX = Random.Range(leftBoundary, rightBoundary);
-                posX -= posX % 0.5f;       // round to 0.5
-                float posY = Random.Range(bottomBoundary, topBoundary);
-                posY -= posY % 0.5f;       // round to 0.5
+                float posX = SnapToGrid(Random.Range(GetLeftBoundaryX(prefab), GetRightBoundaryX(prefab)));
+                float posY = SnapToGrid(Random.Range(GetBottomBoundary(prefab) + 1f, GetTopBoundary(prefab) - 1f));
                 Vector2 pos = new Vector2(posX, posY);
                 if (Physics2D.OverlapBox(pos, prefab.Dim * CollCheckSizeScale, 0, _anyCollMask) == null)
-                {
-                    var instance = Instantiate(prefab, pos, Quaternion.identity, objectsParent);
-                    _objects.Add(instance);
-                    return true;
-                }
+                    return Instantiate(prefab, pos, Quaternion.identity, objectsParent);
             }
-            return false;
+            return null;
         }
     }
 }
