@@ -107,7 +107,7 @@ public class PlayerController : MonoBehaviour
             oldSprite = GetComponent<SpriteRenderer>().sprite;
 
             Vector3 offSetPos = gameObject.transform.position;
-            offSetPos.x = rhit[0].rigidbody.position.x;
+            offSetPos.x = rhit[0].transform.position.x;
             gameObject.transform.position = offSetPos;
 
             coll2d.enabled = false;
