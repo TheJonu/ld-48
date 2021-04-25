@@ -23,15 +23,13 @@ MonoBehaviour:
     amount: 1
   - prefab: {fileID: 4452033242803059328, guid: aa689ff8f0d64fe4c82bd20d0326b8e5, type: 3}
     amount: 1
-  - prefab: {fileID: 4452033242803059328, guid: d7a30acc41c571c46801ac1a4396d4d3, type: 3}
-    amount: 1
   - prefab: {fileID: 4452033242803059328, guid: 334c59c0141b1be4686a644af4969980, type: 3}
     amount: 1
   - prefab: {fileID: 4452033242803059328, guid: 20eed2c8ff4162840919df9d5cab4d78, type: 3}
     amount: 1
   - prefab: {fileID: 4452033242803059328, guid: 865b243e272a9d848bca0e8059a75fc6, type: 3}
     amount: 1
-  length: 25
+  length: 45
   direction: -1
   floorYOffset: 0
   ceilingYOffset: -4
