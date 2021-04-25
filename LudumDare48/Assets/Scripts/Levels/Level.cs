@@ -20,6 +20,30 @@ namespace Levels
         public Staircase Entrance { get; set; }
         public Staircase Exit { get; set; }
 
+        public List<LevelBlock> LevelBlocks => _blocks;     // blocks - terrain tiles, staircases (with terrain as children)
+        public List<LevelObject> LevelObjects => _objects;  // objects - furniture, sublevels (with terrain as children)
+        public List<GameObject> GetSprites()         // all sprite renderers on the level
+        {
+            List<GameObject> list = new List<GameObject>();
+            foreach (var block in _blocks)
+            {
+                if (block.TryGetComponent(typeof(SpriteRenderer), out var sr))
+                    list.Add(sr.gameObject);
+                foreach (Transform child in block.transform)
+                    if (child.TryGetComponent(typeof(SpriteRenderer), out var childSr))
+                        list.Add(childSr.gameObject);
+            }
+            foreach (var obj in _objects)
+            {
+                if (obj.TryGetComponent(typeof(SpriteRenderer), out var sr))
+                    list.Add(sr.gameObject);
+                foreach (Transform child in obj.transform)
+                    if (child.TryGetComponent(typeof(SpriteRenderer), out var childSr))
+                        list.Add(childSr.gameObject);
+            }
+            return list;
+        }
+
         private const int ObjectsBufferDist = 2;            // how far from staircases can objects be spawned
         private const int SpawnTries = 100;                 // how many times should a random position be genarated before giving up
         private const float CollCheckSizeScale = 0.95f;     // multiplier for the size of an object's effective collider
