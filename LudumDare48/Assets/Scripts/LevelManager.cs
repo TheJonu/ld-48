@@ -4,6 +4,10 @@ using Levels;
 using UnityEditor;
 using UnityEngine;
 
+using System;
+using System.Linq;
+using System.Collections.Generic;
+
 public class LevelManager : MonoBehaviour
 {
     [SerializeField] private Transform player;
@@ -12,7 +16,8 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private Level levelPrefab;
     [SerializeField] private Staircase firstStaircase;
     [SerializeField] private Transform levelsParent;
-
+    [SerializeField] private Material[] insanityMaterials;
+    [SerializeField] private float insanityChance;
     public static LevelManager Instance { get; set; }
     public Transform Player => player;
     public float GridSize => gridSize;
@@ -41,5 +46,25 @@ public class LevelManager : MonoBehaviour
             _levels.Add(level);
             currentStaircase = level.Exit;
         }
+
+        StartInsanity();
+    }
+
+    private void StartInsanity()
+    {
+        List<GameObject> list = new List<GameObject>();
+
+        foreach (Level l in _levels)
+        {
+            List<GameObject> levellist = l.GetSprites();
+
+            list.AddRange(levellist);
+        }
+
+        InsanityManager im = gameObject.AddComponent<InsanityManager>();
+
+        im.allSprites = list;
+        im.insanityPercent = insanityChance;
+        im.materialSelection = insanityMaterials;
     }
 }

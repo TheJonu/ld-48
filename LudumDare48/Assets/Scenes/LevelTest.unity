@@ -183,6 +183,10 @@ MonoBehaviour:
   levelPrefab: {fileID: 8847756791146052514, guid: 86195363f0cc6d2448f2b06036ae0971, type: 3}
   firstStaircase: {fileID: 990901635}
   levelsParent: {fileID: 297445711}
+  insanityMaterials:
+  - {fileID: 2100000, guid: 6a2b981301aa5d145b5ca6eb4f6d1c34, type: 2}
+  - {fileID: 2100000, guid: 8198e44857b68e84da7fc50d0ca73d84, type: 2}
+  insanityChance: 0.01
 --- !u!1 &442900052
 GameObject:
   m_ObjectHideFlags: 0
@@ -562,6 +566,14 @@ PrefabInstance:
     - target: {fileID: -3635727950707891264, guid: 39e4bf15b0de85240b8f34abfc03aa5b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3166763936038098927, guid: 39e4bf15b0de85240b8f34abfc03aa5b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.26
+      objectReference: {fileID: 0}
+    - target: {fileID: 3370912069433813643, guid: 39e4bf15b0de85240b8f34abfc03aa5b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.99
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 39e4bf15b0de85240b8f34abfc03aa5b, type: 3}
