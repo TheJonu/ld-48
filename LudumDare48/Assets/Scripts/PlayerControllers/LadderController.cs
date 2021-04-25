@@ -21,11 +21,9 @@ public class LadderController : MonoBehaviour
 
     [HideInInspector] public ContactFilter2D filter2D;
 
-
-    private bool moving = false;
+    private bool moving;
 
     public Action Destroyed;
-
 
     // Start is called before the first frame update
     void Start()
