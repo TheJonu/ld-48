@@ -150,8 +150,8 @@ namespace Levels
 
         private bool GenerateFloorStandingObject(LevelObject prefab)
         {
-            float leftBoundaryX = Mathf.RoundToInt(Entrance.ExitPos.x) + 0.5f + Data.Direction * ObjectsBufferDist;
-            float rightBoundaryX = Mathf.RoundToInt(Exit.EntrancePos.x) - Data.Direction * ObjectsBufferDist;
+            float leftBoundaryX = Mathf.RoundToInt(Entrance.ExitPos.x) + Data.Direction * ObjectsBufferDist + prefab.Dim.x / 2;
+            float rightBoundaryX = Mathf.RoundToInt(Exit.EntrancePos.x) - Data.Direction * ObjectsBufferDist - prefab.Dim.x / 2;
             float posY = Entrance.ExitPos.y + 0.5f + prefab.Dim.y / 2;
 
             for (int j = 0; j < SpawnTries; j++)

@@ -1,57 +1,49 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Chaser2D : PlayerController
+namespace AI
 {
-
-    public Transform toChase;
-
-    public float activationDistance;
-
-
-    // Start is called before the first frame update
-    void Start()
+    public class Chaser2D : Enemy
     {
-        rb2d = GetComponent<Rigidbody2D>();
-        gameObject.AddComponent<EnemyCollisionHandle>();
-    }
+        [SerializeField] private Transform toChase;
+        [SerializeField] private float activationDistance;
 
-    // Update is called once per frame
+        public Transform ToChase { set => toChase = value; }
+        
 
-    void FixedUpdate()
-    {
-        Debug.Log(Vector2.Distance(toChase.position, transform.position));
-        if (Vector2.Distance(toChase.position, transform.position) >= activationDistance)
+        private void FixedUpdate()
         {
+            if(!toChase)
+                return;
             
-            Vector2 targetSpeed = new Vector2(0, rb2d.velocity.y);
-            Vector2 ret = Vector2.zero;
-            rb2d.velocity = Vector2.SmoothDamp(rb2d.velocity, targetSpeed, ref refVel, speedDampening);
-        }
+            if (Vector2.Distance(toChase.position, transform.position) >= activationDistance)
+            {
+                Vector2 targetSpeed = new Vector2(0, Rb2d.velocity.y);
+                Vector2 ret = Vector2.zero;
+                Rb2d.velocity = Vector2.SmoothDamp(Rb2d.velocity, targetSpeed, ref RefVel, SpeedDampening);
+            }
 
-        else if (transform.position.x < toChase.position.x)
-        {
-            Debug.Log("RIGHT");
-            Vector2 targetSpeed = new Vector2(xSpeed, rb2d.velocity.y);
-            Vector2 ret = Vector2.zero;
-            rb2d.velocity = Vector2.SmoothDamp(rb2d.velocity, targetSpeed, ref refVel, speedDampening);
-        }
+            else if (transform.position.x < toChase.position.x)
+            {
+                Vector2 targetSpeed = new Vector2(xSpeed, Rb2d.velocity.y);
+                Vector2 ret = Vector2.zero;
+                Rb2d.velocity = Vector2.SmoothDamp(Rb2d.velocity, targetSpeed, ref RefVel, SpeedDampening);
+            }
 
-        else if (transform.position.x > toChase.position.x)
-        {
-            Debug.Log("LEFT!");
-            Vector2 targetSpeed = new Vector2(-xSpeed, rb2d.velocity.y);
-            Vector2 ret = Vector2.zero;
-            rb2d.velocity = Vector2.SmoothDamp(rb2d.velocity, targetSpeed, ref refVel, speedDampening);
-        }
-        else
-        {
-            Vector2 targetSpeed = new Vector2(0, rb2d.velocity.y);
-            Vector2 ret = Vector2.zero;
-            rb2d.velocity = Vector2.SmoothDamp(rb2d.velocity, targetSpeed, ref refVel, speedDampening);
-        }
+            else if (transform.position.x > toChase.position.x)
+            {
+                Vector2 targetSpeed = new Vector2(-xSpeed, Rb2d.velocity.y);
+                Vector2 ret = Vector2.zero;
+                Rb2d.velocity = Vector2.SmoothDamp(Rb2d.velocity, targetSpeed, ref RefVel, SpeedDampening);
+            }
+            
+            else
+            {
+                Vector2 targetSpeed = new Vector2(0, Rb2d.velocity.y);
+                Vector2 ret = Vector2.zero;
+                Rb2d.velocity = Vector2.SmoothDamp(Rb2d.velocity, targetSpeed, ref RefVel, SpeedDampening);
+            }
 
-        Flip();
+            Flip();
+        }
     }
 }

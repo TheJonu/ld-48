@@ -158,7 +158,7 @@ Transform:
   m_Children:
   - {fileID: 990901636}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &297445712
 MonoBehaviour:
@@ -172,6 +172,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 683bb79ea38747178e1245b6826e911c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   levelDataSets:
   - {fileID: 11400000, guid: 0078371370c17404aa8724aa5b981613, type: 2}
   - {fileID: 11400000, guid: 5315a2c83bfcc2b4ebe5be010eb56db6, type: 2}
@@ -577,7 +578,7 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2405356839474964821, guid: b5c8f2aacef3bdb44bd856ddb7093ff2, type: 3}
-      propertyPath: spriteTime
+      propertyPath: debug
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2433574325956496951, guid: b5c8f2aacef3bdb44bd856ddb7093ff2, type: 3}
@@ -588,21 +589,17 @@ PrefabInstance:
       propertyPath: m_Intensity
       value: 1.5
       objectReference: {fileID: 0}
-    - target: {fileID: 8022970881864077081, guid: b5c8f2aacef3bdb44bd856ddb7093ff2, type: 3}
-      propertyPath: m_Constraints
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 8022970881864077083, guid: b5c8f2aacef3bdb44bd856ddb7093ff2, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8022970881864077083, guid: b5c8f2aacef3bdb44bd856ddb7093ff2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.83
+      value: 3.54
       objectReference: {fileID: 0}
     - target: {fileID: 8022970881864077083, guid: b5c8f2aacef3bdb44bd856ddb7093ff2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.71
+      value: -2.29
       objectReference: {fileID: 0}
     - target: {fileID: 8022970881864077083, guid: b5c8f2aacef3bdb44bd856ddb7093ff2, type: 3}
       propertyPath: m_LocalPosition.z

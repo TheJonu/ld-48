@@ -24,6 +24,10 @@ public class PlayerController : MonoBehaviour
     public Vector2 collBoxSize = Vector2.one * 1f;
     
     [SerializeField] private bool touchedGround = false;
+
+    private LadderController lc;
+    public LadderController LadderController => lc;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -38,13 +42,13 @@ public class PlayerController : MonoBehaviour
 
         if (!IsGrounded())
         {
-            Debug.Log("Not touched ground");
+            //Debug.Log("Not touched ground");
             if (touchedGround)
                 return;
         }
         else
         {
-            Debug.Log("Touched gorund");
+            //Debug.Log("Touched gorund");
             touchedGround = true;
         }
             
@@ -111,6 +115,9 @@ public class PlayerController : MonoBehaviour
             ld.returnTo = this;
             ld.filter2D = climbLayerMask;
 
+            lc = ld;
+            lc.Destroyed += () => lc = null;    // set lc to null when destroyed. Should be working without it but caused some confusion
+
             oldSprite = GetComponent<SpriteRenderer>().sprite;
 
             Vector3 offSetPos = gameObject.transform.position;
@@ -125,7 +132,7 @@ public class PlayerController : MonoBehaviour
         this.enabled = true;
         GetComponent<SpriteRenderer>().sprite = oldSprite;
         rb2d.gravityScale = 1;
-        pushUp();
+        //pushUp();
         coll2d.enabled = true;
         touchedGround = false;
     }

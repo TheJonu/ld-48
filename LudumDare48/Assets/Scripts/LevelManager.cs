@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
+    [SerializeField] private Transform player;
     [SerializeField] private List<LevelDataSet> levelDataSets;
     [SerializeField] private float gridSize = 1f;
     [SerializeField] private Level levelPrefab;
@@ -13,6 +14,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private Transform levelsParent;
 
     public static LevelManager Instance { get; set; }
+    public Transform Player => player;
     public float GridSize => gridSize;
     public Transform LevelsParent => levelsParent;
 
