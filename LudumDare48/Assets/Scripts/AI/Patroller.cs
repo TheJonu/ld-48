@@ -1,46 +1,30 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Patroller : PlayerController
+namespace AI
 {
-
-    public Transform goesFrom;
-    public Transform goesTo;
-
-
-    public bool flipable = true;
-    // Start is called before the first frame update
-    void Start()
+    public class Patroller : Enemy
     {
-        rb2d = GetComponent<Rigidbody2D>();
-        gameObject.AddComponent<EnemyCollisionHandle>();
-    }
+        [SerializeField] private Transform goesFrom;
+        [SerializeField] private Transform goesTo;
+        [SerializeField] private bool flippable = true;
+        
 
-    // Update is called once per frame
-
-    void Stop()
-    {
-        Vector2 targetSpeed = new Vector2(0, rb2d.velocity.y);
-        Vector2 ret = Vector2.zero;
-        rb2d.velocity = Vector2.SmoothDamp(rb2d.velocity, targetSpeed, ref refVel, speedDampening);
-    }
-
-    void FixedUpdate()
-    {
-        if (Vector2.Distance(goesTo.position, transform.position) <= 0.1) 
+        private void FixedUpdate()
         {
-            Transform swap = goesTo;
-            goesTo = goesFrom;
-            goesFrom = swap;
-            Stop();
+            if (Vector2.Distance(goesTo.position, transform.position) <= MovementThreshold) 
+            {
+                Transform swap = goesTo;
+                goesTo = goesFrom;
+                goesFrom = swap;
+                Stop();
+            }
+
+            Vector2.SmoothDamp(Rb2d.position, goesTo.position, ref RefVel, SpeedDampening, xSpeed);
+
+            Rb2d.velocity = RefVel;
+
+            if(flippable)
+                Flip();
         }
-
-        Vector2.SmoothDamp(rb2d.position, goesTo.position, ref refVel, speedDampening, xSpeed);
-
-        rb2d.velocity = refVel;
-
-        if(flipable)
-            Flip();
     }
 }
