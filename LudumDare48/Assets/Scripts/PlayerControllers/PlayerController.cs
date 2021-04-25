@@ -87,8 +87,6 @@ public class PlayerController : MonoBehaviour
     {
         RaycastHit2D[] rhit = new RaycastHit2D[256];
         int size = Physics2D.BoxCast(transform.position, collBoxSize, 180, Vector2.down, climbLayerMask, rhit, (collBoxSize.y / 2));
-        
-        Debug.Log(size);
 
         if(size > 1)
         {

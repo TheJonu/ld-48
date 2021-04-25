@@ -359,7 +359,11 @@ MonoBehaviour:
     maxDepth: 0
     minNormalAngle: 0
     maxNormalAngle: 0
+  terrainLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
   ladderSprite: {fileID: 0}
+  collBoxSize: {x: 1, y: 1}
   toChase: {fileID: 1913312779}
   activationDistance: 25
 --- !u!50 &761071998
@@ -501,10 +505,13 @@ MonoBehaviour:
     maxDepth: 0
     minNormalAngle: 0
     maxNormalAngle: 0
+  terrainLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
   ladderSprite: {fileID: 0}
+  collBoxSize: {x: 1, y: 1}
   goesFrom: {x: 8.8, y: -1.26}
   goesTo: {x: 0, y: 0}
-  activationDistance: 0
   flipable: 1
 --- !u!1 &1056816439
 GameObject:
@@ -896,6 +903,7 @@ GameObject:
   - component: {fileID: 1446822593}
   - component: {fileID: 1446822592}
   - component: {fileID: 1446822591}
+  - component: {fileID: 1446822595}
   m_Layer: 8
   m_Name: Square (2)
   m_TagString: Untagged
@@ -969,7 +977,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 17deac4c75112fd4f92cda211552ea08, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1015,6 +1023,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -32.878}
+--- !u!114 &1446822595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1446822590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 964ececb3e27e6749b31e27006020412, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  newMaterial: {fileID: 2100000, guid: 8198e44857b68e84da7fc50d0ca73d84, type: 2}
 --- !u!1 &1549844826
 GameObject:
   m_ObjectHideFlags: 0

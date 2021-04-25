@@ -5,8 +5,8 @@ using UnityEngine;
 public class Patroller : PlayerController
 {
 
-    public Vector2 goesFrom;
-    public Vector2 goesTo;
+    public Transform goesFrom;
+    public Transform goesTo;
 
 
     public bool flipable = true;
@@ -27,15 +27,15 @@ public class Patroller : PlayerController
 
     void FixedUpdate()
     {
-        if (Vector2.Distance(goesTo, transform.position) <= 0.1) 
+        if (Vector2.Distance(goesTo.position, transform.position) <= 0.1) 
         {
-            Vector2 swap = goesTo;
+            Transform swap = goesTo;
             goesTo = goesFrom;
             goesFrom = swap;
             Stop();
         }
 
-        Vector2.SmoothDamp(rb2d.position, goesTo, ref refVel, speedDampening, xSpeed);
+        Vector2.SmoothDamp(rb2d.position, goesTo.position, ref refVel, speedDampening, xSpeed);
 
         rb2d.velocity = refVel;
 

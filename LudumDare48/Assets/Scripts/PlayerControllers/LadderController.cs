@@ -45,7 +45,7 @@ public class LadderController : MonoBehaviour
             transform.position += Vector3.down * Time.deltaTime * ladderSpeedMod;
         }
         if (Input.GetKey(KeyCode.D))
-        {
+        { 
             transform.position += Vector3.right * Time.deltaTime * ladderSpeedMod / 2;
         }
         else if (Input.GetKey(KeyCode.A))
@@ -72,7 +72,6 @@ public class LadderController : MonoBehaviour
     {
         RaycastHit2D[] rhit = new RaycastHit2D[256];
 
-        Debug.Log(bx2d.bounds.extents * 2);
         int size = Physics2D.BoxCast(transform.position, bx2d.size, 0, Vector2.zero, filter2D, rhit);
 
         if(size == 0)
