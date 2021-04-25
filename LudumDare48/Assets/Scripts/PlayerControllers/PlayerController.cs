@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
 
     public Vector2 collBoxSize = Vector2.one * 1f;
     
-    private bool touchedGround = false;
+    [SerializeField] private bool touchedGround = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -38,6 +38,7 @@ public class PlayerController : MonoBehaviour
 
         if (!IsGrounded())
         {
+            Debug.Log("Not touched ground");
             if (touchedGround)
                 return;
         }
@@ -156,8 +157,9 @@ public class PlayerController : MonoBehaviour
 
         float pyT = Mathf.Sqrt(coll2d.bounds.extents.y * coll2d.bounds.extents.y + coll2d.bounds.extents.x * coll2d.bounds.extents.x);
 
-        RaycastHit2D hit = Physics2D.BoxCast(coll2d.bounds.center, coll2d.bounds.size, 0f, Vector2.down, extender, terrainLayerMask);
+        RaycastHit2D hit = Physics2D.BoxCast(coll2d.bounds.center, coll2d.bounds.extents - new Vector3(0.01f, 0, 0), 0f, Vector2.down, extender, terrainLayerMask);
 
+        ExtDebug.DrawBoxCastBox(coll2d.bounds.center, coll2d.bounds.extents - new Vector3(0.01f, 0, 0), Quaternion.identity, Vector2.down, extender, Color.red);
         return hit.collider != null;
     }
 }
