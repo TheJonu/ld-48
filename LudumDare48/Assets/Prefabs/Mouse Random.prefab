@@ -68,6 +68,7 @@ MonoBehaviour:
   rb: {fileID: 1419509942530372157}
   playerController: {fileID: 0}
   spriteTime: 0.11
+  onlyHorizontalMovement: 0
   idleSprites:
   - {fileID: -1325660692555949653, guid: 094282c5199c7d340bc434e32d862f20, type: 3}
   movementSprites:
@@ -170,8 +171,8 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
+  m_Size: {x: 0.95, y: 0.95}
+  m_EdgeRadius: 0.01
 --- !u!1001 &6198411864689714016
 PrefabInstance:
   m_ObjectHideFlags: 0

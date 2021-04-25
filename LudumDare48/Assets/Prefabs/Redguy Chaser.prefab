@@ -51,6 +51,7 @@ MonoBehaviour:
   xSpeed: 2
   toChase: {fileID: 0}
   activationDistance: 8
+  chasePlayer: 0
 --- !u!114 &6358223074811208312
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -67,6 +68,7 @@ MonoBehaviour:
   rb: {fileID: 2612954787452144362}
   playerController: {fileID: 0}
   spriteTime: 0.11
+  onlyHorizontalMovement: 0
   idleSprites:
   - {fileID: 297761703447499198, guid: 094282c5199c7d340bc434e32d862f20, type: 3}
   movementSprites:
@@ -171,8 +173,8 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
+  m_Size: {x: 0.95, y: 0.95}
+  m_EdgeRadius: 0.01
 --- !u!1001 &8639881807897116587
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace AI
 {
-    public class Patroller : Enemy
+    public class PatrollerEnemy : Enemy
     {
         [SerializeField] private Transform goesFrom;
         [SerializeField] private Transform goesTo;

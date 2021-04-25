@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace AI
 {
-    public class RandomMovement : Enemy
+    public class RandomMoveEnemy : Enemy
     {
         [SerializeField] private float maxTime = 2;
         [SerializeField] private float minTime = 5;
@@ -31,6 +31,9 @@ namespace AI
                 Rb2d.velocity = Vector2.zero;
 
             _timeLeft -= Time.deltaTime;
+            
+            if(flippable)
+                Flip();
         }
 
         private void RollNew()
