@@ -200,6 +200,8 @@ MonoBehaviour:
   backgroundParent: {fileID: 8969913733703711082}
   objectsParent: {fileID: 4072500690523350392}
   floorBoxCollider: {fileID: 5329358261297674814}
+  backgroundTracks:
+  - {fileID: 8300000, guid: be15ec03e8b047d4e8146708db248863, type: 3}
 --- !u!1 &8265813689451642877
 GameObject:
   m_ObjectHideFlags: 0
