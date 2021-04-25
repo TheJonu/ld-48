@@ -20,6 +20,7 @@ public class LadderController : MonoBehaviour
 
     [HideInInspector] public ContactFilter2D filter2D;
 
+    private bool moving = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,6 +36,7 @@ public class LadderController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        moving = true;
         Vector2 returnPos = transform.position;
         if(Input.GetKey(KeyCode.W))
         {
@@ -55,6 +57,10 @@ public class LadderController : MonoBehaviour
         else if(Input.GetKey(KeyCode.Space))
         {
             Destroy(this);
+        }
+        else
+        {
+            moving = false;
         }
 
         if(!ladderCheck())
@@ -80,5 +86,10 @@ public class LadderController : MonoBehaviour
         }
 
         return true;
+    }
+
+    bool isMoving()
+    {
+        return moving;
     }
 }
