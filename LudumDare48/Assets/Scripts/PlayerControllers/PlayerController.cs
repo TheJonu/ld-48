@@ -132,7 +132,7 @@ public class PlayerController : MonoBehaviour
         this.enabled = true;
         GetComponent<SpriteRenderer>().sprite = oldSprite;
         rb2d.gravityScale = 1;
-        pushUp();
+        //pushUp();
         coll2d.enabled = true;
         touchedGround = false;
     }
