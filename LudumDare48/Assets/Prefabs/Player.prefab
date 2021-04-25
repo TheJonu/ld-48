@@ -256,9 +256,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sr: {fileID: 2433574325956496951}
+  rb: {fileID: 8022970881864077081}
   playerController: {fileID: 8022970881864077080}
   spriteTime: 0.11
-  movementThreshold: 0.0015
   idleSprites:
   - {fileID: 4334783836991956000, guid: bd91520e0b087f64b904fd51c60ce2b0, type: 3}
   movementSprites:
@@ -274,6 +274,7 @@ MonoBehaviour:
   - {fileID: -1205440766039775075, guid: bd91520e0b087f64b904fd51c60ce2b0, type: 3}
   - {fileID: 5602337906906987636, guid: bd91520e0b087f64b904fd51c60ce2b0, type: 3}
   - {fileID: -3861952770410913445, guid: bd91520e0b087f64b904fd51c60ce2b0, type: 3}
+  debug: 0
 --- !u!212 &2433574325956496951
 SpriteRenderer:
   m_ObjectHideFlags: 0

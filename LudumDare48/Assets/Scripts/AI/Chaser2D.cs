@@ -12,6 +12,9 @@ namespace AI
 
         private void FixedUpdate()
         {
+            if(!toChase)
+                return;
+            
             if (Vector2.Distance(toChase.position, transform.position) >= activationDistance)
             {
                 Vector2 targetSpeed = new Vector2(0, Rb2d.velocity.y);

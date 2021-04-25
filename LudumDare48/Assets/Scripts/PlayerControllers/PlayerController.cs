@@ -42,13 +42,13 @@ public class PlayerController : MonoBehaviour
 
         if (!IsGrounded())
         {
-            Debug.Log("Not touched ground");
+            //Debug.Log("Not touched ground");
             if (touchedGround)
                 return;
         }
         else
         {
-            Debug.Log("Touched gorund");
+            //Debug.Log("Touched gorund");
             touchedGround = true;
         }
             

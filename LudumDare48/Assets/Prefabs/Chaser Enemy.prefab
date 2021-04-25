@@ -9,12 +9,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2612954787452144148}
+  - component: {fileID: 9183261496905057054}
+  - component: {fileID: 6358223074811208312}
   - component: {fileID: 2612954787452144363}
   - component: {fileID: 2612954787452144362}
   - component: {fileID: 2612954787452144149}
-  - component: {fileID: 9183261496905057054}
   m_Layer: 0
-  m_Name: Chaser2D Enemy
+  m_Name: Chaser Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,12 +29,51 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2612954787452144360}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.04, y: 0.32, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9183261496905057054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2612954787452144360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 252e191bd68391e41a670828db0f4c40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xSpeed: 2
+  toChase: {fileID: 0}
+  activationDistance: 8
+--- !u!114 &6358223074811208312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2612954787452144360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81055ef5101536941ac46bc2d898ae3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sr: {fileID: 2612954787452144363}
+  rb: {fileID: 2612954787452144362}
+  playerController: {fileID: 0}
+  spriteTime: 0.11
+  idleSprites:
+  - {fileID: 297761703447499198, guid: 094282c5199c7d340bc434e32d862f20, type: 3}
+  - {fileID: 3680619090928529440, guid: 094282c5199c7d340bc434e32d862f20, type: 3}
+  - {fileID: -6810697999950630716, guid: 094282c5199c7d340bc434e32d862f20, type: 3}
+  - {fileID: 1779747271024799556, guid: 094282c5199c7d340bc434e32d862f20, type: 3}
+  movementSprites: []
+  ladderSprites: []
+  debug: 0
 --- !u!212 &2612954787452144363
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -74,7 +114,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 24289710917392536, guid: 8cc23d2bef28bec4abfa0a5667ae5cff, type: 3}
+  m_Sprite: {fileID: 297761703447499198, guid: 094282c5199c7d340bc434e32d862f20, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -97,7 +137,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 100
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -105,7 +145,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &2612954787452144149
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -132,38 +172,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &9183261496905057054
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2612954787452144360}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 252e191bd68391e41a670828db0f4c40, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  xSpeed: 2
-  climbLayerMask:
-    useTriggers: 0
-    useLayerMask: 0
-    useDepth: 0
-    useOutsideDepth: 0
-    useNormalAngle: 0
-    useOutsideNormalAngle: 0
-    layerMask:
-      serializedVersion: 2
-      m_Bits: 0
-    minDepth: 0
-    maxDepth: 0
-    minNormalAngle: 0
-    maxNormalAngle: 0
-  terrainLayerMask:
-    serializedVersion: 2
-    m_Bits: 128
-  ladderSprite: {fileID: 0}
-  collBoxSize: {x: 1, y: 1}
-  touchedGround: 0
-  toChase: {fileID: 0}
-  activationDistance: 8
