@@ -4,9 +4,12 @@
 		_Period ("Repeat every X cells", Vector) = (4, 4, 0, 0)
 		[IntRange]_Roughness ("Roughness", Range(1, 8)) = 3
 		_Persistance ("Persistance", Range(0, 1)) = 0.4
+		_MainTex("Texture", 2D) = "white" {}
 	}
 	SubShader {
-		Tags{ "RenderType"="Opaque" "Queue"="Geometry"}
+		Tags{ "RenderType"="Transparent" "Queue"="Geometry"}
+		Blend SrcAlpha OneMinusSrcAlpha
+		Cull off
 
 		Pass{
 			CGPROGRAM
@@ -24,6 +27,8 @@
 
 			//global shader variables
 			#define OCTAVES 4 
+
+			sampler2D _MainTex;
 
 			float _CellAmount;
 			float _Roughness;
@@ -121,8 +126,16 @@
 				float2 value = i.uv * _CellAmount;
 				//get noise and adjust it to be ~0-1 range
 				float noise = sampleLayeredNoise(value) + 0.5;
+				float4 acol = tex2D(_MainTex, i.uv);
 
-				return noise;
+				float4 n1 = tex2D(_MainTex, float2(i.uv.x + 1, i.uv.y));
+				float4 n2 = tex2D(_MainTex, float2(i.uv.x - 1, i.uv.y));
+				float4 n3 = tex2D(_MainTex, float2(i.uv.x, i.uv.y - 1));
+				float4 n4 = tex2D(_MainTex, float2(i.uv.x, i.uv.y + 1));
+
+				float alpha = n1.a / 8.0 + n2.a / 8.0 + n3.a / 8.0 + n4.a / 8.0;
+
+				return float4(noise, noise, noise, acol.a / 2.0 + alpha);
 			}
 			ENDCG
 		}
