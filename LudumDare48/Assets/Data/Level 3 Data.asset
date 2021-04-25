@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   floorPrefab: {fileID: 4390722234434600982, guid: 4a926f548b1fb8e4a8e6e8bd8b028855, type: 3}
   ceilingPrefab: {fileID: 4390722234434600982, guid: af2ab78192fdf9043bc45a50a0e59bc9, type: 3}
-  backgroundPrefab: {fileID: 4900296945213954524, guid: 29f0080712ec54646901de18a479a5d6, type: 3}
+  backgroundPrefab: {fileID: 4900296945213954524, guid: e78afb04609691149bdbe07776875b15, type: 3}
   staircasePrefab: {fileID: 7993928891477082042, guid: 82617c385b3b2914ba15ffb78da42448, type: 3}
   levelObjects:
   - prefab: {fileID: 4452033242803059328, guid: 15791f91e04071644b94543f11c53ec9, type: 3}
