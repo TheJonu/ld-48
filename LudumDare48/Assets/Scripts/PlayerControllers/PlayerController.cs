@@ -103,6 +103,7 @@ public class PlayerController : MonoBehaviour
             ld.down = Vector2.down;
             ld.ladderSprite = ladderSprite;
             ld.returnTo = this;
+            ld.filter2D = climbLayerMask;
 
             oldSprite = GetComponent<SpriteRenderer>().sprite;
 
@@ -110,7 +111,7 @@ public class PlayerController : MonoBehaviour
             offSetPos.x = rhit[0].transform.position.x;
             gameObject.transform.position = offSetPos;
 
-            coll2d.enabled = false;
+            // coll2d.enabled = false;
         }
     }
     public void ResetBack(Vector3 newPosition) 
