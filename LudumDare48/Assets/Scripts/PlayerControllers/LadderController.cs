@@ -42,7 +42,7 @@ public class LadderController : MonoBehaviour
     {
         moving = true;
         Vector2 returnPos = transform.position;
-        if(Input.GetKey(KeyCode.W))
+        if(Input.GetKey(KeyCode.W) && isAtTop())
         {
             transform.position += Vector3.up * Time.deltaTime * ladderSpeedMod;
         }
@@ -79,12 +79,34 @@ public class LadderController : MonoBehaviour
         Destroyed?.Invoke();
     }
 
+    bool isAtTop()
+    {
+        RaycastHit2D[] rhit = new RaycastHit2D[256];
+        Vector3 lowerPosition = transform.position;
+
+        lowerPosition.x -= bx2d.size.y / 4;
+
+        Vector3 smallBounds = bx2d.bounds.extents;
+        smallBounds.y /= 2;
+
+        int size = Physics2D.BoxCast(lowerPosition, smallBounds, 0, Vector2.zero, filter2D, rhit);
+
+        ExtDebug.DrawBoxCastBox(lowerPosition, smallBounds, Quaternion.identity, Vector2.zero, Mathf.Infinity, Color.blue);
+        if (size == 0)
+        {
+            return false;
+        }
+
+        return true;
+    }
+
     bool ladderCheck()
     {
         RaycastHit2D[] rhit = new RaycastHit2D[256];
 
-        int size = Physics2D.BoxCast(transform.position, bx2d.size, 0, Vector2.zero, filter2D, rhit);
+        int size = Physics2D.BoxCast(transform.position, bx2d.bounds.extents, 0, Vector2.zero, filter2D, rhit);
 
+        ExtDebug.DrawBoxCastBox(transform.position, bx2d.bounds.extents, Quaternion.identity, Vector2.zero, Mathf.Infinity, Color.red);
         if(size == 0)
         {
             return false;
