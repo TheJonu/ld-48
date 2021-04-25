@@ -221,7 +221,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5901d7ec02cc274ead97f0072e82357, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xSpeed: 8
+  xSpeed: 7
   climbLayerMask:
     useTriggers: 0
     useLayerMask: 1
@@ -241,6 +241,7 @@ MonoBehaviour:
     m_Bits: 128
   ladderSprite: {fileID: 0}
   collBoxSize: {x: 1, y: 1}
+  touchedGround: 0
 --- !u!114 &2405356839474964821
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -254,10 +255,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sr: {fileID: 2433574325956496951}
-  cycleTime: 0.66
-  movementSpeedModifier: 0
+  playerController: {fileID: 8022970881864077080}
+  spriteTime: 0.14
   movementThreshold: 0.0015
-  sprites:
+  idleSprites:
+  - {fileID: 4334783836991956000, guid: bd91520e0b087f64b904fd51c60ce2b0, type: 3}
+  movementSprites:
   - {fileID: 4334783836991956000, guid: bd91520e0b087f64b904fd51c60ce2b0, type: 3}
   - {fileID: 7388399842426930641, guid: bd91520e0b087f64b904fd51c60ce2b0, type: 3}
   - {fileID: 6757282713640645180, guid: bd91520e0b087f64b904fd51c60ce2b0, type: 3}
@@ -266,6 +269,10 @@ MonoBehaviour:
   - {fileID: 5865078278364869351, guid: bd91520e0b087f64b904fd51c60ce2b0, type: 3}
   - {fileID: -2023923573111878767, guid: bd91520e0b087f64b904fd51c60ce2b0, type: 3}
   - {fileID: -540375121143967267, guid: bd91520e0b087f64b904fd51c60ce2b0, type: 3}
+  ladderSprites:
+  - {fileID: -1205440766039775075, guid: bd91520e0b087f64b904fd51c60ce2b0, type: 3}
+  - {fileID: 5602337906906987636, guid: bd91520e0b087f64b904fd51c60ce2b0, type: 3}
+  - {fileID: -3861952770410913445, guid: bd91520e0b087f64b904fd51c60ce2b0, type: 3}
 --- !u!212 &2433574325956496951
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -332,7 +339,7 @@ Rigidbody2D:
   m_Mass: 100
   m_LinearDrag: 1
   m_AngularDrag: 0.05
-  m_GravityScale: 1.7
+  m_GravityScale: 2
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1

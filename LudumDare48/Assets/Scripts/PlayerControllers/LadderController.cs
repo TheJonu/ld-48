@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,6 +20,8 @@ public class LadderController : MonoBehaviour
     [HideInInspector] public PlayerController returnTo;
 
     [HideInInspector] public ContactFilter2D filter2D;
+
+    public Action Destroyed;
 
     // Start is called before the first frame update
     void Start()
@@ -66,6 +69,7 @@ public class LadderController : MonoBehaviour
     private void OnDestroy()
     {
         returnTo.ResetBack(transform.position);
+        Destroyed?.Invoke();
     }
 
     bool ladderCheck()

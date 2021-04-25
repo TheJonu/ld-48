@@ -24,6 +24,10 @@ public class PlayerController : MonoBehaviour
     public Vector2 collBoxSize = Vector2.one * 1f;
     
     [SerializeField] private bool touchedGround = false;
+
+    private LadderController lc;
+    public LadderController LadderController => lc;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -110,6 +114,9 @@ public class PlayerController : MonoBehaviour
             ld.ladderSprite = ladderSprite;
             ld.returnTo = this;
             ld.filter2D = climbLayerMask;
+
+            lc = ld;
+            lc.Destroyed += () => lc = null;    // set lc to null when destroyed. Should be working without it but caused some confusion
 
             oldSprite = GetComponent<SpriteRenderer>().sprite;
 
