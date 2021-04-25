@@ -14,7 +14,8 @@ namespace Levels
         [SerializeField] private Transform ceilingParent;
         [SerializeField] private Transform backgroundParent;
         [SerializeField] private Transform objectsParent;
-        [SerializeField] private BoxCollider2D floorBoxCollider;
+        //[SerializeField] private BoxCollider2D floorBoxCollider;
+        [SerializeField] private FloorCollisionHandler floorBoxFloorCollisionHandler;
 
         public LevelDataSet Data { get; set; }
         public Staircase Entrance { get; set; }
@@ -97,8 +98,9 @@ namespace Levels
             }
 
             Vector2 centerDist = (length - 1) * blockDist.x / 2 * Vector2.right;
-            floorBoxCollider.transform.position = startPos + centerDist;
-            floorBoxCollider.size = new Vector2(length * Data.FloorPrefab.Dim.x, Data.FloorPrefab.Dim.y + 0.01f);
+            floorBoxFloorCollisionHandler.Collider.transform.position = startPos + centerDist;
+            floorBoxFloorCollisionHandler.Collider.size = new Vector2(length * Data.FloorPrefab.Dim.x, Data.FloorPrefab.Dim.y + 0.01f);
+            floorBoxFloorCollisionHandler.EnteredCollision += () => LevelManager.Instance.CurrentLevel = this;
         }
 
         private void GenerateCeiling()
@@ -150,8 +152,8 @@ namespace Levels
 
         private bool GenerateFloorStandingObject(LevelObject prefab)
         {
-            float leftBoundaryX = Mathf.RoundToInt(Entrance.ExitPos.x) + Data.Direction * ObjectsBufferDist + prefab.Dim.x / 2;
-            float rightBoundaryX = Mathf.RoundToInt(Exit.EntrancePos.x) - Data.Direction * ObjectsBufferDist - prefab.Dim.x / 2;
+            float leftBoundaryX = Mathf.RoundToInt(Entrance.ExitPos.x) + Data.Direction * (ObjectsBufferDist + prefab.Dim.x / 2);
+            float rightBoundaryX = Mathf.RoundToInt(Exit.EntrancePos.x) - Data.Direction * (ObjectsBufferDist + prefab.Dim.x / 2);
             float posY = Entrance.ExitPos.y + 0.5f + prefab.Dim.y / 2;
 
             for (int j = 0; j < SpawnTries; j++)
@@ -171,8 +173,8 @@ namespace Levels
         
         private bool GenerateCeilingHangingObject(LevelObject prefab)
         {
-            float leftBoundaryX = Mathf.RoundToInt(Entrance.ExitPos.x) + Data.Direction * ObjectsBufferDist;
-            float rightBoundaryX = Mathf.RoundToInt(Exit.EntrancePos.x) - Data.Direction * ObjectsBufferDist;
+            float leftBoundaryX = Mathf.RoundToInt(Entrance.ExitPos.x) + Data.Direction * (ObjectsBufferDist + prefab.Dim.x / 2);
+            float rightBoundaryX = Mathf.RoundToInt(Exit.EntrancePos.x) - Data.Direction * (ObjectsBufferDist + prefab.Dim.x / 2);
             float posY = Entrance.EntrancePos.y + Data.CeilingYOffset - 0.5f - prefab.Dim.y / 2;
 
             for (int j = 0; j < SpawnTries; j++)
@@ -192,8 +194,8 @@ namespace Levels
 
         private bool GenerateWallHangingObject(LevelObject prefab)
         {
-            float leftBoundary = Mathf.RoundToInt(Entrance.ExitPos.x) + Data.Direction * ObjectsBufferDist;
-            float rightBoundary = Mathf.RoundToInt(Exit.EntrancePos.x) - Data.Direction * ObjectsBufferDist;
+            float leftBoundary = Mathf.RoundToInt(Entrance.ExitPos.x) + Data.Direction * (ObjectsBufferDist + prefab.Dim.x / 2);
+            float rightBoundary = Mathf.RoundToInt(Exit.EntrancePos.x) - Data.Direction * (ObjectsBufferDist + prefab.Dim.x / 2);
             float bottomBoundary = Mathf.RoundToInt(Entrance.ExitPos.y) + 2f + prefab.Dim.y / 2;
             float topBoundary = Mathf.RoundToInt(Entrance.EntrancePos.y + Data.CeilingYOffset) - 1.5f - prefab.Dim.y / 2;
 

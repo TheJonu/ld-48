@@ -22,26 +22,46 @@ public class LevelManager : MonoBehaviour
     public Transform Player => player;
     public float GridSize => gridSize;
     public Transform LevelsParent => levelsParent;
+    public List<Level> AllLevels => _levels;
+    public Level CurrentLevel
+    {
+        get => _currentLevel;
+        set
+        {
+            if (value != _currentLevel)
+            {
+                _currentLevel = value;
+                CurrentLevelChanged?.Invoke(_currentLevel);
+            }
+        }
+    }
+
+    public Action<Level> CurrentLevelChanged { get; set; }
 
 
+    private Level _currentLevel;
     private List<Level> _levels;
-        
+    
 
     private void Awake()
     {
         Instance = this;
+        
+        GenerateLevels();
     }
 
-    private void Start()
+    private void GenerateLevels()
     {
         _levels = new List<Level>();
         Staircase currentStaircase = firstStaircase;
 
+        int counter = 1;
         foreach (var levelDataSet in levelDataSets)
         {
             var level = Instantiate(levelPrefab, currentStaircase.ExitPos, Quaternion.identity, levelsParent);
             level.Data = levelDataSet;
             level.Entrance = currentStaircase;
+            level.name = $"Level {counter++}";
             level.GenerateLevel();
             _levels.Add(level);
             currentStaircase = level.Exit;
