@@ -516,8 +516,8 @@ MonoBehaviour:
   source: {fileID: 2376188057024490665}
   volumeMod: 1
   movementThreshold: 0.0015
-  startTime: 0.1
-  stepTime: 0.45
+  startTime: 0.33
+  stepTime: 0.44
   clips:
   - {fileID: 8300000, guid: c1bb457056feba045bd35a6ab359a977, type: 3}
   - {fileID: 8300000, guid: b13a4e8e0339a794c947953a7301f109, type: 3}
