@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8561427460928163973}
   - component: {fileID: 8561427460928163962}
   m_Layer: 0
-  m_Name: Patroller Enemy
+  m_Name: Cat Patroller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,7 +31,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 5446690068684211582}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -68,13 +69,21 @@ MonoBehaviour:
   playerController: {fileID: 0}
   spriteTime: 0.11
   idleSprites:
-  - {fileID: 297761703447499198, guid: 094282c5199c7d340bc434e32d862f20, type: 3}
-  - {fileID: 3680619090928529440, guid: 094282c5199c7d340bc434e32d862f20, type: 3}
-  - {fileID: -6810697999950630716, guid: 094282c5199c7d340bc434e32d862f20, type: 3}
-  - {fileID: 1779747271024799556, guid: 094282c5199c7d340bc434e32d862f20, type: 3}
-  movementSprites: []
+  - {fileID: 3678316895343943306, guid: 094282c5199c7d340bc434e32d862f20, type: 3}
+  movementSprites:
+  - {fileID: 3810199616485272264, guid: 094282c5199c7d340bc434e32d862f20, type: 3}
+  - {fileID: 5468275346343796690, guid: 094282c5199c7d340bc434e32d862f20, type: 3}
+  - {fileID: 3678316895343943306, guid: 094282c5199c7d340bc434e32d862f20, type: 3}
+  - {fileID: 4258081263921899527, guid: 094282c5199c7d340bc434e32d862f20, type: 3}
+  - {fileID: -6686358444854819152, guid: 094282c5199c7d340bc434e32d862f20, type: 3}
+  - {fileID: 8966077861573107906, guid: 094282c5199c7d340bc434e32d862f20, type: 3}
+  - {fileID: 5942247198578474322, guid: 094282c5199c7d340bc434e32d862f20, type: 3}
+  - {fileID: 6484252870904682776, guid: 094282c5199c7d340bc434e32d862f20, type: 3}
+  - {fileID: 5618028152753166986, guid: 094282c5199c7d340bc434e32d862f20, type: 3}
+  - {fileID: -4944397764837749071, guid: 094282c5199c7d340bc434e32d862f20, type: 3}
+  - {fileID: -8918034418388536846, guid: 094282c5199c7d340bc434e32d862f20, type: 3}
+  - {fileID: -4987121757160251396, guid: 094282c5199c7d340bc434e32d862f20, type: 3}
   ladderSprites: []
-  debug: 0
 --- !u!212 &8561427460928163972
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -115,7 +124,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 297761703447499198, guid: 094282c5199c7d340bc434e32d862f20, type: 3}
+  m_Sprite: {fileID: 3810199616485272264, guid: 094282c5199c7d340bc434e32d862f20, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -164,7 +173,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 2, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -173,3 +182,65 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!1001 &6891769332249265312
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 8561427460928163963}
+    m_Modifications:
+    - target: {fileID: 1455503204525801950, guid: f4968102f2550a3409a11910062fd7b2, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1455503204525801950, guid: f4968102f2550a3409a11910062fd7b2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.825
+      objectReference: {fileID: 0}
+    - target: {fileID: 1455503204525801950, guid: f4968102f2550a3409a11910062fd7b2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1455503204525801950, guid: f4968102f2550a3409a11910062fd7b2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1455503204525801950, guid: f4968102f2550a3409a11910062fd7b2, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1455503204525801950, guid: f4968102f2550a3409a11910062fd7b2, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1455503204525801950, guid: f4968102f2550a3409a11910062fd7b2, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1455503204525801950, guid: f4968102f2550a3409a11910062fd7b2, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1455503204525801950, guid: f4968102f2550a3409a11910062fd7b2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1455503204525801950, guid: f4968102f2550a3409a11910062fd7b2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1455503204525801950, guid: f4968102f2550a3409a11910062fd7b2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6273584773756290761, guid: f4968102f2550a3409a11910062fd7b2, type: 3}
+      propertyPath: m_Name
+      value: Red Light
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f4968102f2550a3409a11910062fd7b2, type: 3}
+--- !u!4 &5446690068684211582 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1455503204525801950, guid: f4968102f2550a3409a11910062fd7b2, type: 3}
+  m_PrefabInstance: {fileID: 6891769332249265312}
+  m_PrefabAsset: {fileID: 0}

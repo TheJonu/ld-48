@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2612954787452144362}
   - component: {fileID: 2612954787452144149}
   m_Layer: 0
-  m_Name: Chaser Enemy
+  m_Name: Redguy Chaser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,7 +31,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 7193931723642846837}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -68,12 +69,12 @@ MonoBehaviour:
   spriteTime: 0.11
   idleSprites:
   - {fileID: 297761703447499198, guid: 094282c5199c7d340bc434e32d862f20, type: 3}
+  movementSprites:
+  - {fileID: 297761703447499198, guid: 094282c5199c7d340bc434e32d862f20, type: 3}
   - {fileID: 3680619090928529440, guid: 094282c5199c7d340bc434e32d862f20, type: 3}
   - {fileID: -6810697999950630716, guid: 094282c5199c7d340bc434e32d862f20, type: 3}
   - {fileID: 1779747271024799556, guid: 094282c5199c7d340bc434e32d862f20, type: 3}
-  movementSprites: []
   ladderSprites: []
-  debug: 0
 --- !u!212 &2612954787452144363
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -172,3 +173,65 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!1001 &8639881807897116587
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2612954787452144148}
+    m_Modifications:
+    - target: {fileID: 1455503204525801950, guid: f4968102f2550a3409a11910062fd7b2, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1455503204525801950, guid: f4968102f2550a3409a11910062fd7b2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1455503204525801950, guid: f4968102f2550a3409a11910062fd7b2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1455503204525801950, guid: f4968102f2550a3409a11910062fd7b2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1455503204525801950, guid: f4968102f2550a3409a11910062fd7b2, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1455503204525801950, guid: f4968102f2550a3409a11910062fd7b2, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1455503204525801950, guid: f4968102f2550a3409a11910062fd7b2, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1455503204525801950, guid: f4968102f2550a3409a11910062fd7b2, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1455503204525801950, guid: f4968102f2550a3409a11910062fd7b2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1455503204525801950, guid: f4968102f2550a3409a11910062fd7b2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1455503204525801950, guid: f4968102f2550a3409a11910062fd7b2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6273584773756290761, guid: f4968102f2550a3409a11910062fd7b2, type: 3}
+      propertyPath: m_Name
+      value: Red Light
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f4968102f2550a3409a11910062fd7b2, type: 3}
+--- !u!4 &7193931723642846837 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1455503204525801950, guid: f4968102f2550a3409a11910062fd7b2, type: 3}
+  m_PrefabInstance: {fileID: 8639881807897116587}
+  m_PrefabAsset: {fileID: 0}

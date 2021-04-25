@@ -11,6 +11,9 @@ namespace AI
 
         private void FixedUpdate()
         {
+            if (!goesFrom || !goesTo)
+                return;
+            
             if (Vector2.Distance(goesTo.position, transform.position) <= MovementThreshold) 
             {
                 Transform swap = goesTo;
