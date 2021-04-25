@@ -8,29 +8,32 @@ namespace AI
         [SerializeField] private float minTime = 5;
         [SerializeField] private bool flippable = true;
 
+        [SerializeField] private Transform leftBound;
+        [SerializeField] private Transform rightBound;
+
         private float _timeLeft = -1f;
-        private int _direction = 0;
-        
+
+        private Vector3 _location;
         
         private void FixedUpdate()
         {
-            if (_timeLeft <= 0)
+            if(_timeLeft > 0)
+            {
+                _timeLeft -= Time.deltaTime;
+                return;
+            }
+
+            else if(Vector3.Distance(_location, transform.position) <= .1f)
             {
                 Stop();
                 RollNew();
+                RollNewLoc();
+                return;
             }
 
-            Vector2 targetSpeed = new Vector2(xSpeed * _direction, Rb2d.velocity.y);
-            Vector2 ret = Vector2.zero;
-
-            Vector2.SmoothDamp(Rb2d.velocity, targetSpeed, ref RefVel, SpeedDampening, xSpeed);
+            Vector2.SmoothDamp(transform.position, _location, ref RefVel, SpeedDampening, xSpeed);
 
             Rb2d.velocity = RefVel;
-
-            if (_direction == 0)
-                Rb2d.velocity = Vector2.zero;
-
-            _timeLeft -= Time.deltaTime;
             
             if(flippable)
                 Flip();
@@ -38,16 +41,16 @@ namespace AI
 
         private void RollNew()
         {
-            int p = 0;
-            int[] directionPick = new int[2];
-            for(int i=-1; i<=1; i++)
-            {
-                if (i == _direction)
-                    continue;
-                directionPick[p++] = i;
-            }
             _timeLeft = Random.Range(minTime, maxTime);
-            _direction = directionPick[Random.Range(0, 2)];
+        }
+
+        private void RollNewLoc()
+        {
+            float locx = Random.Range(leftBound.position.x, rightBound.position.x);
+            float locy = Random.Range(leftBound.position.y, rightBound.position.y);
+            float locz = transform.position.z;
+
+            _location = new Vector3(locx, locy, locz);
         }
     }
 }
