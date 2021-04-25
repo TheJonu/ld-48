@@ -16,6 +16,7 @@ public class RandomMovement : PlayerController
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
+        gameObject.AddComponent<EnemyCollisionHandle>();
     }
 
     // Update is called once per frame
