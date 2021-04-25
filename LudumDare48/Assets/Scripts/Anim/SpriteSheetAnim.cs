@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
+using System.Xml;
 using UnityEngine;
 
 namespace Anim
@@ -12,23 +13,25 @@ namespace Anim
         [SerializeField] private Rigidbody2D rb;
         [SerializeField] private PlayerController playerController;
         [SerializeField] private float spriteTime;
+        [SerializeField] private bool onlyHorizontalMovement;
         [SerializeField] private List<Sprite> idleSprites;      // must have at least one idle sprite
         [SerializeField] private List<Sprite> movementSprites;
         [SerializeField] private List<Sprite> ladderSprites;
 
+        public AnimState State { get; set; } = AnimState.Idle;
+        
         private const float MovementThreshold = 0.001f;
-        
-        private float _timer;
-        private float _movement;
 
-        private AnimState _state = AnimState.Idle;
-        
+        private float _timer;
+        private Vector2 _movement;
+
+
         private bool _hasMovementSprites;
         private bool _hasLadderSprites;
         private bool _hasPlayerController;
 
         
-        private enum AnimState { Idle, Movement, Ladder}
+        public enum AnimState { Idle, Movement, Ladder}
         
         
         private void Start()
@@ -40,7 +43,7 @@ namespace Anim
 
         private void Update()
         {
-            _movement = rb.velocity.magnitude;
+            _movement = rb.velocity;
             _timer += Time.deltaTime;
 
             CheckState();
@@ -50,21 +53,25 @@ namespace Anim
         private void CheckState()
         {
             AnimState newState = AnimState.Idle;
-            
-            if (_hasMovementSprites && _movement > MovementThreshold)
+
+            if (onlyHorizontalMovement && _hasMovementSprites && Mathf.Abs(_movement.x) > MovementThreshold && Mathf.Abs(_movement.y) <= MovementThreshold)
                 newState = AnimState.Movement;
+            
+            if (!onlyHorizontalMovement && _hasMovementSprites && _movement.magnitude > MovementThreshold)
+                newState = AnimState.Movement;
+
             if (_hasLadderSprites && _hasPlayerController && !(playerController.LadderController is null))
                 newState = AnimState.Ladder;
 
-            if (newState != _state)
+            if (newState != State)
                 _timer = 0;
 
-            _state = newState;
+            State = newState;
         }
 
         private void Apply()
         {
-            List<Sprite> sprites = _state switch
+            List<Sprite> sprites = State switch
             {
                 AnimState.Movement => movementSprites,
                 AnimState.Ladder => ladderSprites,

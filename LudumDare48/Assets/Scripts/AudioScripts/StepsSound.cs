@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Anim;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -7,28 +8,18 @@ namespace AudioScripts
 {
     public class StepsSound : MonoBehaviour
     {
-        [SerializeField] private Rigidbody2D rb;
-        [SerializeField] private AudioSource source;
-        [SerializeField] private float volumeMod;
-        [SerializeField] private float movementThreshold;
+        [SerializeField] private SpriteSheetAnim spriteSheetAnim;
+        [SerializeField] private AudioSource audioSource;
         [SerializeField] private float startTime;
         [SerializeField] private float stepTime;
         [SerializeField] private List<AudioClip> clips;
-        
+
         private float _timer;
-        private bool _isMoving;
 
-
-        private void Start()
-        {
-            source.volume *= volumeMod;
-        }
-
+        
         private void Update()
         {
-            _isMoving = rb.velocity.magnitude > movementThreshold;
-
-            if (!_isMoving)
+            if (spriteSheetAnim.State != SpriteSheetAnim.AnimState.Movement)
             {
                 _timer = startTime;
                 return;
@@ -38,8 +29,8 @@ namespace AudioScripts
 
             if (_timer > stepTime)
             {
-                source.clip = clips.GetRandom();
-                source.Play();
+                audioSource.clip = clips.GetRandom();
+                audioSource.Play();
                 
                 _timer = 0;
             }

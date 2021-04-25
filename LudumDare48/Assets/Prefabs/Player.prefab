@@ -259,6 +259,7 @@ MonoBehaviour:
   rb: {fileID: 8022970881864077081}
   playerController: {fileID: 8022970881864077080}
   spriteTime: 0.11
+  onlyHorizontalMovement: 1
   idleSprites:
   - {fileID: 4334783836991956000, guid: bd91520e0b087f64b904fd51c60ce2b0, type: 3}
   movementSprites:
@@ -274,7 +275,6 @@ MonoBehaviour:
   - {fileID: -1205440766039775075, guid: bd91520e0b087f64b904fd51c60ce2b0, type: 3}
   - {fileID: 5602337906906987636, guid: bd91520e0b087f64b904fd51c60ce2b0, type: 3}
   - {fileID: -3861952770410913445, guid: bd91520e0b087f64b904fd51c60ce2b0, type: 3}
-  debug: 0
 --- !u!212 &2433574325956496951
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -341,7 +341,7 @@ Rigidbody2D:
   m_Mass: 100
   m_LinearDrag: 1
   m_AngularDrag: 0.05
-  m_GravityScale: 2
+  m_GravityScale: 3
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -372,7 +372,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   serializedVersion: 2
   m_Size: {x: 0.95, y: 0.95}
-  m_EdgeRadius: 0
+  m_EdgeRadius: 0.02
 --- !u!1 &8849805980128513969
 GameObject:
   m_ObjectHideFlags: 0
@@ -513,10 +513,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d80d146d4ef4e449d5f72215214f5ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 8022970881864077081}
-  source: {fileID: 2376188057024490665}
-  volumeMod: 1
-  movementThreshold: 0.0015
+  spriteSheetAnim: {fileID: 2405356839474964821}
+  audioSource: {fileID: 2376188057024490665}
   startTime: 0.33
   stepTime: 0.44
   clips:
