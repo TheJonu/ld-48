@@ -90,21 +90,21 @@ public class PlayerController : MonoBehaviour
         
         Debug.Log(size);
 
-        if(size == 1)
+        if(size > 1)
         {
-           this.enabled = false;
+            this.enabled = false;
 
             rb2d.velocity = Vector2.zero;
 
-           LadderController ld = gameObject.AddComponent<LadderController>();
+            LadderController ld = gameObject.AddComponent<LadderController>();
 
-           // better calculation are needed for this. Will do for now
-           ld.up = Vector2.up;
-           ld.down = Vector2.down;
-           ld.ladderSprite = ladderSprite;
-           ld.returnTo = this;
+            // better calculation are needed for this. Will do for now
+            ld.up = Vector2.up;
+            ld.down = Vector2.down;
+            ld.ladderSprite = ladderSprite;
+            ld.returnTo = this;
 
-           oldSprite = GetComponent<SpriteRenderer>().sprite;
+            oldSprite = GetComponent<SpriteRenderer>().sprite;
 
             Vector3 offSetPos = gameObject.transform.position;
             offSetPos.x = rhit[0].rigidbody.position.x;
@@ -118,13 +118,29 @@ public class PlayerController : MonoBehaviour
         this.enabled = true;
         GetComponent<SpriteRenderer>().sprite = oldSprite;
         rb2d.gravityScale = 1;
+        pushUp();
         coll2d.enabled = true;
     }
 
-    public void pushUp()
+    private void pushUp()
     {
-        RaycastHit2D[] rhit = new RaycastHit2D[256];
-        int size = Physics2D.BoxCast(transform.position, collBoxSize, 0, Vector2.zero, climbLayerMask, rhit);
+        int size;
+        do
+        {
+            ContactFilter2D filter = new ContactFilter2D();
+            filter.layerMask = terrainLayerMask;
+            filter.useLayerMask = true;
+
+            RaycastHit2D[] rhit = new RaycastHit2D[256];
+            size = Physics2D.BoxCast(transform.position, collBoxSize, 0, Vector2.zero, filter, rhit);
+
+            if(size > 0)
+            {
+                transform.position += Vector3.up * 0.01f;
+            }
+
+        } while (size > 0);
+        
     }
 
     bool IsGrounded()
