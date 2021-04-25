@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 385948702675826801}
   - component: {fileID: 2127722032097750020}
-  - component: {fileID: 3716683831423611895}
-  m_Layer: 7
-  m_Name: stairs 1 left
+  - component: {fileID: 1429143004060418968}
+  m_Layer: 8
+  m_Name: stairs 1 left 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -72,7 +72,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -3552569459566352538, guid: a5ec5758aa3367e48ae631377918adf8, type: 3}
+  m_Sprite: {fileID: -3907395758607295982, guid: 5ac388b37a090b64585e2846d4d2e744, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
@@ -83,8 +83,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!60 &3716683831423611895
-PolygonCollider2D:
+--- !u!61 &1429143004060418968
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -106,12 +106,6 @@ PolygonCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: -0.49924976, y: 0.49891835}
-      - {x: -0.5, y: 0.125}
-      - {x: -0.5, y: -0.5}
-      - {x: 0.5, y: -0.5}
-      - {x: 0.27115756, y: -0.2370618}
-      - {x: 0.0052574575, y: -0.019237354}
-      - {x: -0.24981055, y: 0.29107207}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
