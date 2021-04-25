@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
 
     public Vector2 collBoxSize = Vector2.one * 1f;
     
+    private bool touchedGround = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -37,9 +38,15 @@ public class PlayerController : MonoBehaviour
 
         if (!IsGrounded())
         {
-            return;
+            if (touchedGround)
+                return;
         }
-
+        else
+        {
+            Debug.Log("Touched gorund");
+            touchedGround = true;
+        }
+            
         if(Input.GetKey(KeyCode.D) && Input.GetKey(KeyCode.A))
         {
             // do nothing plz
@@ -119,6 +126,7 @@ public class PlayerController : MonoBehaviour
         rb2d.gravityScale = 1;
         pushUp();
         coll2d.enabled = true;
+        touchedGround = false;
     }
 
     private void pushUp()
