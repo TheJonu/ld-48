@@ -39,13 +39,22 @@ namespace Anim
 
         private void FixedUpdate()
         {
-            _timer += Time.fixedDeltaTime;
-            
             Vector2 newPos = transform.position;
-            _posChange = (newPos - _prevPos) * Time.deltaTime;
+            _posChange = (newPos - _prevPos) * Time.fixedDeltaTime;
             _movementMagnitude = _posChange.magnitude;
             _prevPos = newPos;
-            
+
+            if (_posChange.x != 0.0f || _posChange.y != 0.0f)
+            {
+                _timer += Time.fixedDeltaTime;
+            }
+            // Make the movement anim always start from the same point
+            else if(playerController.LadderController is null)
+            {
+                _timer = 0.0f;
+            }
+
+
             Apply();
         }
 
@@ -65,7 +74,6 @@ namespace Anim
             
             if (_hasLadderSprites && _hasPlayerController && !(playerController.LadderController is null))
             {
-                Debug.Log(playerController.LadderController);
                 int number = Mathf.FloorToInt(_timer / spriteTime) % ladderSprites.Count;
                 sr.sprite = ladderSprites[number];
             }
