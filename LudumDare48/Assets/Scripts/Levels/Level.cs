@@ -20,11 +20,16 @@ namespace Levels
         public Staircase Entrance { get; set; }
         public Staircase Exit { get; set; }
 
-        private const int ObjectsBufferDist = 2; // how far from staircases can objects be spawned
-        private const int SpawnTries = 100;
+        private const int ObjectsBufferDist = 2;            // how far from staircases can objects be spawned
+        private const int SpawnTries = 100;                 // how many times should a random position be genarated before giving up
+        private const float CollCheckSizeScale = 0.95f;     // multiplier for the size of an object's effective collider
+        private const float FloorColliderScaleY = 1.01f;    // scale multiplier for floor collider (should be a bit greater than 1)
 
         private LayerMask _objectsMask;
         private LayerMask _terrainMask;
+        private LayerMask _ladderMask;
+        private LayerMask _anyCollMask;
+        
         private List<LevelBlock> _blocks;
         private List<LevelObject> _objects;
 
@@ -33,6 +38,8 @@ namespace Levels
         {
             _objectsMask = LayerMask.GetMask("Object");
             _terrainMask = LayerMask.GetMask("Terrain");
+            _ladderMask = LayerMask.GetMask("Ladder");
+            _anyCollMask = _objectsMask + _terrainMask + _ladderMask;
 
             _blocks = new List<LevelBlock>();
             _objects = new List<LevelObject>();
@@ -43,9 +50,15 @@ namespace Levels
             GenerateCeiling();
             GenerateBackground();
 
-            GenerateFloorStandingObjects();
-            GenerateCeilingHangingObjects();
-            GenerateWallHangingObjects();
+            GenerateObjects();
+        }
+        
+        private void GenerateExit()
+        {
+            Vector2 exitPos = Entrance.ExitPos + Data.Length * Data.FloorPrefab.Dim.x * Data.Direction * Vector2.right;
+            Exit = Instantiate(Data.StaircasePrefab, exitPos, Quaternion.identity, LevelManager.Instance.LevelsParent);
+            Exit.transform.Translate(-Exit.EntranceLocalPos);
+            Exit.transform.Translate(Data.FloorPrefab.Dim.x * Data.Direction * Vector2.left);
         }
 
         private void GenerateFloor()
@@ -61,7 +74,7 @@ namespace Levels
 
             Vector2 centerDist = (length - 1) * blockDist.x / 2 * Vector2.right;
             floorBoxCollider.transform.position = startPos + centerDist;
-            floorBoxCollider.size = new Vector2(length * Data.FloorPrefab.Dim.x, Data.FloorPrefab.Dim.y);
+            floorBoxCollider.size = new Vector2(length * Data.FloorPrefab.Dim.x, Data.FloorPrefab.Dim.y + 0.01f);
         }
 
         private void GenerateCeiling()
@@ -75,14 +88,6 @@ namespace Levels
                     ceilingParent);
                 _blocks.Add(block);
             }
-        }
-
-        private void GenerateExit()
-        {
-            Vector2 exitPos = Entrance.ExitPos + Data.Length * Data.FloorPrefab.Dim.x * Data.Direction * Vector2.right;
-            Exit = Instantiate(Data.StaircasePrefab, exitPos, Quaternion.identity, LevelManager.Instance.LevelsParent);
-            Exit.transform.Translate(-Exit.EntranceLocalPos);
-            Exit.transform.Translate(Data.FloorPrefab.Dim.x * Data.Direction * Vector2.left);
         }
 
         private void GenerateBackground()
@@ -100,109 +105,89 @@ namespace Levels
             }
         }
 
-        private void GenerateFloorStandingObjects()
+        private void GenerateObjects()
         {
-            var spawns = Data.LevelObjects.Where(o => o.prefab.PositionVariant == PositionVariant.Floor);
-            float floorSurfacePosY = Entrance.ExitPos.y + 0.5f;
-            int leftBoundary = Mathf.RoundToInt(Entrance.ExitPos.x) + Data.Direction * ObjectsBufferDist;
-            int rightBoundary = Mathf.RoundToInt(Exit.EntrancePos.x) - Data.Direction * ObjectsBufferDist;
-            foreach (var spawn in spawns)
+            foreach (var spawn in Data.LevelObjects)
             {
                 for (int i = 0; i < spawn.amount; i++)
                 {
-                    Vector2 size = new Vector2(spawn.prefab.Dim.x, spawn.prefab.Dim.y);
-                    Vector2 pos = Vector2.zero;
-                    bool ok = false;
-                    for (int j = 0; j < SpawnTries; j++)
+                    Func<LevelObject, bool> generator = spawn.prefab.PositionVariant switch
                     {
-                        pos = new Vector2(Random.Range(leftBoundary, rightBoundary), floorSurfacePosY + size.y / 2);
-                        if (Physics2D.OverlapBox(pos, size, 0, _objectsMask) == null)
-                        {
-                            ok = true;
-                            break;
-                        }
-
-                        if (j == 49)
-                            Debug.Log($"Object {spawn.prefab.name} couldn't be spawned.");
-                    }
-
-                    if (ok)
-                    {
-                        var instance = Instantiate(spawn.prefab, pos, Quaternion.identity, objectsParent);
-                        _objects.Add(instance);
-                    }
+                        PositionVariant.Floor => GenerateFloorStandingObject,
+                        PositionVariant.Ceiling => GenerateCeilingHangingObject,
+                        PositionVariant.Wall => GenerateWallHangingObject,
+                        _ => o => true
+                    };
+                    if(!generator.Invoke(spawn.prefab))
+                        Debug.Log($"Object {spawn.prefab.name} couldn't be spawned.");
                 }
             }
+        }
+
+        private bool GenerateFloorStandingObject(LevelObject prefab)
+        {
+            float leftBoundaryX = Mathf.RoundToInt(Entrance.ExitPos.x) + 0.5f + Data.Direction * ObjectsBufferDist;
+            float rightBoundaryX = Mathf.RoundToInt(Exit.EntrancePos.x) - Data.Direction * ObjectsBufferDist;
+            float posY = Entrance.ExitPos.y + 0.5f + prefab.Dim.y / 2;
+
+            for (int j = 0; j < SpawnTries; j++)
+            {
+                float posX = Random.Range(leftBoundaryX, rightBoundaryX);
+                posX -= posX % 0.5f;       // round to 0.5
+                Vector2 pos = new Vector2(posX, posY);
+                if (Physics2D.OverlapBox(pos, prefab.Dim * CollCheckSizeScale, 0, _anyCollMask) == null)
+                {
+                    var instance = Instantiate(prefab, pos, Quaternion.identity, objectsParent);
+                    _objects.Add(instance);
+                    return true;
+                }
+            }
+            return false;
         }
         
-        private void GenerateCeilingHangingObjects()
+        private bool GenerateCeilingHangingObject(LevelObject prefab)
         {
-            var spawns = Data.LevelObjects.Where(o => o.prefab.PositionVariant == PositionVariant.Ceiling);
-            float ceilingSurfacePosY = Entrance.EntrancePos.y + Data.CeilingYOffset - 0.5f;
-            int leftBoundary = Mathf.RoundToInt(Entrance.ExitPos.x) + Data.Direction * ObjectsBufferDist;
-            int rightBoundary = Mathf.RoundToInt(Exit.EntrancePos.x) - Data.Direction * ObjectsBufferDist;
-            foreach (var spawn in spawns)
+            float leftBoundaryX = Mathf.RoundToInt(Entrance.ExitPos.x) + Data.Direction * ObjectsBufferDist;
+            float rightBoundaryX = Mathf.RoundToInt(Exit.EntrancePos.x) - Data.Direction * ObjectsBufferDist;
+            float posY = Entrance.EntrancePos.y + Data.CeilingYOffset - 0.5f - prefab.Dim.y / 2;
+
+            for (int j = 0; j < SpawnTries; j++)
             {
-                for (int i = 0; i < spawn.amount; i++)
+                float posX = Random.Range(leftBoundaryX, rightBoundaryX);
+                posX -= posX % 0.5f;       // round to 0.5
+                Vector2 pos = new Vector2(posX, posY);
+                if (Physics2D.OverlapBox(pos, prefab.Dim * CollCheckSizeScale, 0, _anyCollMask) == null)
                 {
-                    Vector2 size = new Vector2(spawn.prefab.Dim.x, spawn.prefab.Dim.y);
-                    Vector2 pos = Vector2.zero;
-                    bool ok = false;
-                    for (int j = 0; j < SpawnTries; j++)
-                    {
-                        pos = new Vector2(Random.Range(leftBoundary, rightBoundary), ceilingSurfacePosY - size.y / 2);
-                        if (Physics2D.OverlapBox(pos, size, 0, _objectsMask) == null)
-                        {
-                            ok = true;
-                            break;
-                        }
-                        if (j == 49)
-                            Debug.Log($"Object {spawn.prefab.name} couldn't be spawned.");
-                    }
-                    if (ok)
-                    {
-                        var instance = Instantiate(spawn.prefab, pos, Quaternion.identity, objectsParent);
-                        _objects.Add(instance);
-                    }
+                    var instance = Instantiate(prefab, pos, Quaternion.identity, objectsParent);
+                    _objects.Add(instance);
+                    return true;
                 }
             }
+            return false;
         }
 
-        private void GenerateWallHangingObjects()
+        private bool GenerateWallHangingObject(LevelObject prefab)
         {
-            var spawns = Data.LevelObjects.Where(o => o.prefab.PositionVariant == PositionVariant.Wall);
-            int leftBoundary = Mathf.RoundToInt(Entrance.ExitPos.x) + Data.Direction * ObjectsBufferDist;
-            int rightBoundary = Mathf.RoundToInt(Exit.EntrancePos.x) - Data.Direction * ObjectsBufferDist;
-            int bottomBoundary = Mathf.RoundToInt(Entrance.ExitPos.y) + 2;
-            int topBoundary = Mathf.RoundToInt(Entrance.EntrancePos.y + Data.CeilingYOffset) - 1;
-            foreach (var spawn in spawns)
+            float leftBoundary = Mathf.RoundToInt(Entrance.ExitPos.x) + Data.Direction * ObjectsBufferDist;
+            float rightBoundary = Mathf.RoundToInt(Exit.EntrancePos.x) - Data.Direction * ObjectsBufferDist;
+            float bottomBoundary = Mathf.RoundToInt(Entrance.ExitPos.y) + 2f + prefab.Dim.y / 2;
+            float topBoundary = Mathf.RoundToInt(Entrance.EntrancePos.y + Data.CeilingYOffset) - 1.5f - prefab.Dim.y / 2;
+
+            for (int j = 0; j < SpawnTries; j++)
             {
-                for (int i = 0; i < spawn.amount; i++)
+                float posX = Random.Range(leftBoundary, rightBoundary);
+                posX -= posX % 0.5f;       // round to 0.5
+                float posY = Random.Range(bottomBoundary, topBoundary);
+                posY -= posY % 0.5f;       // round to 0.5
+                Vector2 pos = new Vector2(posX, posY);
+                if (Physics2D.OverlapBox(pos, prefab.Dim * CollCheckSizeScale, 0, _anyCollMask) == null)
                 {
-                    Vector2 size = new Vector2(spawn.prefab.Dim.x, spawn.prefab.Dim.y);
-                    Vector2 pos = Vector2.zero;
-                    bool ok = false;
-                    for (int j = 0; j < SpawnTries; j++)
-                    {
-                        pos = new Vector2(Random.Range(leftBoundary, rightBoundary),
-                            Random.Range(bottomBoundary, topBoundary));
-                        if (Physics2D.OverlapBox(pos, size, 0, _objectsMask + _terrainMask) == null)
-                        {
-                            ok = true;
-                            break;
-                        }
-
-                        if (j == 49)
-                            Debug.Log($"Object {spawn.prefab.name} couldn't be spawned.");
-                    }
-
-                    if (ok)
-                    {
-                        var instance = Instantiate(spawn.prefab, pos, Quaternion.identity, objectsParent);
-                        _objects.Add(instance);
-                    }
+                    var instance = Instantiate(prefab, pos, Quaternion.identity, objectsParent);
+                    _objects.Add(instance);
+                    return true;
                 }
             }
+            return false;
         }
     }
 }

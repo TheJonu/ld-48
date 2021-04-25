@@ -17,6 +17,8 @@ MonoBehaviour:
   backgroundPrefab: {fileID: 4900296945213954524, guid: e78afb04609691149bdbe07776875b15, type: 3}
   staircasePrefab: {fileID: 7993928891477082042, guid: ebad3d98629b86d449f0021762388e09, type: 3}
   levelObjects:
+  - prefab: {fileID: 8594064565216328648, guid: 9d06fe291131e704388ed2d2e8508826, type: 3}
+    amount: 1
   - prefab: {fileID: 4452033242803059328, guid: 570622bf441c71742bf5e38f09ad0100, type: 3}
     amount: 1
   - prefab: {fileID: 4452033242803059328, guid: aa689ff8f0d64fe4c82bd20d0326b8e5, type: 3}
