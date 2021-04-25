@@ -21,6 +21,7 @@ namespace Anim
         public AnimState State { get; set; } = AnimState.Idle;
         
         private const float MovementThreshold = 0.001f;
+        private const float MinHorizontalVerticalMovementRatio = 1f/3f;
 
         private float _timer;
         private Vector2 _movement;
@@ -54,7 +55,9 @@ namespace Anim
         {
             AnimState newState = AnimState.Idle;
 
-            if (onlyHorizontalMovement && _hasMovementSprites && Mathf.Abs(_movement.x) > MovementThreshold && Mathf.Abs(_movement.y) <= MovementThreshold)
+            float horizontalVerticalRatio = Mathf.Abs(_movement.x) / Mathf.Abs(_movement.y);
+            
+            if (onlyHorizontalMovement && _hasMovementSprites && Mathf.Abs(_movement.x) > MovementThreshold && horizontalVerticalRatio > MinHorizontalVerticalMovementRatio)
                 newState = AnimState.Movement;
             
             if (!onlyHorizontalMovement && _hasMovementSprites && _movement.magnitude > MovementThreshold)
