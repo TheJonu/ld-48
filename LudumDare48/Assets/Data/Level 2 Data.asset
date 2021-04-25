@@ -17,18 +17,22 @@ MonoBehaviour:
   backgroundPrefab: {fileID: 4900296945213954524, guid: e78afb04609691149bdbe07776875b15, type: 3}
   staircasePrefab: {fileID: 7993928891477082042, guid: ebad3d98629b86d449f0021762388e09, type: 3}
   levelObjects:
-  - prefab: {fileID: 4452033242803059328, guid: 15791f91e04071644b94543f11c53ec9, type: 3}
-    amount: 1
   - prefab: {fileID: 4452033242803059328, guid: 570622bf441c71742bf5e38f09ad0100, type: 3}
     amount: 1
   - prefab: {fileID: 4452033242803059328, guid: aa689ff8f0d64fe4c82bd20d0326b8e5, type: 3}
     amount: 1
-  - prefab: {fileID: 4452033242803059328, guid: 334c59c0141b1be4686a644af4969980, type: 3}
+  - prefab: {fileID: 4452033242803059328, guid: 53edde8976bb1dc4dae83a348615f2b2, type: 3}
     amount: 1
+  - prefab: {fileID: 4452033242803059328, guid: 570622bf441c71742bf5e38f09ad0100, type: 3}
+    amount: 5
   - prefab: {fileID: 4452033242803059328, guid: 20eed2c8ff4162840919df9d5cab4d78, type: 3}
+    amount: 2
+  - prefab: {fileID: 4452033242803059328, guid: 925d16b0103307d40bdb54928c083c9f, type: 3}
     amount: 1
-  - prefab: {fileID: 4452033242803059328, guid: 865b243e272a9d848bca0e8059a75fc6, type: 3}
-    amount: 1
+  - prefab: {fileID: 4452033242803059328, guid: 3fd2c645ce51b714f9534311695ec384, type: 3}
+    amount: 5
+  - prefab: {fileID: 4452033242803059328, guid: d7a30acc41c571c46801ac1a4396d4d3, type: 3}
+    amount: 2
   length: 45
   direction: -1
   floorYOffset: 0

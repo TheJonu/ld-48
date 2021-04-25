@@ -4,7 +4,7 @@ namespace Levels
 {
     public enum PositionVariant
     {
-        Standing, Hanging
+        Floor, Wall, Ceiling
     }
 
     public class LevelObject : MonoBehaviour

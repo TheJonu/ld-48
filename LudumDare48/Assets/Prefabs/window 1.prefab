@@ -181,6 +181,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lightSource: {fileID: 6439116214709009141}
   changeSpeed: 1
-  colorHueBounds: {x: 180, y: 190}
-  colorSaturationBounds: {x: 0, y: 10}
+  colorHueBounds: {x: 170, y: 180}
+  colorSaturationBounds: {x: 10, y: 30}
   colorValueBounds: {x: 80, y: 100}

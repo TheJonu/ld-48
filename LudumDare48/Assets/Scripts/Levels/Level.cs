@@ -15,7 +15,7 @@ namespace Levels
         [SerializeField] private Transform backgroundParent;
         [SerializeField] private Transform objectsParent;
         [SerializeField] private BoxCollider2D floorBoxCollider;
-        
+
         public LevelDataSet Data { get; set; }
         public Staircase Entrance { get; set; }
         public Staircase Exit { get; set; }
@@ -36,15 +36,16 @@ namespace Levels
 
             _blocks = new List<LevelBlock>();
             _objects = new List<LevelObject>();
-            
+
             GenerateExit();
-            
+
             GenerateFloor();
             GenerateCeiling();
             GenerateBackground();
-            
-            GenerateStandingObjects();
-            GenerateHangingObjects();
+
+            GenerateFloorStandingObjects();
+            GenerateCeilingHangingObjects();
+            GenerateWallHangingObjects();
         }
 
         private void GenerateFloor()
@@ -70,7 +71,8 @@ namespace Levels
             int length = Data.Length + Mathf.RoundToInt(Exit.Dim.x);
             for (int i = 0; i < length; i++)
             {
-                var block = Instantiate(Data.CeilingPrefab, startPos + i * blockDist, Quaternion.identity, ceilingParent);
+                var block = Instantiate(Data.CeilingPrefab, startPos + i * blockDist, Quaternion.identity,
+                    ceilingParent);
                 _blocks.Add(block);
             }
         }
@@ -92,14 +94,15 @@ namespace Levels
             for (int i = 0; i < length; i++)
             {
                 float x = startPosX + i * Data.Direction * Data.BackgroundPrefab.Dim.x;
-                var block = Instantiate(Data.BackgroundPrefab, new Vector2(x, y), Quaternion.identity, backgroundParent);
+                var block = Instantiate(Data.BackgroundPrefab, new Vector2(x, y), Quaternion.identity,
+                    backgroundParent);
                 _blocks.Add(block);
             }
         }
 
-        private void GenerateStandingObjects()
+        private void GenerateFloorStandingObjects()
         {
-            var spawns = Data.LevelObjects.Where(o => o.prefab.PositionVariant == PositionVariant.Standing);
+            var spawns = Data.LevelObjects.Where(o => o.prefab.PositionVariant == PositionVariant.Floor);
             float floorSurfacePosY = Entrance.ExitPos.y + 0.5f;
             int leftBoundary = Mathf.RoundToInt(Entrance.ExitPos.x) + Data.Direction * ObjectsBufferDist;
             int rightBoundary = Mathf.RoundToInt(Exit.EntrancePos.x) - Data.Direction * ObjectsBufferDist;
@@ -118,6 +121,41 @@ namespace Levels
                             ok = true;
                             break;
                         }
+
+                        if (j == 49)
+                            Debug.Log($"Object {spawn.prefab.name} couldn't be spawned.");
+                    }
+
+                    if (ok)
+                    {
+                        var instance = Instantiate(spawn.prefab, pos, Quaternion.identity, objectsParent);
+                        _objects.Add(instance);
+                    }
+                }
+            }
+        }
+        
+        private void GenerateCeilingHangingObjects()
+        {
+            var spawns = Data.LevelObjects.Where(o => o.prefab.PositionVariant == PositionVariant.Ceiling);
+            float ceilingSurfacePosY = Entrance.EntrancePos.y + Data.CeilingYOffset - 0.5f;
+            int leftBoundary = Mathf.RoundToInt(Entrance.ExitPos.x) + Data.Direction * ObjectsBufferDist;
+            int rightBoundary = Mathf.RoundToInt(Exit.EntrancePos.x) - Data.Direction * ObjectsBufferDist;
+            foreach (var spawn in spawns)
+            {
+                for (int i = 0; i < spawn.amount; i++)
+                {
+                    Vector2 size = new Vector2(spawn.prefab.Dim.x, spawn.prefab.Dim.y);
+                    Vector2 pos = Vector2.zero;
+                    bool ok = false;
+                    for (int j = 0; j < SpawnTries; j++)
+                    {
+                        pos = new Vector2(Random.Range(leftBoundary, rightBoundary), ceilingSurfacePosY - size.y / 2);
+                        if (Physics2D.OverlapBox(pos, size, 0, _objectsMask) == null)
+                        {
+                            ok = true;
+                            break;
+                        }
                         if (j == 49)
                             Debug.Log($"Object {spawn.prefab.name} couldn't be spawned.");
                     }
@@ -129,39 +167,42 @@ namespace Levels
                 }
             }
         }
-        
-        private void GenerateHangingObjects()
+
+        private void GenerateWallHangingObjects()
+        {
+            var spawns = Data.LevelObjects.Where(o => o.prefab.PositionVariant == PositionVariant.Wall);
+            int leftBoundary = Mathf.RoundToInt(Entrance.ExitPos.x) + Data.Direction * ObjectsBufferDist;
+            int rightBoundary = Mathf.RoundToInt(Exit.EntrancePos.x) - Data.Direction * ObjectsBufferDist;
+            int bottomBoundary = Mathf.RoundToInt(Entrance.ExitPos.y) + 2;
+            int topBoundary = Mathf.RoundToInt(Entrance.EntrancePos.y + Data.CeilingYOffset) - 1;
+            foreach (var spawn in spawns)
+            {
+                for (int i = 0; i < spawn.amount; i++)
                 {
-                    var spawns = Data.LevelObjects.Where(o => o.prefab.PositionVariant == PositionVariant.Hanging);
-                    int leftBoundary = Mathf.RoundToInt(Entrance.ExitPos.x) + Data.Direction * ObjectsBufferDist;
-                    int rightBoundary = Mathf.RoundToInt(Exit.EntrancePos.x) - Data.Direction * ObjectsBufferDist;
-                    int bottomBoundary = Mathf.RoundToInt(Entrance.ExitPos.y) + 2;
-                    int topBoundary = Mathf.RoundToInt(Entrance.EntrancePos.y + Data.CeilingYOffset) - 1;
-                    foreach (var spawn in spawns)
+                    Vector2 size = new Vector2(spawn.prefab.Dim.x, spawn.prefab.Dim.y);
+                    Vector2 pos = Vector2.zero;
+                    bool ok = false;
+                    for (int j = 0; j < SpawnTries; j++)
                     {
-                        for (int i = 0; i < spawn.amount; i++)
+                        pos = new Vector2(Random.Range(leftBoundary, rightBoundary),
+                            Random.Range(bottomBoundary, topBoundary));
+                        if (Physics2D.OverlapBox(pos, size, 0, _objectsMask + _terrainMask) == null)
                         {
-                            Vector2 size = new Vector2(spawn.prefab.Dim.x, spawn.prefab.Dim.y);
-                            Vector2 pos = Vector2.zero;
-                            bool ok = false;
-                            for (int j = 0; j < SpawnTries; j++)
-                            {
-                                pos = new Vector2(Random.Range(leftBoundary, rightBoundary), Random.Range(bottomBoundary, topBoundary));
-                                if (Physics2D.OverlapBox(pos, size, 0, _objectsMask + _terrainMask) == null)
-                                {
-                                    ok = true;
-                                    break;
-                                }
-                                if (j == 49)
-                                    Debug.Log($"Object {spawn.prefab.name} couldn't be spawned.");
-                            }
-                            if (ok)
-                            {
-                                var instance = Instantiate(spawn.prefab, pos, Quaternion.identity, objectsParent);
-                                _objects.Add(instance);
-                            }
+                            ok = true;
+                            break;
                         }
+
+                        if (j == 49)
+                            Debug.Log($"Object {spawn.prefab.name} couldn't be spawned.");
+                    }
+
+                    if (ok)
+                    {
+                        var instance = Instantiate(spawn.prefab, pos, Quaternion.identity, objectsParent);
+                        _objects.Add(instance);
                     }
                 }
+            }
+        }
     }
 }
