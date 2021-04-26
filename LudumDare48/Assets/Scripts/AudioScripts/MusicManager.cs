@@ -2,13 +2,15 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MusicManager : MonoBehaviour
 {
     [SerializeField] GameObject playerLocation;
     [SerializeField] private AudioClip[] backgroundTracks;
-    [SerializeField] private float volume = 0.77f;
     [SerializeField] private List<AudioClip> pinkNoiseClips;
+    [SerializeField] public Slider volumeSlider;
+    private MusicController mc;
 
     public static MusicManager Instance { get; private set; }
     public List<AudioClip> PinkNoiseClips => pinkNoiseClips;
@@ -21,14 +23,20 @@ public class MusicManager : MonoBehaviour
     void Start()
     {
         HookMusicPlayer();
+        volumeSlider.onValueChanged.AddListener(delegate { ChangeVolume(volumeSlider.value); });
+    }
+
+    private void ChangeVolume(float val)
+    {
+        mc.ChangeVolume(val);
     }
 
     private void HookMusicPlayer()
     {
         //MusicController mc = playerLocation.AddComponent<MusicController>();
-        MusicController mc = Camera.main.gameObject.AddComponent<MusicController>(); // camera is the audio listener
+        mc = Camera.main.gameObject.AddComponent<MusicController>(); // camera is the audio listener
 
         mc.clips = backgroundTracks;
-        mc.volume = volume;
+        mc.volume = volumeSlider.value;
     }
 }
