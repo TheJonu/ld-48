@@ -223,7 +223,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5901d7ec02cc274ead97f0072e82357, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xSpeed: 7
+  xSpeed: 6
   climbLayerMask:
     useTriggers: 0
     useLayerMask: 1
@@ -436,7 +436,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.6
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 0
   Mute: 0

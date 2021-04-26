@@ -59,6 +59,10 @@ namespace Levels
             yield return new WaitForSeconds(6f);
             
             GameEnded?.Invoke();
+
+            yield return new WaitForSeconds(4f);
+
+            Fade.DOFade(1f, 3f);
         }
     }
 }
