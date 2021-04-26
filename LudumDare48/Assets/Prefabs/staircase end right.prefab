@@ -56,7 +56,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 028ad08404bf5c148a6a984e9a670fdf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dimensions: {x: 1, y: 9}
+  dimensions: {x: 2, y: 9}
   entrance: {fileID: 1822643739154611374}
   exit: {fileID: 5914520987333289954}
 --- !u!1 &1932648341368296441
@@ -362,7 +362,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   serializedVersion: 2
   m_Size: {x: 15, y: 1}
-  m_EdgeRadius: 0.01
+  m_EdgeRadius: 0
 --- !u!1 &7061627968419066246
 GameObject:
   m_ObjectHideFlags: 0
@@ -1544,6 +1544,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5847415788055023253}
     m_Modifications:
+    - target: {fileID: 1693289471717735029, guid: efa1fae48a5af144bb91b7384918c848, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3316284392555543806, guid: efa1fae48a5af144bb91b7384918c848, type: 3}
       propertyPath: m_Name
       value: floor block brick h3 (3)
@@ -2040,6 +2044,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5847415788055023253}
     m_Modifications:
+    - target: {fileID: 1693289471717735029, guid: efa1fae48a5af144bb91b7384918c848, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3316284392555543806, guid: efa1fae48a5af144bb91b7384918c848, type: 3}
       propertyPath: m_Name
       value: floor block brick h3 (13)
@@ -2908,6 +2916,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5847415788055023253}
     m_Modifications:
+    - target: {fileID: 1693289471717735029, guid: efa1fae48a5af144bb91b7384918c848, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3316284392555543806, guid: efa1fae48a5af144bb91b7384918c848, type: 3}
       propertyPath: m_Name
       value: floor block brick h3
@@ -3266,6 +3278,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7702276705503159978, guid: af2ab78192fdf9043bc45a50a0e59bc9, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af2ab78192fdf9043bc45a50a0e59bc9, type: 3}
 --- !u!4 &8050916780351490401 stripped
@@ -3404,6 +3420,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5847415788055023253}
     m_Modifications:
+    - target: {fileID: 1693289471717735029, guid: efa1fae48a5af144bb91b7384918c848, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3316284392555543806, guid: efa1fae48a5af144bb91b7384918c848, type: 3}
       propertyPath: m_Name
       value: floor block brick h3 (8)
@@ -3847,6 +3867,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5847415788055023253}
     m_Modifications:
+    - target: {fileID: 1693289471717735029, guid: efa1fae48a5af144bb91b7384918c848, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3316284392555543806, guid: efa1fae48a5af144bb91b7384918c848, type: 3}
       propertyPath: m_Name
       value: floor block brick h3 (9)
@@ -4529,6 +4553,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5847415788055023253}
     m_Modifications:
+    - target: {fileID: 1693289471717735029, guid: efa1fae48a5af144bb91b7384918c848, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3316284392555543806, guid: efa1fae48a5af144bb91b7384918c848, type: 3}
       propertyPath: m_Name
       value: floor block brick h3 (10)
@@ -5211,6 +5239,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5847415788055023253}
     m_Modifications:
+    - target: {fileID: 1693289471717735029, guid: efa1fae48a5af144bb91b7384918c848, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3316284392555543806, guid: efa1fae48a5af144bb91b7384918c848, type: 3}
       propertyPath: m_Name
       value: floor block brick h3 (4)
@@ -5583,6 +5615,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5847415788055023253}
     m_Modifications:
+    - target: {fileID: 1693289471717735029, guid: efa1fae48a5af144bb91b7384918c848, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3316284392555543806, guid: efa1fae48a5af144bb91b7384918c848, type: 3}
       propertyPath: m_Name
       value: floor block brick h3 (12)
@@ -5707,6 +5743,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5847415788055023253}
     m_Modifications:
+    - target: {fileID: 1693289471717735029, guid: efa1fae48a5af144bb91b7384918c848, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3316284392555543806, guid: efa1fae48a5af144bb91b7384918c848, type: 3}
       propertyPath: m_Name
       value: floor block brick h3 (2)
@@ -6761,6 +6801,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5847415788055023253}
     m_Modifications:
+    - target: {fileID: 1693289471717735029, guid: efa1fae48a5af144bb91b7384918c848, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3316284392555543806, guid: efa1fae48a5af144bb91b7384918c848, type: 3}
       propertyPath: m_Name
       value: floor block brick h3 (1)
@@ -7071,6 +7115,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5847415788055023253}
     m_Modifications:
+    - target: {fileID: 1693289471717735029, guid: efa1fae48a5af144bb91b7384918c848, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3316284392555543806, guid: efa1fae48a5af144bb91b7384918c848, type: 3}
       propertyPath: m_Name
       value: floor block brick h3 (7)
@@ -8049,6 +8097,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7702276705503159978, guid: af2ab78192fdf9043bc45a50a0e59bc9, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af2ab78192fdf9043bc45a50a0e59bc9, type: 3}
 --- !u!4 &1206018963112445533 stripped
@@ -8187,6 +8239,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5847415788055023253}
     m_Modifications:
+    - target: {fileID: 1693289471717735029, guid: efa1fae48a5af144bb91b7384918c848, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3316284392555543806, guid: efa1fae48a5af144bb91b7384918c848, type: 3}
       propertyPath: m_Name
       value: floor block brick h3 (6)
@@ -8965,6 +9021,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5847415788055023253}
     m_Modifications:
+    - target: {fileID: 1693289471717735029, guid: efa1fae48a5af144bb91b7384918c848, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3316284392555543806, guid: efa1fae48a5af144bb91b7384918c848, type: 3}
       propertyPath: m_Name
       value: floor block brick h3 (5)
@@ -9198,6 +9258,10 @@ PrefabInstance:
     - target: {fileID: 5449437658338879634, guid: af2ab78192fdf9043bc45a50a0e59bc9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7702276705503159978, guid: af2ab78192fdf9043bc45a50a0e59bc9, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af2ab78192fdf9043bc45a50a0e59bc9, type: 3}
@@ -9762,6 +9826,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7702276705503159978, guid: af2ab78192fdf9043bc45a50a0e59bc9, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af2ab78192fdf9043bc45a50a0e59bc9, type: 3}
 --- !u!4 &4291915513790070515 stripped
@@ -10024,6 +10092,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5847415788055023253}
     m_Modifications:
+    - target: {fileID: 1693289471717735029, guid: efa1fae48a5af144bb91b7384918c848, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3316284392555543806, guid: efa1fae48a5af144bb91b7384918c848, type: 3}
       propertyPath: m_Name
       value: floor block brick h3 (11)

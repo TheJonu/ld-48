@@ -70,12 +70,12 @@ MonoBehaviour:
   spriteTime: 0.11
   onlyHorizontalMovement: 0
   idleSprites:
-  - {fileID: -4167543780277359114, guid: 78f65d28b02e9224592381785210c5f6, type: 3}
+  - {fileID: 8477967655488522100, guid: 8c860a500c92ab74fa81bb010b07df2c, type: 3}
   movementSprites:
-  - {fileID: -4167543780277359114, guid: 78f65d28b02e9224592381785210c5f6, type: 3}
-  - {fileID: -1332957310374407398, guid: 78f65d28b02e9224592381785210c5f6, type: 3}
-  - {fileID: -7897518827625076252, guid: 78f65d28b02e9224592381785210c5f6, type: 3}
-  - {fileID: 1340733769294387749, guid: 78f65d28b02e9224592381785210c5f6, type: 3}
+  - {fileID: 8477967655488522100, guid: 8c860a500c92ab74fa81bb010b07df2c, type: 3}
+  - {fileID: -8164138310766154424, guid: 8c860a500c92ab74fa81bb010b07df2c, type: 3}
+  - {fileID: 4696095655548290733, guid: 8c860a500c92ab74fa81bb010b07df2c, type: 3}
+  - {fileID: -2054464345780674429, guid: 8c860a500c92ab74fa81bb010b07df2c, type: 3}
   ladderSprites: []
 --- !u!212 &3877837457844946111
 SpriteRenderer:
@@ -117,7 +117,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: -4167543780277359114, guid: 78f65d28b02e9224592381785210c5f6, type: 3}
+  m_Sprite: {fileID: 8477967655488522100, guid: 8c860a500c92ab74fa81bb010b07df2c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -162,9 +162,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.020728827, y: 0}
   serializedVersion: 2
-  m_Radius: 0.32
+  m_Radius: 1.0289218
 --- !u!1 &5455178392909747794
 GameObject:
   m_ObjectHideFlags: 0
