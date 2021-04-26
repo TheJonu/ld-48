@@ -21,18 +21,18 @@ MonoBehaviour:
     amount: 1
   - prefab: {fileID: 8594064565216328648, guid: 99e47b3ec6693ae49bab51badc28b84b, type: 3}
     amount: 1
-  - prefab: {fileID: 4452033242803059328, guid: d7a30acc41c571c46801ac1a4396d4d3, type: 3}
-    amount: 3
-  - prefab: {fileID: 4452033242803059328, guid: 570622bf441c71742bf5e38f09ad0100, type: 3}
+  - prefab: {fileID: 4452033242803059328, guid: 1b0b5fd27d7ca634688b39af5858e808, type: 3}
+    amount: 2
+  - prefab: {fileID: 4452033242803059328, guid: ed13e6045d8cc8c408355343e50d9d25, type: 3}
     amount: 2
   - prefab: {fileID: 4452033242803059328, guid: aa689ff8f0d64fe4c82bd20d0326b8e5, type: 3}
     amount: 1
-  - prefab: {fileID: 4452033242803059328, guid: 3fd2c645ce51b714f9534311695ec384, type: 3}
-    amount: 5
+  - prefab: {fileID: 4452033242803059328, guid: 781364f7e5e64214792afaa864d81444, type: 3}
+    amount: 1
   - prefab: {fileID: 4452033242803059328, guid: 132f8ef6bd3d09c439e6ecb9a721d965, type: 3}
     amount: 1
-  - prefab: {fileID: 4452033242803059328, guid: 781364f7e5e64214792afaa864d81444, type: 3}
-    amount: 3
+  - prefab: {fileID: 4452033242803059328, guid: b864ec2ea8622a341a84cac59b6ebd10, type: 3}
+    amount: 1
   length: 50
   direction: -1
   floorYOffset: 0

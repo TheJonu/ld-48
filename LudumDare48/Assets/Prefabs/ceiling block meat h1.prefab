@@ -52,6 +52,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5449437658338879634}
     m_Modifications:
+    - target: {fileID: 1849343710055755566, guid: a5ac59adb58388b46a29429b2e366aac, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 4125485328127750824, guid: a428916fb58f4694fb8a5ef7dc31280e, type: 3}
     - target: {fileID: 3316284392555543806, guid: a5ac59adb58388b46a29429b2e366aac, type: 3}
       propertyPath: m_Name
       value: floor meat
@@ -99,6 +103,14 @@ PrefabInstance:
     - target: {fileID: 5449437658338879634, guid: a5ac59adb58388b46a29429b2e366aac, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6452587997733477739, guid: a5ac59adb58388b46a29429b2e366aac, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6452587997733477739, guid: a5ac59adb58388b46a29429b2e366aac, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a5ac59adb58388b46a29429b2e366aac, type: 3}

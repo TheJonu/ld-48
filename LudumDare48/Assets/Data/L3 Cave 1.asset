@@ -10,21 +10,29 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dd9ccf47b7494e0293ce2264c44f0d4e, type: 3}
-  m_Name: L3 Metal
+  m_Name: L3 Cave 1
   m_EditorClassIdentifier: 
   floorPrefab: {fileID: 4390722234434600982, guid: 4b8206900ba5bab478cbf49898cd589d, type: 3}
   ceilingPrefab: {fileID: 4390722234434600982, guid: f0d1e872f7845564c84e62b722f1c7df, type: 3}
   backgroundPrefab: {fileID: 4900296945213954524, guid: d262b292b82ba5f4e967a685e692e475, type: 3}
   staircasePrefab: {fileID: 7993928891477082042, guid: 9372cb3a70ed23042a47debb278d8c9f, type: 3}
   levelObjects:
-  - prefab: {fileID: 4452033242803059328, guid: 1b0b5fd27d7ca634688b39af5858e808, type: 3}
-    amount: 2
-  - prefab: {fileID: 4452033242803059328, guid: ed13e6045d8cc8c408355343e50d9d25, type: 3}
-    amount: 2
+  - prefab: {fileID: 4452033242803059328, guid: d7a30acc41c571c46801ac1a4396d4d3, type: 3}
+    amount: 5
+  - prefab: {fileID: 4452033242803059328, guid: 3fd2c645ce51b714f9534311695ec384, type: 3}
+    amount: 6
   - prefab: {fileID: 4452033242803059328, guid: 570622bf441c71742bf5e38f09ad0100, type: 3}
     amount: 5
+  - prefab: {fileID: 4452033242803059328, guid: dc7ae3d0dd41dd64984d6a388d4a9928, type: 3}
+    amount: 1
+  - prefab: {fileID: 4452033242803059328, guid: 1a27e24e5394f194da7171d408eff373, type: 3}
+    amount: 1
+  - prefab: {fileID: 4452033242803059328, guid: d398d3766a24d6a49b2cc6a55a8be939, type: 3}
+    amount: 1
+  - prefab: {fileID: 4452033242803059328, guid: 781364f7e5e64214792afaa864d81444, type: 3}
+    amount: 1
   length: 45
   direction: 1
   floorYOffset: 0
-  ceilingYOffset: -3
+  ceilingYOffset: -4
   insanityLevel: 0

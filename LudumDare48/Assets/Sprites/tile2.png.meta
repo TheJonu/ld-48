@@ -46,13 +46,13 @@ TextureImporter:
     second: frame_2
   - first:
       213: 3182096761532338775
-    second: floor_meat
+    second: lamp
   - first:
       213: -6378303653690740780
     second: bg_meat
   - first:
       213: 7378603361287401424
-    second: floor_meat
+    second: lamp
   - first:
       213: -1652587351198511100
     second: floor_wood
@@ -623,6 +623,27 @@ TextureImporter:
       bones: []
       spriteID: 4dfef24ee96bb77a0800000000000000
       internalID: -6378303653690740780
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lamp
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0dfe900e9a0166660800000000000000
+      internalID: 7378603361287401424
       vertices: []
       indices: 
       edges: []
