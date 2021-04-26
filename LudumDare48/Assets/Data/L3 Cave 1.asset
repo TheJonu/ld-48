@@ -19,7 +19,7 @@ MonoBehaviour:
   levelObjects:
   - prefab: {fileID: 624580562086665282, guid: 219600d075a4807479b5a1dc710fac6e, type: 3}
     amount: 1
-  - prefab: {fileID: 38756119599002572, guid: f0bb2e1671895f14fa7635ea29b51a80, type: 3}
+  - prefab: {fileID: 8594064565216328648, guid: 11d9a3627f2793f488eea81983554284, type: 3}
     amount: 1
   - prefab: {fileID: 4452033242803059328, guid: dc7ae3d0dd41dd64984d6a388d4a9928, type: 3}
     amount: 1
