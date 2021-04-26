@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
 
     protected float refVel = 0.0f;
 
-    protected float speedDampening = 0.0f;
+    protected float speedDampening = 0.05f;
 
     [SerializeField] ContactFilter2D climbLayerMask;
     [SerializeField] LayerMask terrainLayerMask;
@@ -40,18 +40,17 @@ public class PlayerController : MonoBehaviour
 
         Flip();
 
-        if (Input.GetKey(KeyCode.D) && Input.GetKey(KeyCode.A))
-        {
-            // do nothing plz
-        }
-        else if (Input.GetKey(KeyCode.D))
+        bool leftK = Input.GetKey(KeyCode.A);
+        bool rightK = Input.GetKey(KeyCode.D);
+
+        if (rightK && !leftK)
         {
             if (IsGrounded() || !IsGroundedButLeft(false))
             {
                 rb2d.velocity = new Vector2(Mathf.SmoothDamp(rb2d.velocity.x, xSpeed, ref refVel, speedDampening), rb2d.velocity.y);
             }
         }
-        else if (Input.GetKey(KeyCode.A))
+        else if (leftK && !rightK)
         {
             if (IsGrounded() || !IsGroundedButLeft(true))
             {
@@ -61,6 +60,10 @@ public class PlayerController : MonoBehaviour
         else if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S))
         {
             LadderCheck();
+        } 
+        else
+        {
+            rb2d.velocity = new Vector2(Mathf.SmoothDamp(rb2d.velocity.x, 0.0f, ref refVel, speedDampening), rb2d.velocity.y);
         }
     }
 

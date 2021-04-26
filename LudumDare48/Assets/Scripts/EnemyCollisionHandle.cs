@@ -44,9 +44,11 @@ public class EnemyCollisionHandle : MonoBehaviour
     void DoAThing()
     {
         CheckpointManager.GetInstance().resetPos.Invoke();
+        /*
         foreach(LocPair lp in enemies)
         {
             lp.gm.transform.position = lp.org;
         }
+        */
     }
 }
