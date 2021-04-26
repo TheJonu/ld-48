@@ -6,6 +6,7 @@ TagManager:
   tags:
   - DownOnlyLadder
   - Enemy
+  - Fade
   layers:
   - Default
   - TransparentFX
