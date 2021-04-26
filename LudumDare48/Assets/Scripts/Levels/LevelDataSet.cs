@@ -26,6 +26,7 @@ namespace Levels
         [SerializeField] private int direction;
         [SerializeField] private int floorYOffset;
         [SerializeField] private int ceilingYOffset;
+        [SerializeField] private float insanityLevel;
 
 
         public LevelBlock FloorPrefab => floorPrefab;
@@ -37,5 +38,6 @@ namespace Levels
         public int Direction => direction;
         public int FloorYOffset => floorYOffset;
         public int CeilingYOffset => ceilingYOffset;
+        public float InsanityLevel => insanityLevel;
     }
 }
