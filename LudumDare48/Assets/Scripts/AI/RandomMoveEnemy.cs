@@ -4,8 +4,8 @@ namespace AI
 {
     public class RandomMoveEnemy : Enemy
     {
-        [SerializeField] private float maxTime = 2;
-        [SerializeField] private float minTime = 5;
+        [SerializeField] private float maxTime = 1;
+        [SerializeField] private float minTime = 3;
         [SerializeField] private bool flippable = true;
 
         [SerializeField] private Transform leftBound;

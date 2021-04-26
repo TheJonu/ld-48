@@ -40,6 +40,7 @@ public class LevelManager : MonoBehaviour
             {
                 _currentLevel = value;
                 CurrentLevelChanged?.Invoke(_currentLevel);
+                CheckpointManager.GetInstance().checkPointEvent.Invoke();
             }
         }
     }

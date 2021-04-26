@@ -16,21 +16,58 @@ public class InsanityManager : MonoBehaviour
     public float enemyInsanityInc;
 
     private List<MatScript> mats = new List<MatScript>();
-    // Start is called before the first frame update
-    void Start()
+
+    private float spawnTimer;
+    private float despawnTimer;
+    private Levels.Level prevLev = null;
+    private bool firstLevel = true;
+
+    // Update is called once per frame
+    void Update()
     {
-        if(materialSelection.Length == 0 || enemyMaterialSelection.Length == 0)
+        spawnTimer += Time.deltaTime;
+        despawnTimer += Time.deltaTime;
+
+        if(despawnTimer > 0.15f)
         {
-            Debug.LogWarning("Not created insanity");
-            Destroy(this);
+            despawnTimer = 0.0f;
+            foreach (MatScript mat in mats)
+            {
+                if (Random.Range(0f, 1f) > 0.3f)
+                {
+                    mats.Remove(mat);
+                    Destroy(mat);
+                    break;
+                }
+            }
         }
 
-        foreach(Levels.Level lev in allLevels)
+        if(spawnTimer > 0.5f)
         {
-            foreach(GameObject gm in lev.GetSprites())
+            spawnTimer = 0.0f;
+            Levels.Level lev = LevelManager.Instance.CurrentLevel;
+            if(!lev)
+            {
+                return;
+            }
+            if(lev != prevLev)
+            {
+                prevLev = lev;
+                if(firstLevel)
+                {
+                    firstLevel = false;
+                } 
+                else
+                {
+                    Debug.Log("Insanity increased");
+                    insanityPercent += insanityInc / 30.0f + insanityPercent / 30.0f;
+                    enemyInsanityInc += enemyInsanityInc / 30.0f + enemyInsanityInc / 30.0f;
+                }
+            }
+            foreach (GameObject gm in lev.GetSprites())
             {
                 float insanityPercent = gm.tag == "Enemy" ? this.enemyInsanityInc : this.insanityPercent;
-                if (insanityPercent <= Random.Range(0f, 1f))
+                if (Random.Range(0f, 1f) >= insanityPercent)
                 {
                     continue;
                 }
@@ -48,8 +85,16 @@ public class InsanityManager : MonoBehaviour
 
                 mats.Add(m);
             }
-            insanityPercent += insanityInc;
-            enemyInsanityInc += enemyInsanityInc;
+        }
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        if(materialSelection.Length == 0 || enemyMaterialSelection.Length == 0)
+        {
+            Debug.LogWarning("Not created insanity");
+            Destroy(this);
         }
     }
 
@@ -59,11 +104,5 @@ public class InsanityManager : MonoBehaviour
         {
             Destroy(mat);
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
