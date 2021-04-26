@@ -64,7 +64,14 @@ namespace Anim
                 newState = AnimState.Movement;
 
             if (_hasLadderSprites && _hasPlayerController && !(playerController.LadderController is null))
+            {
                 newState = AnimState.Ladder;
+                if (!playerController.LadderController.IsMoving)
+                {
+                    _timer = 0;
+                }
+            }
+                
 
             if (newState != State)
                 _timer = 0;
