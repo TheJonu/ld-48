@@ -176,9 +176,9 @@ MonoBehaviour:
   levelDataSets:
   - {fileID: 11400000, guid: 0078371370c17404aa8724aa5b981613, type: 2}
   - {fileID: 11400000, guid: 5315a2c83bfcc2b4ebe5be010eb56db6, type: 2}
-  - {fileID: 11400000, guid: cac043d98e4abb0429ed3a9ab5c275d5, type: 2}
   - {fileID: 11400000, guid: 8b842d5c6c2d90b4b95f495d4639df96, type: 2}
   - {fileID: 11400000, guid: 23441045eabcd25499a35402d7d7417c, type: 2}
+  - {fileID: 11400000, guid: a684e55a2dfcec24ca0a0a1dd0476a62, type: 2}
   gridSize: 1
   levelPrefab: {fileID: 8847756791146052514, guid: 86195363f0cc6d2448f2b06036ae0971, type: 3}
   firstStaircase: {fileID: 990901635}
@@ -618,11 +618,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8022970881864077083, guid: b5c8f2aacef3bdb44bd856ddb7093ff2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.54
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 8022970881864077083, guid: b5c8f2aacef3bdb44bd856ddb7093ff2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.29
+      value: -2.45
       objectReference: {fileID: 0}
     - target: {fileID: 8022970881864077083, guid: b5c8f2aacef3bdb44bd856ddb7093ff2, type: 3}
       propertyPath: m_LocalPosition.z

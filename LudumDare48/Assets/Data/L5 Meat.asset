@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd9ccf47b7494e0293ce2264c44f0d4e, type: 3}
+  m_Name: L5 Meat
+  m_EditorClassIdentifier: 
+  floorPrefab: {fileID: 4390722234434600982, guid: b90e3fbc522fca84d9f5664302c2cfa6, type: 3}
+  ceilingPrefab: {fileID: 4390722234434600982, guid: 142e922b0ecc48c4a89a881c836e6106, type: 3}
+  backgroundPrefab: {fileID: 4900296945213954524, guid: 19e1c38c283696b4d83d746b6a5a94c7, type: 3}
+  staircasePrefab: {fileID: 7993928891477082042, guid: d9b167f8a4232404990c5c9d6dcc5a64, type: 3}
+  levelObjects: []
+  length: 30
+  direction: 1
+  floorYOffset: 0
+  ceilingYOffset: -3
+  insanityLevel: 0

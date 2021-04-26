@@ -49,9 +49,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2662407cbe741b459c45a58dc99c12f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xSpeed: 2
-  maxTime: 2
-  minTime: 5
+  xSpeed: 3
+  maxTime: 1
+  minTime: 3
   flippable: 1
   leftBound: {fileID: 0}
   rightBound: {fileID: 0}

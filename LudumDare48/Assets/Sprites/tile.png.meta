@@ -82,7 +82,7 @@ TextureImporter:
     second: tile_26
   - first:
       213: -3171011251273187430
-    second: tile_28
+    second: platform_wood
   - first:
       213: -4927533949171487880
     second: tile_29
@@ -772,27 +772,6 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tile_28
-      rect:
-        serializedVersion: 2
-        x: 144
-        y: 48
-        width: 16
-        height: 48
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a9f3815511e4ef3d0800000000000000
-      internalID: -3171011251273187430
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: tile_29
       rect:
         serializedVersion: 2
@@ -809,27 +788,6 @@ TextureImporter:
       bones: []
       spriteID: 87ba4fcfaf1ed9bb0800000000000000
       internalID: -4927533949171487880
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: tile_31
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 16
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8b01b12dd6865bc90800000000000000
-      internalID: -7154697612122451784
       vertices: []
       indices: 
       edges: []
@@ -872,27 +830,6 @@ TextureImporter:
       bones: []
       spriteID: ef1618e30be272f50800000000000000
       internalID: 6856500292192657918
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: tile_38
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 0
-        width: 32
-        height: 64
-      alignment: 9
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 479f0b1ca9c8b3990800000000000000
-      internalID: -7405170565978195596
       vertices: []
       indices: 
       edges: []
@@ -1066,27 +1003,6 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ladder_1
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 16
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: df1f9f72a3b82deb0800000000000000
-      internalID: -4696538379498950147
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: tile_ladda
       rect:
         serializedVersion: 2
@@ -1150,12 +1066,12 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ladder_2
+      name: platform_wood
       rect:
         serializedVersion: 2
-        x: 64
-        y: 0
-        width: 16
+        x: 224
+        y: 80
+        width: 32
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -1164,8 +1080,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 468f726fde605b870800000000000000
-      internalID: 8697865874442811492
+      spriteID: a9f3815511e4ef3d0800000000000000
+      internalID: -3171011251273187430
       vertices: []
       indices: 
       edges: []

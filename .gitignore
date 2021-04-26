@@ -6,6 +6,9 @@
 [Ll]ogs/
 Assets/AssetStoreTools*
 
+# Build zip
+[Bb]uild.zip
+
 # Visual Studio cache directory
 .vs/
 .idea/
