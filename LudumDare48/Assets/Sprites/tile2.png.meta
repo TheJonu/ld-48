@@ -19,10 +19,10 @@ TextureImporter:
     second: pole_wood
   - first:
       213: -3473930581815681442
-    second: window_big
+    second: blood_small_1
   - first:
       213: 4361758183906489818
-    second: window_small
+    second: blood_small_2
   - first:
       213: -550256444053543405
     second: tile2_30
@@ -755,6 +755,48 @@ TextureImporter:
       bones: []
       spriteID: b1418bc991d0aa7f0800000000000000
       internalID: -600653196645886949
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blood_small_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 96
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5e9280aa8e1acfc0800000000000000
+      internalID: -3473930581815681442
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blood_small_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 80
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad536eb65f3188c30800000000000000
+      internalID: 4361758183906489818
       vertices: []
       indices: 
       edges: []
