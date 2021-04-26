@@ -383,6 +383,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 2009184341}
+  playerGo: {fileID: 2009184335}
   levelDataSets:
   - {fileID: 11400000, guid: 0078371370c17404aa8724aa5b981613, type: 2}
   - {fileID: 11400000, guid: 5315a2c83bfcc2b4ebe5be010eb56db6, type: 2}
@@ -923,6 +924,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1370810303}
   - component: {fileID: 1370810302}
+  - component: {fileID: 1370810304}
   m_Layer: 0
   m_Name: Music Manager
   m_TagString: Untagged
@@ -945,6 +947,7 @@ MonoBehaviour:
   playerLocation: {fileID: 2009184335}
   backgroundTracks:
   - {fileID: 8300000, guid: be15ec03e8b047d4e8146708db248863, type: 3}
+  - {fileID: 8300000, guid: be15ec03e8b047d4e8146708db248863, type: 3}
   volume: 0.77
 --- !u!4 &1370810303
 Transform:
@@ -960,6 +963,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &1370810304
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1370810301}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1001 &1506154508
 PrefabInstance:
   m_ObjectHideFlags: 0
