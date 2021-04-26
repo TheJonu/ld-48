@@ -20,5 +20,5 @@ MonoBehaviour:
   length: 30
   direction: 1
   floorYOffset: 0
-  ceilingYOffset: -2
+  ceilingYOffset: -3
   insanityLevel: 0
