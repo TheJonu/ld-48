@@ -4,35 +4,52 @@ using UnityEngine;
 
 public class InsanityManager : MonoBehaviour
 {
-    [HideInInspector] public List<GameObject> allSprites;
+    [HideInInspector] public List<Levels.Level> allLevels;
 
     public Material[] materialSelection;
+    public Material[] enemyMaterialSelection;
 
     public float insanityPercent;
+    public float enemyInsanityPercent;
+
+    public float insanityInc;
+    public float enemyInsanityInc;
 
     private List<MatScript> mats = new List<MatScript>();
     // Start is called before the first frame update
     void Start()
     {
-        if(materialSelection.Length == 0)
+        if(materialSelection.Length == 0 || enemyMaterialSelection.Length == 0)
         {
             Debug.LogWarning("Not created insanity");
             Destroy(this);
         }
 
-        foreach(GameObject gm in allSprites)
+        foreach(Levels.Level lev in allLevels)
         {
-            if(insanityPercent <= Random.Range(0f, 1f))
+            foreach(GameObject gm in lev.GetSprites())
             {
-                continue;
+                float insanityPercent = gm.tag == "Enemy" ? this.enemyInsanityInc : this.insanityPercent;
+                if (insanityPercent <= Random.Range(0f, 1f))
+                {
+                    continue;
+                }
+
+                Material select;
+
+                if (gm.tag == "Enemy")
+                    select = enemyMaterialSelection[Random.Range(0, enemyMaterialSelection.Length)];
+                else
+                    select = materialSelection[Random.Range(0, materialSelection.Length)];
+
+                MatScript m = gm.AddComponent<MatScript>();
+
+                m.newMaterial = select;
+
+                mats.Add(m);
             }
-            Material select = materialSelection[Random.Range(0, materialSelection.Length)];
-
-            MatScript m = gm.AddComponent<MatScript>();
-
-            m.newMaterial = select;
-
-            mats.Add(m);
+            insanityPercent += insanityInc;
+            enemyInsanityInc += enemyInsanityInc;
         }
     }
 

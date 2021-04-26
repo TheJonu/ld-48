@@ -14,7 +14,13 @@ namespace AI
         private float _timeLeft = -1f;
 
         private Vector3 _location;
-        
+
+        private void Start()
+        {
+            Rb2d = GetComponent<Rigidbody2D>();
+            RollNewLoc();
+        }
+
         private void FixedUpdate()
         {
             if(_timeLeft > 0)

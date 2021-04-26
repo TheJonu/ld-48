@@ -186,7 +186,14 @@ MonoBehaviour:
   insanityMaterials:
   - {fileID: 2100000, guid: 6a2b981301aa5d145b5ca6eb4f6d1c34, type: 2}
   - {fileID: 2100000, guid: 8198e44857b68e84da7fc50d0ca73d84, type: 2}
-  insanityChance: 0.01
+  insanityEnemyMaterials:
+  - {fileID: 2100000, guid: 17deac4c75112fd4f92cda211552ea08, type: 2}
+  - {fileID: 2100000, guid: 8bc62f479430b3c459feed0ac7f53b33, type: 2}
+  - {fileID: 2100000, guid: 69e9a6f36e6a1bc4eb6376155700f44e, type: 2}
+  insanityChance: 0
+  perLevelIncrease: 0.05
+  enemyInsanityChance: 0
+  perLevelEnemyIncrease: 0.1
 --- !u!1 &442900052
 GameObject:
   m_ObjectHideFlags: 0
@@ -570,6 +577,10 @@ PrefabInstance:
     - target: {fileID: 3166763936038098927, guid: 39e4bf15b0de85240b8f34abfc03aa5b, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.26
+      objectReference: {fileID: 0}
+    - target: {fileID: 3370912069433813643, guid: 39e4bf15b0de85240b8f34abfc03aa5b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.45
       objectReference: {fileID: 0}
     - target: {fileID: 3370912069433813643, guid: 39e4bf15b0de85240b8f34abfc03aa5b, type: 3}
       propertyPath: m_LocalPosition.y

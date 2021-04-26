@@ -173,8 +173,6 @@ public class PlayerController : MonoBehaviour
 
         RaycastHit2D hit = Physics2D.BoxCast(lowerDown, box, 0f, Vector2.zero, 0, terrainLayerMask);
 
-        Debug.Log(hit.collider != null);
-
         ExtDebug.DrawBoxCastBox(lowerDown, box, Quaternion.identity, Vector2.zero, 0, Color.red);
         return hit.collider != null;
     }

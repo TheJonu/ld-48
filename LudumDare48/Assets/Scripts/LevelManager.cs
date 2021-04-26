@@ -16,8 +16,16 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private Level levelPrefab;
     [SerializeField] private Staircase firstStaircase;
     [SerializeField] private Transform levelsParent;
+
     [SerializeField] private Material[] insanityMaterials;
+    [SerializeField] private Material[] insanityEnemyMaterials;
+
     [SerializeField] private float insanityChance;
+    [SerializeField] private float perLevelIncrease;
+
+    [SerializeField] private float enemyInsanityChance;
+    [SerializeField] private float perLevelEnemyIncrease;
+
     public static LevelManager Instance { get; set; }
     public Transform Player => player;
     public float GridSize => gridSize;
@@ -72,19 +80,17 @@ public class LevelManager : MonoBehaviour
 
     private void StartInsanity()
     {
-        List<GameObject> list = new List<GameObject>();
-
-        foreach (Level l in _levels)
-        {
-            List<GameObject> levellist = l.GetSprites();
-
-            list.AddRange(levellist);
-        }
-
         InsanityManager im = gameObject.AddComponent<InsanityManager>();
 
-        im.allSprites = list;
+        im.allLevels = _levels;
+
         im.insanityPercent = insanityChance;
+        im.enemyInsanityPercent = enemyInsanityChance;
+
+        im.insanityInc = perLevelIncrease;
+        im.enemyInsanityInc = perLevelEnemyIncrease;
+
         im.materialSelection = insanityMaterials;
+        im.enemyMaterialSelection = insanityEnemyMaterials;
     }
 }
