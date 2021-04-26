@@ -352,7 +352,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1683188862718371482}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.86, y: 2.82, z: 0}
+  m_LocalPosition: {x: -7.2, y: 2.82, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8842148037157740539}
@@ -541,7 +541,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22cc4b985099bd1438ca47bfe2f36a3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xSpeed: 6
+  xSpeed: 3
   goesFrom: {fileID: 2258466165802981691}
   goesTo: {fileID: 3910320628807986376}
   flippable: 1
@@ -636,7 +636,7 @@ Rigidbody2D:
   m_Mass: 100
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -693,7 +693,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2041400733994146039}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.8, y: 2.82, z: 0}
+  m_LocalPosition: {x: 6.79, y: 2.82, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8842148037157740539}
@@ -750,7 +750,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2081166951454522592}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.99, y: 0.57, z: 0}
+  m_LocalPosition: {x: -1.99, y: 0.48, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8842148037157740539}
@@ -1118,7 +1118,7 @@ GameObject:
   - component: {fileID: 8842148037157740539}
   - component: {fileID: 624580562086665282}
   m_Layer: 0
-  m_Name: Cave Chase Encounter
+  m_Name: Cave Run Encounter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1691,7 +1691,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6546337480286179012}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.01, y: 0.57, z: 0}
+  m_LocalPosition: {x: 2.01, y: 0.508, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8842148037157740539}
@@ -1988,7 +1988,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1419509942530372291, guid: 36fedad4e9ff30449bf3a366004ab75d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.7472112
+      value: 0.581
       objectReference: {fileID: 0}
     - target: {fileID: 1419509942530372291, guid: 36fedad4e9ff30449bf3a366004ab75d, type: 3}
       propertyPath: m_LocalPosition.z
