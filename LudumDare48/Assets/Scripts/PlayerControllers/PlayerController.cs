@@ -9,11 +9,11 @@ public class PlayerController : MonoBehaviour
     protected Rigidbody2D rb2d;
     protected Collider2D coll2d;
 
-    public float xSpeed = .5f;
-    
-    protected Vector2 refVel = Vector2.zero;
+    public float xSpeed = .0f;
 
-    protected float speedDampening = .05f;
+    protected float refVel = 0.0f;
+
+    protected float speedDampening = 0.0f;
 
     [SerializeField] ContactFilter2D climbLayerMask;
     [SerializeField] LayerMask terrainLayerMask;
@@ -40,36 +40,27 @@ public class PlayerController : MonoBehaviour
 
         Flip();
 
-        float curSpeed = xSpeed;
-        if (!IsGrounded())
-        {
-            curSpeed /= 4;
-        }
-            
-        if(Input.GetKey(KeyCode.D) && Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.D) && Input.GetKey(KeyCode.A))
         {
             // do nothing plz
-        } 
-        else if(Input.GetKey(KeyCode.D))
-        {
-            Vector2 targetSpeed = new Vector2(curSpeed, rb2d.velocity.y);
-            Vector2 ret = Vector2.zero;
-            rb2d.velocity = Vector2.SmoothDamp(rb2d.velocity, targetSpeed, ref refVel, speedDampening);
         }
-
-        else if(Input.GetKey(KeyCode.A))
+        else if (Input.GetKey(KeyCode.D))
         {
-            Vector2 targetSpeed = new Vector2(-curSpeed, rb2d.velocity.y);
-            Vector2 ret = Vector2.zero;
-            rb2d.velocity = Vector2.SmoothDamp(rb2d.velocity, targetSpeed, ref refVel, speedDampening);
+            if (IsGrounded() || !IsGroundedButLeft(false))
+            {
+                rb2d.velocity = new Vector2(Mathf.SmoothDamp(rb2d.velocity.x, xSpeed, ref refVel, speedDampening), rb2d.velocity.y);
+            }
+        }
+        else if (Input.GetKey(KeyCode.A))
+        {
+            if (IsGrounded() || !IsGroundedButLeft(true))
+            {
+                rb2d.velocity = new Vector2(Mathf.SmoothDamp(rb2d.velocity.x, -xSpeed, ref refVel, speedDampening), rb2d.velocity.y);
+            }
         }
         else if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S))
-            LadderCheck();
-        else
         {
-            Vector2 targetSpeed = new Vector2(0, rb2d.velocity.y);
-            Vector2 ret = Vector2.zero;
-            rb2d.velocity = Vector2.SmoothDamp(rb2d.velocity, targetSpeed, ref refVel, speedDampening);
+            LadderCheck();
         }
     }
 
@@ -150,6 +141,76 @@ public class PlayerController : MonoBehaviour
 
         } while (size > 0);
         
+    }
+
+    // jam horror
+    bool IsGroundedButLeft(bool isItActuallyLeft)
+    {
+
+        ContactFilter2D filter = new ContactFilter2D();
+        filter.layerMask = terrainLayerMask;
+        filter.useLayerMask = true;
+
+        Vector2 box = coll2d.bounds.extents;
+
+        box += new Vector2(0, 0.02f) * (isItActuallyLeft ? -1.0f : 1.0f);
+
+        Vector2 leftUp = coll2d.bounds.center;
+        Vector2 leftDown = coll2d.bounds.center;
+
+        leftUp.x += coll2d.bounds.size.x * (isItActuallyLeft ? -1.0f : 1.0f);
+        leftDown.x += coll2d.bounds.size.x * (isItActuallyLeft ? -1.0f : 1.0f);
+        leftUp.y -= coll2d.bounds.size.y;
+        leftDown.y += coll2d.bounds.size.y;
+
+        {
+            RaycastHit2D[] rhits = new RaycastHit2D[256];
+
+            int size = Physics2D.BoxCast(leftUp, box, 0f, Vector2.zero, filter, rhits);
+
+            ContactPoint2D[] point = new ContactPoint2D[256];
+
+            int contSize = rb2d.GetContacts(point);
+
+            for (int i = 0; i < size; i++)
+            {
+                for (int j = 0; j < contSize; j++)
+                {
+                    if (point[j].collider == rhits[i].collider)
+                    {
+                        Debug.Log("Yes I am grounded!");
+                        Debug.Log(rhits[i].collider);
+                        return true;
+                    }
+                }
+            }
+        }
+        {
+            RaycastHit2D[] rhits = new RaycastHit2D[256];
+
+            int size = Physics2D.BoxCast(leftDown, box, 0f, Vector2.zero, filter, rhits);
+
+            ContactPoint2D[] point = new ContactPoint2D[256];
+
+            int contSize = rb2d.GetContacts(point);
+
+            for (int i = 0; i < size; i++)
+            {
+                for (int j = 0; j < contSize; j++)
+                {
+                    if (point[j].collider == rhits[i].collider)
+                    {
+                        Debug.Log("Yes I am grounded!");
+                        Debug.Log(rhits[i].collider);
+                        return true;
+                    }
+                }
+            }
+        }
+
+        ExtDebug.DrawBoxCastBox(leftUp, box, Quaternion.identity, Vector2.zero, 0, Color.green);
+        ExtDebug.DrawBoxCastBox(leftDown, box, Quaternion.identity, Vector2.zero, 0, Color.green);
+        return false;
     }
 
     bool IsGrounded()
