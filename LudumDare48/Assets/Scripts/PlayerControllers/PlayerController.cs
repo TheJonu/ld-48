@@ -40,15 +40,10 @@ public class PlayerController : MonoBehaviour
 
         Flip();
 
+        float curSpeed = xSpeed;
         if (!IsGrounded())
         {
-            //Debug.Log("Not touched ground");
-            return;
-        }
-        else
-        {
-            //Debug.Log("Touched gorund");
-            touchedGround = true;
+            curSpeed /= 4;
         }
             
         if(Input.GetKey(KeyCode.D) && Input.GetKey(KeyCode.A))
@@ -57,14 +52,14 @@ public class PlayerController : MonoBehaviour
         } 
         else if(Input.GetKey(KeyCode.D))
         {
-            Vector2 targetSpeed = new Vector2(xSpeed, rb2d.velocity.y);
+            Vector2 targetSpeed = new Vector2(curSpeed, rb2d.velocity.y);
             Vector2 ret = Vector2.zero;
             rb2d.velocity = Vector2.SmoothDamp(rb2d.velocity, targetSpeed, ref refVel, speedDampening);
         }
 
         else if(Input.GetKey(KeyCode.A))
         {
-            Vector2 targetSpeed = new Vector2(-xSpeed, rb2d.velocity.y);
+            Vector2 targetSpeed = new Vector2(-curSpeed, rb2d.velocity.y);
             Vector2 ret = Vector2.zero;
             rb2d.velocity = Vector2.SmoothDamp(rb2d.velocity, targetSpeed, ref refVel, speedDampening);
         }
