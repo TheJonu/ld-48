@@ -9,8 +9,6 @@ public class InsanityManager : MonoBehaviour
     public Material[] materialSelection;
     public Material[] enemyMaterialSelection;
 
-    public GameObject playerLocation;
-
     public float insanityPercent;
     public float enemyInsanityPercent;
 
@@ -61,10 +59,9 @@ public class InsanityManager : MonoBehaviour
                 } 
                 else
                 {
-                    Debug.Log("Insanity increased");
                     insanityPercent += insanityInc / 30.0f + insanityPercent / 30.0f;
                     enemyInsanityInc += enemyInsanityInc / 30.0f + enemyInsanityInc / 30.0f;
-                    playerLocation.GetComponent<MusicController>().Next();
+                    Camera.main.GetComponent<MusicController>().Next();
                 }
             }
             foreach (GameObject gm in lev.GetSprites())
