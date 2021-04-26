@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
 
     protected float refVel = 0.0f;
 
-    protected float speedDampening = .1f;
+    protected float speedDampening = .01f;
 
     [SerializeField] ContactFilter2D climbLayerMask;
     [SerializeField] LayerMask terrainLayerMask;
