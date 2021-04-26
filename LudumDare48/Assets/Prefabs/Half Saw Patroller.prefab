@@ -70,12 +70,12 @@ MonoBehaviour:
   spriteTime: 0.11
   onlyHorizontalMovement: 0
   idleSprites:
-  - {fileID: 8952579329312639340, guid: 78f65d28b02e9224592381785210c5f6, type: 3}
+  - {fileID: -1249835416109342940, guid: 8c860a500c92ab74fa81bb010b07df2c, type: 3}
   movementSprites:
-  - {fileID: 8952579329312639340, guid: 78f65d28b02e9224592381785210c5f6, type: 3}
-  - {fileID: 2693899778015109357, guid: 78f65d28b02e9224592381785210c5f6, type: 3}
-  - {fileID: 8631130792890714432, guid: 78f65d28b02e9224592381785210c5f6, type: 3}
-  - {fileID: 102464443920676763, guid: 78f65d28b02e9224592381785210c5f6, type: 3}
+  - {fileID: -1249835416109342940, guid: 8c860a500c92ab74fa81bb010b07df2c, type: 3}
+  - {fileID: 6608204792640404835, guid: 8c860a500c92ab74fa81bb010b07df2c, type: 3}
+  - {fileID: 6114440899566795357, guid: 8c860a500c92ab74fa81bb010b07df2c, type: 3}
+  - {fileID: 5568377600578246405, guid: 8c860a500c92ab74fa81bb010b07df2c, type: 3}
   ladderSprites: []
 --- !u!212 &1938401677407851079
 SpriteRenderer:
@@ -117,7 +117,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 8952579329312639340, guid: 78f65d28b02e9224592381785210c5f6, type: 3}
+  m_Sprite: {fileID: -1249835416109342940, guid: 8c860a500c92ab74fa81bb010b07df2c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -162,18 +162,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.001698494, y: -0.0026555955}
+  m_Offset: {x: 0.0031838417, y: -0.00021447241}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.64, y: 0.31}
+    oldSize: {x: 1, y: 0.4375}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.6448746, y: 0.30850434}
+  m_Size: {x: 1.0029116, y: 0.45009163}
   m_EdgeRadius: 0.01
 --- !u!1 &7242598854575669418
 GameObject:
