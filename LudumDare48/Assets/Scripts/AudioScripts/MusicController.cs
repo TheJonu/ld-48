@@ -57,6 +57,11 @@ public class MusicController : MonoBehaviour
         isFadingOut = true;
     }
 
+    public void ChangeVolume(float val)
+    {
+        volume = val;
+    }
+
     void FixedUpdate()
     {
         if (trans.isPlaying)
@@ -65,6 +70,11 @@ public class MusicController : MonoBehaviour
         }
         if (!isFadingOut)
         {
+            if (!source.isPlaying)
+            {
+                source.clip = clips[curClip];
+                source.Play();
+            }
             if (source.volume < volume)
             {
                 source.volume += Time.fixedDeltaTime * volume / crossFadeDuration;
@@ -83,10 +93,6 @@ public class MusicController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!source.isPlaying && !isFadingOut)
-        {
-            source.clip = clips[curClip];
-            source.Play();
-        }
+        
     }
 }
