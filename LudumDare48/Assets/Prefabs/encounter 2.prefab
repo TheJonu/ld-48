@@ -90,6 +90,22 @@ Transform:
   m_Father: {fileID: 385948702675826801}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9008830337582073079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4248238468039410293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22cc4b985099bd1438ca47bfe2f36a3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xSpeed: 2.5
+  goesFrom: {fileID: 8440359527396221793}
+  goesTo: {fileID: 5869175790162099161}
+  flippable: 1
 --- !u!1 &4341116666905597784
 GameObject:
   m_ObjectHideFlags: 0
@@ -349,6 +365,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8440359527396221793}
     - target: {fileID: 5841301264686943326, guid: 36fedad4e9ff30449bf3a366004ab75d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5841301264686943326, guid: 36fedad4e9ff30449bf3a366004ab75d, type: 3}
       propertyPath: rightBound
       value: 
       objectReference: {fileID: 5869175790162099161}
@@ -357,6 +377,11 @@ PrefabInstance:
 --- !u!4 &4248238468039410313 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1419509942530372291, guid: 36fedad4e9ff30449bf3a366004ab75d, type: 3}
+  m_PrefabInstance: {fileID: 2974586483237449802}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4248238468039410293 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1419509942530372159, guid: 36fedad4e9ff30449bf3a366004ab75d, type: 3}
   m_PrefabInstance: {fileID: 2974586483237449802}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3265049426609485551
