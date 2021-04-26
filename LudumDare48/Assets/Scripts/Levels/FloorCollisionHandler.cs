@@ -1,24 +1,24 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
-public class FloorCollisionHandler : MonoBehaviour
+namespace Levels
 {
-     [SerializeField] private BoxCollider2D collider;
-     
-     public BoxCollider2D Collider => collider;
-     public Action EnteredCollision { get; set; }
-
-     private const string PlayerTag = "Player";
-     
-
-     private void OnCollisionEnter2D(Collision2D collision)
+     public class FloorCollisionHandler : MonoBehaviour
      {
-          if (collision.gameObject.CompareTag(PlayerTag))
+          [SerializeField] private BoxCollider2D collider;
+     
+          public BoxCollider2D Collider => collider;
+          public Action EnteredCollision { get; set; }
+
+          private const string PlayerTag = "Player";
+     
+
+          private void OnCollisionEnter2D(Collision2D collision)
           {
-               EnteredCollision?.Invoke();
+               if (collision.gameObject.CompareTag(PlayerTag))
+               {
+                    EnteredCollision?.Invoke();
+               }
           }
      }
 }

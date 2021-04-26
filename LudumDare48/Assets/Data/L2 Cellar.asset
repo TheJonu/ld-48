@@ -35,6 +35,7 @@ MonoBehaviour:
     amount: 1
   - prefab: {fileID: 4452033242803059328, guid: e7dcc32a526924245b45b907df885a0e, type: 3}
     amount: 1
+  id: 2
   length: 50
   direction: -1
   floorYOffset: 0

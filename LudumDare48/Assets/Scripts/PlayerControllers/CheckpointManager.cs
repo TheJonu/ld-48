@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,20 +9,28 @@ public class CheckpointManager : MonoBehaviour
     private Vector3 org;
     [HideInInspector] public UnityEvent checkPointEvent;
     [HideInInspector] public UnityEvent resetPos;
-    private static CheckpointManager instance;
+    
+    public static CheckpointManager Instance { get; private set; }
+    public Action ReturnedToCheckpoint;
+    
     // Start is called before the first frame update
 
     public static CheckpointManager GetInstance()
     {
-        return instance;
+        return Instance;
+    }
+
+    private void Awake()
+    {
+        Instance = this;
     }
 
     void Start()
     {
-        instance = this;
         org = gameObject.transform.position;
         checkPointEvent.AddListener(SetNew);
         resetPos.AddListener(ResetPos);
+        resetPos.AddListener(() => ReturnedToCheckpoint?.Invoke());
     }
 
     // Update is called once per frame

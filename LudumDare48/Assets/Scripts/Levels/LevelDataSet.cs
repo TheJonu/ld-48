@@ -21,7 +21,8 @@ namespace Levels
         [SerializeField] private Staircase staircasePrefab;
         [SerializeField] private List<SpawnAmount<LevelObject>> levelObjects;
 
-        [Header("Values")]
+        [Header("Values")] 
+        [SerializeField] private int id;
         [SerializeField] private int length;
         [SerializeField] private int direction;
         [SerializeField] private int floorYOffset;
@@ -34,6 +35,7 @@ namespace Levels
         public LevelBlock BackgroundPrefab => backgroundPrefab;
         public Staircase StaircasePrefab => staircasePrefab;
         public List<SpawnAmount<LevelObject>> LevelObjects => levelObjects;
+        public int Id => id;
         public int Length => length;
         public int Direction => direction;
         public int FloorYOffset => floorYOffset;
