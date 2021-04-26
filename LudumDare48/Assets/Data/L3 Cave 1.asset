@@ -19,18 +19,18 @@ MonoBehaviour:
   levelObjects:
   - prefab: {fileID: 624580562086665282, guid: 219600d075a4807479b5a1dc710fac6e, type: 3}
     amount: 1
+  - prefab: {fileID: 4452033242803059328, guid: dc7ae3d0dd41dd64984d6a388d4a9928, type: 3}
+    amount: 1
+  - prefab: {fileID: 4452033242803059328, guid: d398d3766a24d6a49b2cc6a55a8be939, type: 3}
+    amount: 1
+  - prefab: {fileID: 4452033242803059328, guid: 1a27e24e5394f194da7171d408eff373, type: 3}
+    amount: 1
   - prefab: {fileID: 4452033242803059328, guid: d7a30acc41c571c46801ac1a4396d4d3, type: 3}
     amount: 5
   - prefab: {fileID: 4452033242803059328, guid: 3fd2c645ce51b714f9534311695ec384, type: 3}
     amount: 6
   - prefab: {fileID: 4452033242803059328, guid: 570622bf441c71742bf5e38f09ad0100, type: 3}
     amount: 5
-  - prefab: {fileID: 4452033242803059328, guid: dc7ae3d0dd41dd64984d6a388d4a9928, type: 3}
-    amount: 1
-  - prefab: {fileID: 4452033242803059328, guid: 1a27e24e5394f194da7171d408eff373, type: 3}
-    amount: 1
-  - prefab: {fileID: 4452033242803059328, guid: d398d3766a24d6a49b2cc6a55a8be939, type: 3}
-    amount: 1
   - prefab: {fileID: 4452033242803059328, guid: 781364f7e5e64214792afaa864d81444, type: 3}
     amount: 1
   id: 3

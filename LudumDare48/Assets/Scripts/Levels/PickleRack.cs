@@ -42,6 +42,8 @@ namespace Levels
 
         private IEnumerator EndRoutine()
         {
+            Player.GetComponent<PlayerController>().enabled = false;
+            
             yield return new WaitForSeconds(3f);
             
             Fade.DOFade(1f, 2f);
