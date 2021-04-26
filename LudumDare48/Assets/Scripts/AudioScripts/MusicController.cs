@@ -6,6 +6,9 @@ public class MusicController : MonoBehaviour
 {
     public AudioClip[] clips;
     public float volume = 0.75f;
+    public float crossFadeDuration = 7.0f;
+    public float fadeOutDuration = 2.0f;
+    private bool isFadingOut = false;
     private int curClip = 0;
     private AudioSource source;
     private AudioSource trans;
@@ -42,35 +45,45 @@ public class MusicController : MonoBehaviour
 
         curClip++;
         source.clip = clips[curClip];
-        if (curClip == 1) {
+        if (curClip == 1 || curClip == 4) {
             source.time *= 3.0f;
         }
         source.volume = 0.0f;
         source.Play();
+    }
 
-        Debug.Log(curClip);
+    public void FadeOut()
+    {
+        isFadingOut = true;
     }
 
     void FixedUpdate()
     {
         if (trans.isPlaying)
         {
-            trans.volume -= Time.fixedDeltaTime * volume * 0.2f;
+            trans.volume -= Time.fixedDeltaTime * volume / crossFadeDuration;
         }
-        if(source.volume < volume)
+        if (!isFadingOut)
         {
-            source.volume += Time.fixedDeltaTime * volume * 0.2f;
-        }
+            if (source.volume < volume)
+            {
+                source.volume += Time.fixedDeltaTime * volume / crossFadeDuration;
+            }
+            else
+            {
+                source.volume = volume;
+            }
+        } 
         else
         {
-            source.volume = volume;
+            source.volume -= Time.fixedDeltaTime * volume / fadeOutDuration;
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(!source.isPlaying)
+        if(!source.isPlaying && !isFadingOut)
         {
             source.clip = clips[curClip];
             source.Play();

@@ -892,7 +892,7 @@ MonoBehaviour:
   pickleAcquiredMessageDuration: 10
   pickleAcquiredMessage: Pickles acquired! Wasn't so hard, was it?
   floorEnterMessages:
-  - You've been asked to fetch a jar of pickles form the basement.
+  - You've been asked to fetch a jar of pickles from the basement.
   - 'You quickly realize how rarely you go down here. '
   - The surroundings begin to look unfamiliar. What is this place?
   - "I don't think I'm at a\u0336\u030B\u0352\u034B\u0330\u033C\u0359\u0330\u0330\u0326\u031F\u032A\u035C\u032D\u0319t\u0336\u0344\u0306\u0358\u0343\u0313\u0341\u0312\u0344\u0304\u035D\u0315\u0310\u0310\u034C\u0341\u0328\u0333\u0325\u0319\u0353\u0323\u0356\u0316
@@ -961,6 +961,9 @@ MonoBehaviour:
   backgroundTracks:
   - {fileID: 8300000, guid: be15ec03e8b047d4e8146708db248863, type: 3}
   - {fileID: 8300000, guid: 93bbcfbdd384ff84ea7d3d89461e4d4e, type: 3}
+  - {fileID: 8300000, guid: 0799356ff471f8048bd38c938e8a3da3, type: 3}
+  - {fileID: 8300000, guid: e462003edba7f8d4ca15180d41df21a3, type: 3}
+  - {fileID: 8300000, guid: e1bd9b1b3f3eada4fa235b0a87f48752, type: 3}
   volume: 0.77
   pinkNoiseClips:
   - {fileID: 8300000, guid: acc5acb4e2e0d5a45b2a8004480eccf2, type: 3}
