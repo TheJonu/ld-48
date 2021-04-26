@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2127722032097750020}
   - component: {fileID: 1429143004060418968}
   m_Layer: 8
-  m_Name: ladder broken v1
+  m_Name: ladder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -72,9 +72,9 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 3402096331159700024, guid: a428916fb58f4694fb8a5ef7dc31280e, type: 3}
+  m_Sprite: {fileID: -3552569459566352538, guid: a428916fb58f4694fb8a5ef7dc31280e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 1
+  m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 0.48, y: 0.48}
@@ -100,7 +100,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 0.9375}
+    oldSize: {x: 1, y: 1.0625}
     newSize: {x: 0.48, y: 0.48}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

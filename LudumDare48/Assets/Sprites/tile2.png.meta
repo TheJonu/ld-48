@@ -4,10 +4,10 @@ TextureImporter:
   internalIDToNameTable:
   - first:
       213: 1146026246899587582
-    second: tile2_4
+    second: frame_1
   - first:
       213: 5200261770053665789
-    second: tile2_13
+    second: frame_3
   - first:
       213: -2812036285352245650
     second: pole_stone
@@ -43,16 +43,16 @@ TextureImporter:
     second: ladder_end_up
   - first:
       213: 5605687227270244686
-    second: stairs_wood_right
+    second: frame_2
   - first:
       213: 3182096761532338775
-    second: back_wood
+    second: floor_meat
   - first:
       213: -6378303653690740780
-    second: wall_wood
+    second: bg_meat
   - first:
       213: 7378603361287401424
-    second: back_wood
+    second: floor_meat
   - first:
       213: -1652587351198511100
     second: floor_wood
@@ -76,7 +76,7 @@ TextureImporter:
     second: stairs_brick_right
   - first:
       213: -586985408046388317
-    second: floor_meat
+    second: platform_meat
   - first:
       213: -2682726288324578248
     second: cabinet
@@ -187,13 +187,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: tile2_4
+      name: frame_1
       rect:
         serializedVersion: 2
-        x: 227
-        y: 224
-        width: 26
-        height: 32
+        x: 224
+        y: 240
+        width: 32
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -208,13 +208,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tile2_13
+      name: frame_3
       rect:
         serializedVersion: 2
-        x: 227
-        y: 195
-        width: 26
-        height: 28
+        x: 224
+        y: 192
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -256,7 +256,7 @@ TextureImporter:
         x: 16
         y: 0
         width: 32
-        height: 64
+        height: 80
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -397,27 +397,6 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: floor_wood
-      rect:
-        serializedVersion: 2
-        x: 224
-        y: 144
-        width: 32
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 40052835f84d019e0800000000000000
-      internalID: -1652587351198511100
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: back_concrete
       rect:
         serializedVersion: 2
@@ -502,49 +481,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: stairs_brick_left
-      rect:
-        serializedVersion: 2
-        x: 224
-        y: 96
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c7b18ef90d88c4730800000000000000
-      internalID: 3984710199933410172
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: stairs_brick_right
-      rect:
-        serializedVersion: 2
-        x: 208
-        y: 96
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8f15a00d5140379e0800000000000000
-      internalID: -1624950548819455496
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: floor_meat
+      name: platform_meat
       rect:
         serializedVersion: 2
         x: 224
@@ -623,6 +560,69 @@ TextureImporter:
       bones: []
       spriteID: 0500c6607512f8e70800000000000000
       internalID: 9119544428102156368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: frame_2
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 224
+        width: 32
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e49236f35d66bcd40800000000000000
+      internalID: 5605687227270244686
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: floor_meat
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 80
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7525e082524192c20800000000000000
+      internalID: 3182096761532338775
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bg_meat
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 0
+        width: 48
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4dfef24ee96bb77a0800000000000000
+      internalID: -6378303653690740780
       vertices: []
       indices: 
       edges: []

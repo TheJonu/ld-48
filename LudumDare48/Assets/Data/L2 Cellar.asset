@@ -10,28 +10,30 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dd9ccf47b7494e0293ce2264c44f0d4e, type: 3}
-  m_Name: L2 Cellar 1
+  m_Name: L2 Cellar
   m_EditorClassIdentifier: 
   floorPrefab: {fileID: 4390722234434600982, guid: efa1fae48a5af144bb91b7384918c848, type: 3}
   ceilingPrefab: {fileID: 4390722234434600982, guid: af2ab78192fdf9043bc45a50a0e59bc9, type: 3}
   backgroundPrefab: {fileID: 4900296945213954524, guid: 40ad554aaf23c9d46b0aa625da327d1a, type: 3}
-  staircasePrefab: {fileID: 7993928891477082042, guid: ebad3d98629b86d449f0021762388e09, type: 3}
+  staircasePrefab: {fileID: 7993928891477082042, guid: 6eb25ea9a23cb574a8e1e2f90f1164eb, type: 3}
   levelObjects:
   - prefab: {fileID: 8594064565216328648, guid: 9d06fe291131e704388ed2d2e8508826, type: 3}
     amount: 1
   - prefab: {fileID: 8594064565216328648, guid: 99e47b3ec6693ae49bab51badc28b84b, type: 3}
     amount: 1
   - prefab: {fileID: 4452033242803059328, guid: d7a30acc41c571c46801ac1a4396d4d3, type: 3}
-    amount: 2
+    amount: 3
   - prefab: {fileID: 4452033242803059328, guid: 570622bf441c71742bf5e38f09ad0100, type: 3}
     amount: 3
   - prefab: {fileID: 4452033242803059328, guid: aa689ff8f0d64fe4c82bd20d0326b8e5, type: 3}
     amount: 1
-  - prefab: {fileID: 4452033242803059328, guid: 53edde8976bb1dc4dae83a348615f2b2, type: 3}
-    amount: 1
   - prefab: {fileID: 4452033242803059328, guid: 3fd2c645ce51b714f9534311695ec384, type: 3}
     amount: 5
-  length: 40
+  - prefab: {fileID: 4452033242803059328, guid: 132f8ef6bd3d09c439e6ecb9a721d965, type: 3}
+    amount: 1
+  - prefab: {fileID: 4452033242803059328, guid: 781364f7e5e64214792afaa864d81444, type: 3}
+    amount: 3
+  length: 50
   direction: -1
   floorYOffset: 0
   ceilingYOffset: -4
