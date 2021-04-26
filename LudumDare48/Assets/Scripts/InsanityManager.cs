@@ -66,7 +66,7 @@ public class InsanityManager : MonoBehaviour
             }
             foreach (GameObject gm in lev.GetSprites())
             {
-                float insanityPercent = gm.tag == "Enemy" ? this.enemyInsanityInc : this.insanityPercent;
+                float insanityPercent = gm.CompareTag("Enemy") ? this.enemyInsanityInc : this.insanityPercent;
                 if (Random.Range(0f, 1f) >= insanityPercent)
                 {
                     continue;
@@ -74,7 +74,7 @@ public class InsanityManager : MonoBehaviour
 
                 Material select;
 
-                if (gm.tag == "Enemy")
+                if (gm.CompareTag("Enemy"))
                     select = enemyMaterialSelection[Random.Range(0, enemyMaterialSelection.Length)];
                 else
                     select = materialSelection[Random.Range(0, materialSelection.Length)];

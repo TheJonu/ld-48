@@ -960,6 +960,10 @@ MonoBehaviour:
   backgroundTracks:
   - {fileID: 8300000, guid: be15ec03e8b047d4e8146708db248863, type: 3}
   volume: 0.77
+  pinkNoiseClips:
+  - {fileID: 8300000, guid: acc5acb4e2e0d5a45b2a8004480eccf2, type: 3}
+  - {fileID: 8300000, guid: 4c9ce31fb3dc12042b428b29bd6003dd, type: 3}
+  - {fileID: 8300000, guid: e9c7bd05163d92249ac951b4f6cafa60, type: 3}
 --- !u!4 &1370810303
 Transform:
   m_ObjectHideFlags: 0
@@ -968,7 +972,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1370810301}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.0143275, y: 1.0056734, z: -41.205784}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
