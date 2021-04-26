@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dd9ccf47b7494e0293ce2264c44f0d4e, type: 3}
-  m_Name: Level 2 Data
+  m_Name: L2 House 2
   m_EditorClassIdentifier: 
   floorPrefab: {fileID: 4390722234434600982, guid: 4a926f548b1fb8e4a8e6e8bd8b028855, type: 3}
   ceilingPrefab: {fileID: 4390722234434600982, guid: af2ab78192fdf9043bc45a50a0e59bc9, type: 3}
@@ -35,7 +35,7 @@ MonoBehaviour:
     amount: 5
   - prefab: {fileID: 4452033242803059328, guid: d7a30acc41c571c46801ac1a4396d4d3, type: 3}
     amount: 2
-  length: 40
+  length: 35
   direction: -1
   floorYOffset: 0
   ceilingYOffset: -4

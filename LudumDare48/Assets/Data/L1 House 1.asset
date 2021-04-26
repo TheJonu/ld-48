@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dd9ccf47b7494e0293ce2264c44f0d4e, type: 3}
-  m_Name: Level 1 Data
+  m_Name: L1 House 1
   m_EditorClassIdentifier: 
   floorPrefab: {fileID: 4390722234434600982, guid: 4a926f548b1fb8e4a8e6e8bd8b028855, type: 3}
   ceilingPrefab: {fileID: 4390722234434600982, guid: af2ab78192fdf9043bc45a50a0e59bc9, type: 3}
   backgroundPrefab: {fileID: 4900296945213954524, guid: e78afb04609691149bdbe07776875b15, type: 3}
-  staircasePrefab: {fileID: 7993928891477082042, guid: 3f57356af5414484c95014b609d383aa, type: 3}
+  staircasePrefab: {fileID: 7993928891477082042, guid: 82617c385b3b2914ba15ffb78da42448, type: 3}
   levelObjects:
   - prefab: {fileID: 4452033242803059328, guid: 15791f91e04071644b94543f11c53ec9, type: 3}
     amount: 1

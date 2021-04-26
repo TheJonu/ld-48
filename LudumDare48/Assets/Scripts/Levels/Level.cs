@@ -46,7 +46,7 @@ namespace Levels
         }
 
         private float FloorSurfaceY => Entrance.ExitPos.y + 0.5f;
-        private float CeilingSurfaceY => Entrance.EntrancePos.y - Data.CeilingYOffset - 0.5f;
+        private float CeilingSurfaceY => Entrance.EntrancePos.y + Data.CeilingYOffset - 0.5f;
         private float GetBottomBoundary(LevelObject prefab) => FloorSurfaceY + prefab.Dim.y / 2;
         private float GetTopBoundary(LevelObject prefab) => CeilingSurfaceY - prefab.Dim.y / 2;
         private float GetLeftBoundaryX(LevelObject prefab) => Mathf.RoundToInt(Entrance.ExitPos.x) + Data.Direction * (ObjectsBufferDist + prefab.Dim.x / 2);

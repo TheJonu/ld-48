@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2332735701341261432
+--- !u!1 &2681884537310357838
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,22 +8,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6726970095430953649}
-  - component: {fileID: 8295518672350664703}
+  - component: {fileID: 3810646847869528329}
+  - component: {fileID: 5272278611819233348}
   m_Layer: 9
-  m_Name: marker 2
+  m_Name: right bound
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6726970095430953649
+--- !u!4 &3810646847869528329
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2332735701341261432}
+  m_GameObject: {fileID: 2681884537310357838}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 5, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -31,13 +31,13 @@ Transform:
   m_Father: {fileID: 385948702675826801}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &8295518672350664703
+--- !u!61 &5272278611819233348
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2332735701341261432}
+  m_GameObject: {fileID: 2681884537310357838}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -157,8 +157,8 @@ Transform:
   - {fileID: 1735254799007677407}
   - {fileID: 8351434456169638280}
   - {fileID: 1945963253298032213}
-  - {fileID: 7331985038502478047}
-  - {fileID: 6726970095430953649}
+  - {fileID: 6352958044542325134}
+  - {fileID: 3810646847869528329}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -238,7 +238,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 5, y: 1}
   m_EdgeRadius: 0
---- !u!1 &7083219876268283322
+--- !u!1 &7138063395232488298
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -246,22 +246,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7331985038502478047}
-  - component: {fileID: 4113618132092483405}
+  - component: {fileID: 6352958044542325134}
+  - component: {fileID: 362246381533493419}
   m_Layer: 9
-  m_Name: marker 1
+  m_Name: left bound
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7331985038502478047
+--- !u!4 &6352958044542325134
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7083219876268283322}
+  m_GameObject: {fileID: 7138063395232488298}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -5, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -269,13 +269,13 @@ Transform:
   m_Father: {fileID: 385948702675826801}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &4113618132092483405
+--- !u!61 &362246381533493419
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7083219876268283322}
+  m_GameObject: {fileID: 7138063395232488298}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -937,11 +937,11 @@ PrefabInstance:
     - target: {fileID: 8561427460928163961, guid: ef7d23fff75e4a242858fec7592a7126, type: 3}
       propertyPath: goesTo
       value: 
-      objectReference: {fileID: 6726970095430953649}
+      objectReference: {fileID: 3810646847869528329}
     - target: {fileID: 8561427460928163961, guid: ef7d23fff75e4a242858fec7592a7126, type: 3}
       propertyPath: goesFrom
       value: 
-      objectReference: {fileID: 7331985038502478047}
+      objectReference: {fileID: 6352958044542325134}
     - target: {fileID: 8561427460928163963, guid: ef7d23fff75e4a242858fec7592a7126, type: 3}
       propertyPath: m_RootOrder
       value: 5

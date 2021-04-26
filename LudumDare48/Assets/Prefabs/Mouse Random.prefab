@@ -52,6 +52,8 @@ MonoBehaviour:
   maxTime: 2
   minTime: 5
   flippable: 1
+  leftBound: {fileID: 0}
+  rightBound: {fileID: 0}
 --- !u!114 &3813131552316420968
 MonoBehaviour:
   m_ObjectHideFlags: 0
