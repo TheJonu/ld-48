@@ -19,7 +19,7 @@ public class MatScript : MonoBehaviour
         //AudioSource.PlayClipAtPoint(MusicManager.Instance.PinkNoiseClips.GetRandom(), transform.position);
         var audioSource = gameObject.AddComponent<AudioSource>();
         audioSource.clip = MusicManager.Instance.PinkNoiseClips.GetRandom();
-        audioSource.volume = Mathf.Lerp(1f, 0f, Vector2.Distance(transform.position, Camera.main.transform.position) / 12f);
+        audioSource.volume = Mathf.Lerp(0.5f, 0f, Vector2.Distance(transform.position, Camera.main.transform.position) / 12f);
         //audioSource.rolloffMode = AudioRolloffMode.Logarithmic;
         //audioSource.maxDistance = 1f;
         audioSource.Play();
