@@ -16,7 +16,11 @@ MonoBehaviour:
   ceilingPrefab: {fileID: 4390722234434600982, guid: 142e922b0ecc48c4a89a881c836e6106, type: 3}
   backgroundPrefab: {fileID: 4900296945213954524, guid: 19e1c38c283696b4d83d746b6a5a94c7, type: 3}
   staircasePrefab: {fileID: 7993928891477082042, guid: d9b167f8a4232404990c5c9d6dcc5a64, type: 3}
-  levelObjects: []
+  levelObjects:
+  - prefab: {fileID: 4452033242803059328, guid: b05e0737b1071d04da52fedb45676f9c, type: 3}
+    amount: 2
+  - prefab: {fileID: 4452033242803059328, guid: 91731998196932641b72f4fc57460d18, type: 3}
+    amount: 2
   length: 30
   direction: 1
   floorYOffset: 0

@@ -35,8 +35,8 @@ namespace Behaviours
             if (!follow)
                 return;
 
-            if (Mathf.Abs(follow.position.y - CurrentLevelPosY) < 4f)
-                _aimPos = new Vector2(follow.position.x, Mathf.Lerp(follow.position.y, CurrentLevelPosY, 0.5f));
+            if (Mathf.Abs(follow.position.y - CurrentLevelPosY) < 3f)
+                _aimPos = new Vector2(follow.position.x, Mathf.Lerp(follow.position.y, CurrentLevelPosY, 0.6f));
             else
                 _aimPos = follow.position;
             
