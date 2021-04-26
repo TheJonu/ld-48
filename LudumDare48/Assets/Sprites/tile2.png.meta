@@ -55,7 +55,7 @@ TextureImporter:
     second: lamp
   - first:
       213: -1652587351198511100
-    second: floor_wood
+    second: bg_dark
   - first:
       213: 2006880063934353423
     second: back_concrete
@@ -70,10 +70,10 @@ TextureImporter:
     second: wall_brick
   - first:
       213: 3984710199933410172
-    second: stairs_brick_left
+    second: blood_1
   - first:
       213: -1624950548819455496
-    second: stairs_brick_right
+    second: blood_2
   - first:
       213: -586985408046388317
     second: platform_meat
@@ -636,7 +636,7 @@ TextureImporter:
         width: 32
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -644,6 +644,69 @@ TextureImporter:
       bones: []
       spriteID: 0dfe900e9a0166660800000000000000
       internalID: 7378603361287401424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bg_dark
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40052835f84d019e0800000000000000
+      internalID: -1652587351198511100
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blood_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 80
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7b18ef90d88c4730800000000000000
+      internalID: 3984710199933410172
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blood_2
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 80
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f15a00d5140379e0800000000000000
+      internalID: -1624950548819455496
       vertices: []
       indices: 
       edges: []

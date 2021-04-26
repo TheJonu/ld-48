@@ -129,7 +129,8 @@ namespace Levels
             float y = Entrance.ExitPos.y;
             float startPosX = Entrance.ExitPos.x - Data.Direction * Entrance.Dim.x;
             float endPosX = Exit.EntrancePos.x + Data.Direction * Exit.Dim.x;
-            int length = Mathf.RoundToInt(Mathf.Abs(endPosX - startPosX) / Data.BackgroundPrefab.Dim.x) + 1;
+            int length = Mathf.FloorToInt(Mathf.Abs(endPosX - startPosX) / Data.BackgroundPrefab.Dim.x) + 1;
+            if (Data.BackgroundPrefab.Dim.x > 1) length--;
             for (int i = 0; i < length; i++)
             {
                 float x = startPosX + i * Data.Direction * Data.BackgroundPrefab.Dim.x;

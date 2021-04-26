@@ -25,6 +25,10 @@ public class LadderController : MonoBehaviour
 
     public Action Destroyed;
 
+
+    public bool IsMoving => moving;
+    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -50,7 +54,7 @@ public class LadderController : MonoBehaviour
         {
             transform.position += Vector3.down * Time.deltaTime * ladderSpeedMod;
         }
-        if (Input.GetKey(KeyCode.D))
+        else if (Input.GetKey(KeyCode.D))
         { 
             transform.position += Vector3.right * Time.deltaTime * ladderSpeedMod / 2;
         }
