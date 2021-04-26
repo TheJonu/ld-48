@@ -181,8 +181,8 @@ public class PlayerController : MonoBehaviour
             {
                 if (point[j].collider == rhits[i].collider)
                 {
-                    Debug.Log("Yes I am grounded!");
-                    Debug.Log(rhits[i].collider);
+                    //Debug.Log("Yes I am grounded!");
+                    //Debug.Log(rhits[i].collider);
                     return true;
                 }
             }

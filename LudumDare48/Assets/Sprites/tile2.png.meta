@@ -86,6 +86,12 @@ TextureImporter:
   - first:
       213: 9119544428102156368
     second: cabinet_broken
+  - first:
+      213: -788264761144807006
+    second: pickle
+  - first:
+      213: -600653196645886949
+    second: shelf
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -707,6 +713,48 @@ TextureImporter:
       bones: []
       spriteID: 8f15a00d5140379e0800000000000000
       internalID: -1624950548819455496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pickle
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 112
+        width: 32
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a1710b40658f05f0800000000000000
+      internalID: -788264761144807006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shelf
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 128
+        width: 32
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1418bc991d0aa7f0800000000000000
+      internalID: -600653196645886949
       vertices: []
       indices: 
       edges: []

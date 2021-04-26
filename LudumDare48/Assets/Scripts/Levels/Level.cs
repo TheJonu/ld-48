@@ -14,7 +14,7 @@ namespace Levels
         [SerializeField] private Transform backgroundParent;
         [SerializeField] private Transform objectsParent;
         //[SerializeField] private BoxCollider2D floorBoxCollider;
-        [SerializeField] private FloorCollisionHandler floorBoxFloorCollisionHandler;
+        [SerializeField] private CollisionHandler boxCollisionHandler;
 
         public LevelDataSet Data { get; set; }
         public Staircase Entrance { get; set; }
@@ -106,9 +106,9 @@ namespace Levels
             }
 
             Vector2 centerDist = (length - 1) * blockDist.x / 2 * Vector2.right;
-            floorBoxFloorCollisionHandler.Collider.transform.position = startPos + centerDist;
-            floorBoxFloorCollisionHandler.Collider.size = new Vector2(length * Data.FloorPrefab.Dim.x, Data.FloorPrefab.Dim.y * FloorColliderScaleY);
-            floorBoxFloorCollisionHandler.EnteredCollision += () => LevelManager.Instance.CurrentLevel = this;
+            boxCollisionHandler.Collider.transform.position = startPos + centerDist;
+            boxCollisionHandler.Collider.size = new Vector2(length * Data.FloorPrefab.Dim.x, Data.FloorPrefab.Dim.y * FloorColliderScaleY);
+            boxCollisionHandler.EnteredCollision += () => LevelManager.Instance.CurrentLevel = this;
         }
 
         private void GenerateCeiling()
