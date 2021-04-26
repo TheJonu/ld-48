@@ -9,11 +9,11 @@ public class PlayerController : MonoBehaviour
     protected Rigidbody2D rb2d;
     protected Collider2D coll2d;
 
-    public float xSpeed = .5f;
+    public float xSpeed = .0f;
 
     protected float refVel = 0.0f;
 
-    protected float speedDampening = .01f;
+    protected float speedDampening = 0.0f;
 
     [SerializeField] ContactFilter2D climbLayerMask;
     [SerializeField] LayerMask terrainLayerMask;
@@ -40,7 +40,6 @@ public class PlayerController : MonoBehaviour
 
         Flip();
 
-        float curSpeed = xSpeed;
         if (Input.GetKey(KeyCode.D) && Input.GetKey(KeyCode.A))
         {
             // do nothing plz
@@ -49,14 +48,14 @@ public class PlayerController : MonoBehaviour
         {
             if (IsGrounded() || !IsGroundedButLeft(false))
             {
-                rb2d.velocity = new Vector2(Mathf.SmoothDamp(rb2d.velocity.x, curSpeed, ref refVel, speedDampening), rb2d.velocity.y);
+                rb2d.velocity = new Vector2(Mathf.SmoothDamp(rb2d.velocity.x, xSpeed, ref refVel, speedDampening), rb2d.velocity.y);
             }
         }
         else if (Input.GetKey(KeyCode.A))
         {
             if (IsGrounded() || !IsGroundedButLeft(true))
             {
-                rb2d.velocity = new Vector2(Mathf.SmoothDamp(rb2d.velocity.x, -curSpeed, ref refVel, speedDampening), rb2d.velocity.y);
+                rb2d.velocity = new Vector2(Mathf.SmoothDamp(rb2d.velocity.x, -xSpeed, ref refVel, speedDampening), rb2d.velocity.y);
             }
         }
         else if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S))

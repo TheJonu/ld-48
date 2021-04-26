@@ -1067,6 +1067,10 @@ PrefabInstance:
       propertyPath: m_Intensity
       value: 1.5
       objectReference: {fileID: 0}
+    - target: {fileID: 8022970881864077080, guid: b5c8f2aacef3bdb44bd856ddb7093ff2, type: 3}
+      propertyPath: xSpeed
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8022970881864077083, guid: b5c8f2aacef3bdb44bd856ddb7093ff2, type: 3}
       propertyPath: m_RootOrder
       value: 1
