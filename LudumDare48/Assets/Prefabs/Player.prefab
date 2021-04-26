@@ -244,6 +244,9 @@ MonoBehaviour:
   ladderSprite: {fileID: 0}
   collBoxSize: {x: 1, y: 1}
   touchedGround: 0
+  fallSound: {fileID: 8300000, guid: 4b1b8ddb5e9de8d40aad53159304f9a0, type: 3}
+  fallSoundVelocityThreshold: 2.2
+  fallSoundVolume: 1
 --- !u!114 &2405356839474964821
 MonoBehaviour:
   m_ObjectHideFlags: 0

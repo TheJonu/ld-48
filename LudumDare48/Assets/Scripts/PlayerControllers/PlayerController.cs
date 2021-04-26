@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data.Common;
@@ -27,6 +28,10 @@ public class PlayerController : MonoBehaviour
 
     private LadderController lc;
     public LadderController LadderController => lc;
+
+    [SerializeField] private AudioClip fallSound;
+    [SerializeField] private float fallSoundVelocityThreshold;
+    [SerializeField] private float fallSoundVolume;
     
     // Start is called before the first frame update
     void Start()
@@ -254,5 +259,15 @@ public class PlayerController : MonoBehaviour
 
         ExtDebug.DrawBoxCastBox(lowerDown, box, Quaternion.identity, Vector2.zero, 0, Color.red);
         return false;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.relativeVelocity.y != 0) Debug.Log(collision.relativeVelocity.y);
+        if (collision.relativeVelocity.y > fallSoundVelocityThreshold && !(fallSound is null))
+        {
+            Debug.Log("Play");
+            AudioSource.PlayClipAtPoint(fallSound, transform.position, fallSoundVolume);
+        }
     }
 }
