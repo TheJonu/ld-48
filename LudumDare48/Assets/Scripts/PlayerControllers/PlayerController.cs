@@ -263,10 +263,10 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.relativeVelocity.y != 0) Debug.Log(collision.relativeVelocity.y);
+        //if (collision.relativeVelocity.y != 0) Debug.Log(collision.relativeVelocity.y);
         if (collision.relativeVelocity.y > fallSoundVelocityThreshold && !(fallSound is null))
         {
-            Debug.Log("Play");
+            //Debug.Log("Play");
             AudioSource.PlayClipAtPoint(fallSound, transform.position, fallSoundVolume);
         }
     }
