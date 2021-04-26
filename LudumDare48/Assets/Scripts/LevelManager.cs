@@ -11,7 +11,6 @@ using System.Collections.Generic;
 public class LevelManager : MonoBehaviour
 {
     [SerializeField] private Transform player;
-    [SerializeField] private GameObject playerGo;
     [SerializeField] private List<LevelDataSet> levelDataSets;
     [SerializeField] private float gridSize = 1f;
     [SerializeField] private Level levelPrefab;
@@ -94,7 +93,5 @@ public class LevelManager : MonoBehaviour
 
         im.materialSelection = insanityMaterials;
         im.enemyMaterialSelection = insanityEnemyMaterials;
-
-        im.playerLocation = playerGo;
     }
 }

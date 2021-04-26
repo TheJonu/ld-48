@@ -383,7 +383,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 2009184341}
-  playerGo: {fileID: 2009184335}
   levelDataSets:
   - {fileID: 11400000, guid: 0078371370c17404aa8724aa5b981613, type: 2}
   - {fileID: 11400000, guid: 5315a2c83bfcc2b4ebe5be010eb56db6, type: 2}
@@ -961,7 +960,7 @@ MonoBehaviour:
   playerLocation: {fileID: 2009184335}
   backgroundTracks:
   - {fileID: 8300000, guid: be15ec03e8b047d4e8146708db248863, type: 3}
-  - {fileID: 8300000, guid: be15ec03e8b047d4e8146708db248863, type: 3}
+  - {fileID: 8300000, guid: 93bbcfbdd384ff84ea7d3d89461e4d4e, type: 3}
   volume: 0.77
   pinkNoiseClips:
   - {fileID: 8300000, guid: acc5acb4e2e0d5a45b2a8004480eccf2, type: 3}
