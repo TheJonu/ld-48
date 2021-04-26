@@ -23,7 +23,9 @@ public class MessageManager : MonoBehaviour
     [SerializeField] private float floorEnterMessageDuration;
     [SerializeField] private float deathMessageDuration;
     [SerializeField] private float pickleAcquiredMessageDuration;
+    [SerializeField] private float thanksMessageDuration;
     [TextArea] [SerializeField] private string pickleAcquiredMessage;
+    [TextArea] [SerializeField] private string thanksMessage;
     [TextArea] [SerializeField] private List<string> floorEnterMessages;
     [TextArea] [SerializeField] private List<string> deathMessages;
 
@@ -45,6 +47,7 @@ public class MessageManager : MonoBehaviour
         LevelManager.Instance.CurrentLevelChanged += ShowLevelEnteredMessage;
         CheckpointManager.Instance.ReturnedToCheckpoint += ShowRandomDeathMessage;
         PickleRack.Instance.PickleAcquired += () => ShowMessage(pickleAcquiredMessage, pickleAcquiredMessageDuration);
+        PickleRack.Instance.GameEnded += () => ShowMessage(thanksMessage, thanksMessageDuration);
     }
 
     public void ShowMessage(string text, float time)
