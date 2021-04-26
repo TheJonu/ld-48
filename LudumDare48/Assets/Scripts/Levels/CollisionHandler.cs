@@ -3,12 +3,13 @@ using UnityEngine;
 
 namespace Levels
 {
-     public class FloorCollisionHandler : MonoBehaviour
+     public class CollisionHandler : MonoBehaviour
      {
           [SerializeField] private BoxCollider2D collider;
      
           public BoxCollider2D Collider => collider;
           public Action EnteredCollision { get; set; }
+          public Action EnteredTrigger { get; set; }
 
           private const string PlayerTag = "Player";
      
@@ -18,6 +19,14 @@ namespace Levels
                if (collision.gameObject.CompareTag(PlayerTag))
                {
                     EnteredCollision?.Invoke();
+               }
+          }
+
+          private void OnTriggerEnter2D(Collider2D other)
+          {
+               if (other.gameObject.CompareTag(PlayerTag))
+               {
+                    EnteredTrigger?.Invoke();
                }
           }
      }

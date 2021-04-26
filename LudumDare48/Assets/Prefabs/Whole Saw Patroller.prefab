@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3877837457844946111}
   - component: {fileID: 3877837457844946110}
   - component: {fileID: 3877837457844945985}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Whole Saw Patroller
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -186,7 +186,7 @@ GameObject:
   - component: {fileID: 618703677136998725}
   - component: {fileID: 5170129574770005175}
   - component: {fileID: 5673601290745533459}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Red Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}

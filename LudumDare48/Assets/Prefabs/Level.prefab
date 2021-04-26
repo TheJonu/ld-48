@@ -213,7 +213,7 @@ MonoBehaviour:
   ceilingParent: {fileID: 1167198262918891983}
   backgroundParent: {fileID: 8969913733703711082}
   objectsParent: {fileID: 4072500690523350392}
-  floorBoxFloorCollisionHandler: {fileID: 8726541955210854181}
+  boxCollisionHandler: {fileID: 8726541955210854181}
 --- !u!1 &8265813689451642877
 GameObject:
   m_ObjectHideFlags: 0
