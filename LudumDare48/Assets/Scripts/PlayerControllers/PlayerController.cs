@@ -43,8 +43,7 @@ public class PlayerController : MonoBehaviour
         if (!IsGrounded())
         {
             //Debug.Log("Not touched ground");
-            if (touchedGround)
-                return;
+            return;
         }
         else
         {
@@ -132,7 +131,7 @@ public class PlayerController : MonoBehaviour
         this.enabled = true;
         GetComponent<SpriteRenderer>().sprite = oldSprite;
         rb2d.gravityScale = 1;
-        //pushUp();
+        // pushUp();
         coll2d.enabled = true;
         touchedGround = false;
     }
@@ -161,19 +160,40 @@ public class PlayerController : MonoBehaviour
     bool IsGrounded()
     {
 
+        ContactFilter2D filter = new ContactFilter2D();
+        filter.layerMask = terrainLayerMask;
+        filter.useLayerMask = true;
+
+        Vector2 box = coll2d.bounds.extents;
+
+        box -= new Vector2(0.02f, 0);
+
         Vector2 lowerDown = coll2d.bounds.center;
 
         lowerDown.y -= coll2d.bounds.size.y;
 
-        Vector2 box = coll2d.bounds.extents;
+        RaycastHit2D[] rhits = new RaycastHit2D[256];
 
-        box.y /= .5f;
+        int size = Physics2D.BoxCast(lowerDown, box, 0f, Vector2.zero, filter, rhits);
 
-        box -= new Vector2 (0.01f, 0);
+        ContactPoint2D[] point = new ContactPoint2D[256];
 
-        RaycastHit2D hit = Physics2D.BoxCast(lowerDown, box, 0f, Vector2.zero, 0, terrainLayerMask);
+        int contSize = rb2d.GetContacts(point);
+
+        for(int i = 0; i<size; i++)
+        {
+            for (int j = 0; j<contSize; j++)
+            {
+                if (point[j].collider == rhits[i].collider)
+                {
+                    Debug.Log("Yes I am grounded!");
+                    Debug.Log(rhits[i].collider);
+                    return true;
+                }
+            }
+        }
 
         ExtDebug.DrawBoxCastBox(lowerDown, box, Quaternion.identity, Vector2.zero, 0, Color.red);
-        return hit.collider != null;
+        return false;
     }
 }
