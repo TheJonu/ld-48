@@ -53,7 +53,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   xSpeed: 2
   toChase: {fileID: 0}
-  activationDistance: 8
+  xActivationDistance: 8
+  yActivationDistance: 4
   chasePlayer: 0
 --- !u!114 &6358223074811208312
 MonoBehaviour:

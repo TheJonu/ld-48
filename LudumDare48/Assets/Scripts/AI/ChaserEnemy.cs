@@ -1,11 +1,13 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace AI
 {
     public class ChaserEnemy : Enemy
     {
         [SerializeField] private Transform toChase;
-        [SerializeField] private float activationDistance;
+        [FormerlySerializedAs("activationDistance")] [SerializeField] private float xActivationDistance;
+        [SerializeField] private float yActivationDistance;
         [SerializeField] private bool chasePlayer;
 
         public Transform ToChase { set => toChase = value; }
@@ -22,7 +24,7 @@ namespace AI
             if(!toChase)
                 return;
             
-            if (Vector2.Distance(toChase.position, transform.position) >= activationDistance)
+            if (Mathf.Abs(toChase.position.x - transform.position.x) >= xActivationDistance || Mathf.Abs(toChase.position.y - transform.position.y) >= yActivationDistance)
             {
                 Vector2 targetSpeed = new Vector2(0, Rb2d.velocity.y);
                 Vector2 ret = Vector2.zero;
